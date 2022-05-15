@@ -221,6 +221,7 @@ require("packer").startup({
 		-- Go
 		use({
 			"fatih/vim-go",
+			run = ":GoInstallBinaries",
 			cmd = { "GoInstallBinaries", "GoDoc" },
 		})
 
