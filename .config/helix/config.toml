@@ -1,0 +1,28 @@
+theme = "base16_ocean_dark"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+
+[keys.normal]
+C-d = ":q"
+C-p = "file_picker"
+K = "hover"
+[keys.normal.C-v]
+w = ":w"
+n = "goto_next_buffer"
+p = "goto_previous_buffer"
+
+
+[keys.insert]
+j = { k = "normal_mode" }
+C-d = ":q"
+[keys.insert.C-v]
+w = ":w"
+
+[keys.select]
+C-d = ":q"
+[keys.select.C-v]
+w = ":w"

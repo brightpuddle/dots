@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Homebrew (covers most compilers)
+brew update && brew upgrade
+
+# Rust
+rustup update
+
+# V
+v up
+
+# Node libs
+npm-check -yg
+# Python libs
+# Problem with this is that it upgrade each individual package independent of the whole and then ends up with conflicts preventing the ones I've actually installed from being upgraded. No capability like npm's depth.
+# Can I use poetry for global package installation?
+# pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
+
+# OCaml libs
+# opam update && opam upgrade -y
+
+# Go dependencies
+# https://go.dev/doc/go-get-install-deprecation
+
+# Finish with some good fun
+# genact

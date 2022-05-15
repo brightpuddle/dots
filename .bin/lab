@@ -1,0 +1,120 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+from subprocess import call
+
+import pexpect
+import yaml
+from pexpect.pxssh import pxssh
+
+
+def get_args():
+    parser = argparse.ArgumentParser(prog="lab", description="ACI lab script.")
+    parser.add_argument(
+        "host",
+        nargs="?",
+        type=str,
+        help="Hostname of the lab device.",
+    )
+    parser.add_argument(
+        "-o",
+        "--oob",
+        action="store_true",
+        help="Telnet to the OOB oob_port.",
+    )
+    parser.add_argument(
+        "-p",
+        "--ping",
+        action="store_true",
+        help="Just ping the host instead of connecting.",
+    )
+    parser.add_argument(
+        "-c",
+        "--cx",
+        action="store_true",
+        help="Use CX lab host list",
+    )
+    parser.add_argument(
+        "-l",
+        "--list",
+        action="store_true",
+        help="List available hosts",
+    )
+    args = parser.parse_args()
+    return args
+
+
+def get_hosts(cx_lab=False):
+    with open(os.path.join(os.path.dirname(__file__), "lab_hosts.yaml")) as f:
+        cfg = yaml.load(f, Loader=yaml.FullLoader)
+        if cx_lab:
+            return cfg.get("cx_lab_hosts", {})
+        return cfg.get("hosts", {})
+
+
+def list_hosts(hosts):
+    print("Please choose from the following hosts:")
+    for h in hosts.keys():
+        print(h)
+
+
+def get_host(host, hosts):
+    if host not in hosts:
+        print("Invalid host.")
+        list_hosts(hosts)
+        exit()
+    return hosts[host]
+
+
+def ssh(host):
+    print("Connecting to {}...".format(host["ip"]))
+    s = pxssh()
+    s.login(
+        host.get("ip", ""),
+        username=host.get("usr"),
+        password=host.get("pwd", ""),
+        port=host.get("port"),
+        auto_prompt_reset=False,
+        terminal_type="",
+    )
+    s.sendline()
+    s.interact()
+    exit()
+
+
+def oob(host):
+    oob_port = host.get("oob_port")
+    if oob_port is None:
+        print("This device doesn't have a terminal-based OOB.")
+    else:
+        command = "telnet 10.89.236.35 {}".format(host.get("oob_port"))
+        s = pexpect.spawn(command)
+        s.interact()
+
+
+def ping(host):
+    try:
+        call(["ping", host["ip"]])
+    except KeyboardInterrupt:
+        pass
+    exit()
+
+
+def main():
+    args = get_args()
+    hosts = get_hosts(args.cx)
+    if args.list:
+        list_hosts(hosts)
+        exit()
+    host = get_host(args.host, hosts)
+    if args.oob:
+        oob(host)
+    elif args.ping:
+        ping(host)
+    else:
+        ssh(host)
+
+
+if __name__ == "__main__":
+    main()

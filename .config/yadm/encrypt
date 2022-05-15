@@ -1,0 +1,9 @@
+.bin/cisco
+.bin/lab_hosts.yaml
+.config/mopidy/mopidy.conf
+.ssh/config
+.ssh/id_rsa
+.task/backlog.data
+.task/completed.data
+.task/pending.data
+.task/undo.data

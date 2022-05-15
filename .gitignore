@@ -1,0 +1,29 @@
+# MacOS cruft
+.DS_Store
+
+# symlinks
+.vimrc
+Customers
+
+# Auto-generated
+.yarnrc
+node_modules
+
+# Cloud providers (already synced)
+Dropbox
+Google Drive
+Downloads
+Desktop
+OneDrive - Cisco
+Box Sync
+Pictures
+Music
+
+# Don't back up/reinstall
+Applications
+
+# Don't backup known_hosts
+known_hosts
+
+# Don't backup packer compiled
+50-compiled.lua

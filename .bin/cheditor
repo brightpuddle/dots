@@ -1,0 +1,72 @@
+#!/usr/bin/env python
+
+import subprocess
+
+editor = "com.microsoft.VSCode"
+# editor = 'com.qvacua.VimR'
+
+
+extensions = [
+    ".asm",
+    ".bas",
+    ".c",
+    ".cc",
+    ".cfg",
+    ".clj",
+    ".cpp",
+    ".cry",
+    ".css",
+    ".d",
+    ".dart",
+    ".erl",
+    ".ex",
+    ".exs",
+    ".fs",
+    ".go",
+    ".graphql",
+    ".h",
+    ".hs",
+    ".hy",
+    ".ini",
+    ".java",
+    ".jl",
+    ".js",
+    ".jsx",
+    ".json",
+    ".kt",
+    ".lisp",
+    ".lua",
+    ".md",
+    ".mk",
+    ".ml",
+    ".nim",
+    ".php",
+    ".pl",
+    ".pony",
+    ".purs",
+    ".py",
+    ".rb",
+    ".re",
+    ".rs",
+    ".sbt",
+    ".scala",
+    ".scm",
+    ".scss",
+    ".sh",
+    ".swift",
+    ".ts",
+    ".tsx",
+    ".txt",
+    ".vb",
+    ".xml",
+    ".yaml",
+    ".zig",
+]
+
+
+print(f"Changing default editor to {editor}.")
+
+for ext in extensions:
+    subprocess.Popen(["duti", "-s", editor, ext, "all"])
+
+print("Done!")

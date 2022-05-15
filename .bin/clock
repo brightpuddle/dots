@@ -1,0 +1,16 @@
+#! /bin/zsh
+# t = 12 hour format
+# c = center
+# D = hide date
+# S = screensaver mode (exit on any keypress)
+# C = color [0-7]
+#   0 - dark
+#   1 - red
+#   2 - green
+#   3 - yellow
+#   4 - pale blue
+#   5 - pink
+#   6 - light sea green
+#   7 - white
+
+tty-clock -Dtc -C 2
