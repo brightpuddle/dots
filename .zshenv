@@ -12,6 +12,8 @@ export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.nimble/bin:$PATH
 export PATH=$HOME/.flutter/bin:$PATH
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH=/usr/local/lib/ruby/gems/3.0.0/bin:$PATH
 
 export GPG_TTY=$(tty)
 
