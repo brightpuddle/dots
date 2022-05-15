@@ -1,0 +1,20 @@
+#!/bin/bash
+
+os="$(uname)"
+
+if [[ "$uname" == "Darwin" ]]; then
+  # xcode dev tools
+  xcode-select --install
+
+  # homebrew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # Essentials
+  brew install git yadm gpg
+
+  yadm clone git@github.com:brightpuddle/dots.git
+  yadm decrypt
+
+  # Brewing (take 5... or more)
+  brew bundle --global
+fi
