@@ -29,14 +29,14 @@ return function()
 	local sep = {
 		str = "ǀ",
 		hl = { fg = colors.base03 },
-		left = "block",
-		right = "block",
+		left = "left_rounded",
+		right = "right_rounded",
 	}
 	local vi_mode = require("feline.providers.vi_mode")
 	local lsp = require("feline.providers.lsp")
 
 	local main_icon = {
-		provider = "  ",
+		provider = " ",
 		hl = function()
 			return {
 				bg = vi_mode.get_mode_color(),
