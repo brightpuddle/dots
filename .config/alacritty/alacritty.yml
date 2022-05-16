@@ -80,17 +80,18 @@ tabspaces: 2
 
 font:
   normal:
-    family: "DejaVuSansMono Nerd Font"
-    style: Book
+    family: "RobotoMono Nerd Font"
+    style: Regular
   bold:
     style: Bold
   italic:
-    style: Oblique
+    style: Italic
   bold_italic:
-    style: "Bold Oblique"
+    style: "Bold Italic"
   offset:
     y: 2
-  size: 14
+  size: 16
+  use_thin_strokes: true
 
 ############################################################
 # Colors
