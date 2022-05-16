@@ -80,14 +80,14 @@ tabspaces: 2
 
 font:
   normal:
-    family: 'DejaVuSansMono Nerd Font'
+    family: "DejaVuSansMono Nerd Font"
     style: Book
   bold:
     style: Bold
   italic:
     style: Oblique
   bold_italic:
-    style: 'Bold Oblique'
+    style: "Bold Oblique"
   offset:
     y: 2
   size: 14
@@ -98,49 +98,49 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x2b303b' # #2b303b
-    foreground: '0xc0c5ce' # #c0c5ce
+    background: "0x2b303b" # #2b303b
+    foreground: "0xc0c5ce" # #c0c5ce
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x2b303b' # #2b303b
-    cursor: '0xc0c5ce' # #c0c5ce
+    text: "0x2b303b" # #2b303b
+    cursor: "0xc0c5ce" # #c0c5ce
 
   # Normal colors
   normal:
-    black: '0x2b303b'
-    red: '0xbf616a'
-    green: '0xa3be8c'
-    yellow: '0xebcb8b'
-    blue: '0x8fa1b3'
-    magenta: '0xb48ead'
-    cyan: '0x96b5b4'
-    white: '0xc0c5ce'
+    black: "0x2b303b"
+    red: "0xbf616a"
+    green: "0xa3be8c"
+    yellow: "0xebcb8b"
+    blue: "0x8fa1b3"
+    magenta: "0xb48ead"
+    cyan: "0x96b5b4"
+    white: "0xc0c5ce"
 
   # Bright colors
   bright:
-    black: '0x65737e'
-    red: '0xbf616a'
-    green: '0xa3be8c'
-    yellow: '0xebcb8b'
-    blue: '0x8fa1b3'
-    magenta: '0xb48ead'
-    cyan: '0x96b5b4'
-    white: '0xeff1f5'
+    black: "0x65737e"
+    red: "0xbf616a"
+    green: "0xa3be8c"
+    yellow: "0xebcb8b"
+    blue: "0x8fa1b3"
+    magenta: "0xb48ead"
+    cyan: "0x96b5b4"
+    white: "0xeff1f5"
 
   indexed_colors:
-    - { index: 16, color: '0xd08770' }
-    - { index: 17, color: '0xab7967' }
-    - { index: 18, color: '0x343d46' }
-    - { index: 19, color: '0x4f5b66' }
-    - { index: 20, color: '0xa7adba' }
-    - { index: 21, color: '0xdfe1e8' }
+    - { index: 16, color: "0xd08770" }
+    - { index: 17, color: "0xab7967" }
+    - { index: 18, color: "0x343d46" }
+    - { index: 19, color: "0x4f5b66" }
+    - { index: 20, color: "0xa7adba" }
+    - { index: 21, color: "0xdfe1e8" }
 
 draw_bold_text_with_bright_colors: false
 
 bell:
   animation: EaseOutExpo
-  color: '0xffffff' # #ffffff
+  color: "0xffffff" # #ffffff
   duration: 0
 
 mouse:
