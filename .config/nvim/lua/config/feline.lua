@@ -74,7 +74,7 @@ return function()
 		provider = function()
 			return vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
 		end,
-		icon = { str = "  " },
+		icon = { str = "  ", hl={fg=colors.base0C} },
 		hl = { bg = c.sec.bg },
 		right_sep = sep.right,
 	}
