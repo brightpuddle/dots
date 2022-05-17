@@ -49,6 +49,7 @@ alias icat="kitty +kitten icat"
 alias lg='lazygit'
 alias config='lazygit -g $HOME/.local/share/yadm/repo.git'
 alias cat='bat'
+alias l='exa'
 
 ############################################################
 # Options
