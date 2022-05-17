@@ -63,5 +63,5 @@ return function()
 	hi.TroubleTextInformation = { guibg = dark.c02 }
 
 	-- Command line / message area
-	hi.MsgArea = { guibg = dark.c01}
+	-- hi.MsgArea = { guibg = dark.c01}
 end
