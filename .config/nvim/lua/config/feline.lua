@@ -36,7 +36,7 @@ return function()
 	local lsp = require("feline.providers.lsp")
 
 	local main_icon = {
-		provider = " ",
+		provider = "  ",
 		hl = function()
 			return {
 				bg = vi_mode.get_mode_color(),
@@ -74,7 +74,7 @@ return function()
 		provider = function()
 			return vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
 		end,
-		icon = { str = "  ", hl={fg=colors.base0C} },
+		icon = { str = "  ", hl = { fg = colors.base0C } },
 		hl = { bg = c.sec.bg },
 		right_sep = sep.right,
 	}
