@@ -157,9 +157,7 @@ require("packer").startup({
 			"kyazdani42/nvim-tree.lua",
 			requires = { "kyazdani42/nvim-web-devicons" },
 			cmd = "NvimTreeToggle",
-			config = function()
-				require("nvim-tree").setup()
-			end,
+			config = require('config.nvimtree'),
 		})
 
 		-- fzf/CtrlP

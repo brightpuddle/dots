@@ -17,11 +17,16 @@
 
 return function()
 	local base16 = require("base16-colorscheme")
-
 	base16.setup("ocean")
 
 	local hi = base16.highlight
 	local c = base16.colors
+	-- VSCode ocean dark extended UI colors
+	local dark = {
+		c00 = "#1d2027", -- title bar
+		c01 = "#21252d", -- side nav, tab bar background
+		c02 = "#252932", -- bottom drawer (trouble)
+	}
 
 	-- -- Swap colors around with imports
 	hi.TSInclude = { guifg = c.base08 }
@@ -44,4 +49,19 @@ return function()
 
 	-- Highlight active search item
 	hi.SearchLight = { guibg = c.base09, guifg = c.base01 }
+
+	-- NvimTree
+	hi.NvimTreeNormal = { guibg = dark.c01 }
+	hi.VertSplit = { guifg = c.base00 }
+
+	-- Trouble
+	hi.TroubleNormal = { guibg = dark.c02 }
+	hi.TroubleFoldIcon = { guibg = c.base00, guifg = c.base04 }
+	hi.TroubleCount = { guibg = c.base00, guifg = c.base0B }
+	hi.TroubleIndent = { guibg = dark.c02, guifg = c.base02 }
+	hi.TroubleLocation = { guibg = dark.c02, guifg = c.base02 }
+	hi.TroubleTextInformation = { guibg = dark.c02 }
+
+	-- Command line / message area
+	hi.MsgArea = { guibg = dark.c01}
 end

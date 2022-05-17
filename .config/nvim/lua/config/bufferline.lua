@@ -1,7 +1,7 @@
 return function()
 	require("bufferline").setup({
 		highlights = {
-			fill = { guibg = "#20252e" },
+			fill = { guibg = "#22252d" },
 		},
 		options = {
 			always_show_bufferline = true,

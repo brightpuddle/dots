@@ -3,6 +3,12 @@
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 return function()
+  -- Sign column icons
+	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	for type, icon in pairs(signs) do
+		local hl = "DiagnosticSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	end
 	-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	-- 	underline = false,
 	-- 	virtual_text = false,
