@@ -79,4 +79,5 @@ ctrl + cmd - l : yabai -m window --resize right:60:0;\
 
 shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 # cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window
