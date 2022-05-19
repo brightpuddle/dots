@@ -1,0 +1,57 @@
+# Layout
+spacebar -m config position      top
+spacebar -m config height        26
+spacebar -m config padding_left  20
+spacebar -m config padding_right 20
+spacebar -m config spacing_left  15
+spacebar -m config spacing_right 35
+
+
+# Fonts
+spacebar -m config text_font "SF Pro:Medium:14.0"
+spacebar -m config icon_font "RobotoMono Nerd Font:Medium:14.0"
+
+# Colors
+spacebar -m config background_color   0xff22252d
+spacebar -m config foreground_color   0xffa7adba
+# spacebar -m config space_icon_color   0xff458588
+# spacebar -m config power_icon_color   0xffcd950c
+# spacebar -m config battery_icon_color 0xffd75f5f
+# spacebar -m config dnd_icon_color     0xffa8a8a8
+
+############################################################
+# Left
+############################################################
+# Spaces
+spacebar -m config spaces               on
+spacebar -m config space_icon_strip I II III IV V VI VII VIII IX X
+
+############################################################
+# Center
+############################################################
+# Title
+spacebar -m config title                on
+
+
+############################################################
+# Right
+############################################################
+# Hostname
+spacebar -m config right_shell            off
+spacebar -m config right_shell_icon        
+spacebar -m config right_shell_icon_color 0xffab7967
+spacebar -m config right_shell_command    "hostname"
+
+# Clock
+spacebar -m config clock        on
+spacebar -m config clock_format "%I:%M %p"
+spacebar -m config clock_icon   " "
+# spacebar -m config clock_icon 
+# spacebar -m config clock_icon_color   0xffa8a8a8
+
+# Power
+spacebar -m config power            off
+spacebar -m config power_icon_strip  
+
+# DND
+spacebar -m config dnd_icon 
