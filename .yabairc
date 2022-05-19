@@ -33,6 +33,9 @@ yabai -m config active_window_opacity 0
 yabai -m config normal_window_opacity 0.9
 yabai -m config window_opacity_duration 0.0
 
+# for spacebar
+yabai -m config external_bar all:26:0
+
 # global settings
 yabai -m config window_shadow float
 yabai -m config window_placement second_child
@@ -45,7 +48,8 @@ yabai -m config mouse_modifier alt
 yabai -m config mouse_action1 resize
 yabai -m config mouse_action2 move
 yabai -m config mouse_follows_focus off
-yabai -m config focus_follows_mouse autofocus
+# yabai -m config focus_follows_mouse autofocus
+yabai -m config focus_follows_mouse off
 
 # padding and gaps
 yabai -m config top_padding 16
