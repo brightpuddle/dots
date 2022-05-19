@@ -280,6 +280,13 @@ return function()
 					bubbles.location,
 				}),
 			},
+			inactive = {
+				flatten({ bubbles.mode, bubbles.file, }),
+				{},
+				flatten({
+					bubbles.location,
+				}),
+			}
 		},
 		theme = {
 			bg = colors.base00,
