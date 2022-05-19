@@ -16,6 +16,8 @@
 -- base0F = #ab7967
 return function()
 	local colors = require("base16-colorscheme").colors
+	local vi_mode = require("feline.providers.vi_mode")
+	local lsp = require("feline.providers.lsp")
 	local c = {
 		pri = {
 			bg = colors.base01,
@@ -29,179 +31,258 @@ return function()
 	local sep = {
 		str = "ǀ",
 		hl = { fg = colors.base03 },
-		left = "left_rounded",
-		right = "right_rounded",
-	}
-	local vi_mode = require("feline.providers.vi_mode")
-	local lsp = require("feline.providers.lsp")
-
-	local main_icon = {
-		provider = "  ",
-		hl = function()
-			return {
-				bg = vi_mode.get_mode_color(),
-				fg = colors.base00,
-			}
-		end,
-		right_sep = function()
-			return {
-				str = sep.right,
-				hl = { bg = c.sec.bg, fg = vi_mode.get_mode_color() },
-			}
-		end,
+		left = "",
+		right = "",
+		block = "█",
 	}
 
-	local file_name = {
-		provider = "file_info",
-		hl = { style = "italic" },
-		right_sep = " ",
-		left_sep = " ",
-	}
+	local function has_diags()
+		return lsp.diagnostics_exist(1)
+			or lsp.diagnostics_exist(2)
+			or lsp.diagnostics_exist(3)
+			or lsp.diagnostics_exist(4)
+	end
 
-	local file_type = {
-		provider = "file_type",
-		icon = function()
-			if lsp.is_lsp_attached() then
-				return "  "
+	local function has_git_changes()
+		local gsd = vim.b.gitsigns_status_dict
+		for _, type in pairs({ "added", "removed", "changed" }) do
+			if gsd and gsd[type] and gsd[type] > 0 then
+				return true
 			end
-			return ""
-		end,
-		right_sep = " ",
-		left_sep = " ",
-	}
+		end
+		return false
+	end
 
-	local folder_name = {
-		provider = function()
-			return vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
-		end,
-		icon = { str = "  ", hl = { fg = colors.base0C } },
-		hl = { bg = c.sec.bg },
-		right_sep = sep.right,
-	}
+	local function flatten(sections)
+		local res = {}
+		for _, section in ipairs(sections) do
+			for _, component in ipairs(section) do
+				table.insert(res, component)
+			end
+		end
+		return res
+	end
 
-	local git = {
-		branch = {
-			provider = "git_branch",
-			left_sep = { str = sep.str .. " ", hl = sep.hl },
-			truncate_hide = true,
+	local bubbles = {}
+	-- VIM mode
+	bubbles.mode = {
+		-- mode chili
+		{
+			provider = "  ",
+			hl = function()
+				return {
+					bg = vi_mode.get_mode_color(),
+					fg = colors.base00,
+				}
+			end,
+			right_sep = sep.right,
+			priority = 90,
 		},
-		add = {
+	}
+
+	-- File info
+	bubbles.file = {
+		-- folder
+		{
+			provider = function()
+				return vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
+			end,
+			icon = { str = "  ", hl = { fg = colors.base03 } },
+			hl = { bg = c.sec.bg },
+			left_sep = " " .. sep.left,
+			priority = 50,
+		},
+		-- filename
+		{
+			provider = {
+				name = "file_info",
+				opts = {
+					case = "lowercase",
+					filetype_icon = true,
+					file_readonly_icon = " ",
+					type = "relative",
+				},
+			},
+			short_provider = {
+				name = "file_info",
+				opts = {
+					case = "lowercase",
+					filetype_icon = true,
+					file_readonly_icon = " ",
+				},
+			},
+			hl = { style = "italic", bg = colors.base01 },
+			right_sep = sep.block .. sep.right,
+			left_sep = sep.block,
+			priority = 50,
+		},
+	}
+
+	-- Git
+	bubbles.git = {
+		-- branch
+		{
+			provider = "git_branch",
+			hl = { bg = c.sec.bg },
+			left_sep = " " .. sep.left .. sep.block,
+			right_sep = function()
+				if has_git_changes() then
+					return sep.block
+				end
+				return sep.block .. sep.right
+			end,
+			truncate_hide = true,
+			priority = 10,
+		},
+		-- add
+		{
 			provider = "git_diff_added",
 			icon = "+",
-			hl = { fg = colors.base0B },
-			left_sep = " ",
+			hl = { fg = colors.base0B, bg = colors.base01 },
+			left_sep = sep.block,
 			truncate_hide = true,
+			priority = 10,
 		},
-		change = {
+		-- change
+		{
 			provider = "git_diff_changed",
 			icon = "~",
-			hl = { fg = colors.base0C },
-			left_sep = " ",
+			hl = { fg = colors.base0C, bg = colors.base01 },
+			left_sep = sep.block,
 			truncate_hide = true,
+			priority = 10,
 		},
-		remove = {
+		-- remove
+		{
 			provider = "git_diff_removed",
 			icon = "-",
-			hl = { fg = colors.base08 },
-			left_sep = " ",
+			hl = { fg = colors.base08, bg = colors.base01 },
+			left_sep = sep.block,
 			truncate_hide = true,
+			priority = 10,
 		},
-	}
-
-	local diag = {
-		sep = {
-			provider = function(component)
-				if
-					lsp.diagnostics_exist(1)
-					or lsp.diagnostics_exist(2)
-					or lsp.diagnostics_exist(3)
-					or lsp.diagnostics_exist(4)
-				then
-					component.hl = sep.hl
-					return sep.str
+		-- sep
+		{
+			provider = function()
+				if has_git_changes() then
+					return sep.block .. sep.right
 				end
 				return ""
 			end,
+			hl = { fg = colors.base01 },
+			truncate_hide = true,
+			priority = 10,
 		},
-		err = {
+	}
+
+	-- Diagnostics
+	bubbles.diag = {
+		-- status
+		{
+			provider = function()
+				if lsp.is_lsp_attached() then
+					return " "
+				end
+				return ""
+			end,
+			hl = { bg = c.sec.bg },
+			left_sep = sep.left .. sep.block,
+			right_sep = function()
+				if has_diags() then
+					return sep.block
+				end
+				return sep.block .. sep.right
+			end,
+			truncate_hide = true,
+			priority = 20,
+		},
+		-- error
+		{
 			provider = "diagnostic_errors",
-			hl = { fg = colors.base08 },
-			right_sep = " ",
+			hl = { fg = colors.base08, bg = colors.base01 },
+			left_sep = sep.block,
+			truncate_hide = true,
+			priority = 20,
 		},
-		warn = {
+		-- warning
+		{
 			provider = "diagnostic_warnings",
-			hl = { fg = colors.base0A },
-			right_sep = " ",
+			hl = { fg = colors.base0A, bg = colors.base01 },
+			left_sep = sep.block,
+			truncate_hide = true,
+			priority = 20,
 		},
-		info = {
+		-- info
+		{
 			provider = "diagnostic_info",
-			hl = { fg = colors.base0C },
-			right_sep = " ",
+			hl = { fg = colors.base0C, bg = colors.base01 },
+			left_sep = sep.block,
+			truncate_hide = true,
+			priority = 20,
 		},
-		hint = {
+		-- hint
+		{
 			provider = "diagnostic_hints",
-			hl = { fg = colors.base0E },
-			right_sep = " ",
+			hl = { fg = colors.base0E, bg = colors.base01 },
+			left_sep = sep.block,
+			truncate_hide = true,
+			priority = 20,
+		},
+		-- sep
+		{
+			provider = function()
+				if has_diags() then
+					return sep.block .. sep.right .. " "
+				end
+				return " "
+			end,
+			hl = { fg = colors.base01 },
+			truncate_hide = true,
+			priority = 20,
 		},
 	}
 
-	local cursor = require("feline.providers.cursor")
-	local position = {
-		provider = " " .. cursor.position(nil, { padding = true }) .. " ",
-		hl = function()
-			return {
-				bg = vi_mode.get_mode_color(),
-				fg = colors.base00,
-			}
-		end,
-		left_sep = function()
-			return {
-				str = sep.left,
-				hl = { bg = c.sec.bg, fg = vi_mode.get_mode_color() },
-			}
-		end,
-	}
-
-	local line_percentage = {
-		provider = function()
-			return " " .. cursor.line_percentage() .. " "
-		end,
-		hl = { bg = c.sec.bg },
-		left_sep = sep.left,
+	-- Location information
+	bubbles.location = {
+		-- percentage
+		{
+			provider = "line_percentage",
+			hl = { bg = c.sec.bg },
+			right_sep = sep.block .. sep.right .. " ",
+			left_sep = sep.left .. sep.block,
+			priority = 90,
+		},
+		-- location
+		{
+			provider = {
+				name = "position",
+				opts = { padding = true },
+			},
+			hl = function()
+				return {
+					bg = vi_mode.get_mode_color(),
+					fg = colors.base00,
+				}
+			end,
+			left_sep = sep.left .. sep.block,
+			right_sep = sep.block,
+			priority = 90,
+		},
 	}
 
 	require("feline").setup({
 		components = {
 			active = {
-				{
-					main_icon,
-					folder_name,
-					file_name,
-					git.branch,
-					git.add,
-					git.change,
-					git.remove,
-				},
+				flatten({ bubbles.mode, bubbles.file, bubbles.git }),
 				{},
-				{
-					diag.err,
-					diag.warn,
-					diag.hint,
-					diag.info,
-					diag.sep,
-					file_type,
-					line_percentage,
-					position,
-				},
-			},
-			inactive = {
-				{ main_icon, file_name },
-				{},
-				{ line_percentage, position },
+				flatten({
+					bubbles.diag,
+					bubbles.location,
+				}),
 			},
 		},
 		theme = {
-			bg = c.pri.bg,
+			bg = colors.base00,
 			fg = c.pri.fg,
 		},
 		vi_mode_colors = {
