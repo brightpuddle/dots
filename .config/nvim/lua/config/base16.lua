@@ -51,16 +51,16 @@ return function()
 	hi.SearchLight = { guibg = c.base09, guifg = c.base01 }
 
 	-- NvimTree
-	hi.NvimTreeNormal = { guibg = dark.c01 }
-	hi.VertSplit = { guifg = c.base00 }
+	-- hi.NvimTreeNormal = { guibg = dark.c01 }
+	hi.VertSplit = { guifg = c.base02 }
 
 	-- Trouble
-	hi.TroubleNormal = { guibg = dark.c02 }
-	hi.TroubleFoldIcon = { guibg = c.base00, guifg = c.base04 }
-	hi.TroubleCount = { guibg = c.base00, guifg = c.base0B }
-	hi.TroubleIndent = { guibg = dark.c02, guifg = c.base02 }
-	hi.TroubleLocation = { guibg = dark.c02, guifg = c.base02 }
-	hi.TroubleTextInformation = { guibg = dark.c02 }
+	-- hi.TroubleNormal = { guibg = dark.c02 }
+	-- hi.TroubleFoldIcon = { guibg = c.base00, guifg = c.base04 }
+	-- hi.TroubleCount = { guibg = c.base00, guifg = c.base0B }
+	-- hi.TroubleIndent = { guibg = dark.c02, guifg = c.base02 }
+	-- hi.TroubleLocation = { guibg = dark.c02, guifg = c.base02 }
+	-- hi.TroubleTextInformation = { guibg = dark.c02 }
 
 	-- Command line / message area
 	-- hi.MsgArea = { guibg = dark.c01}
