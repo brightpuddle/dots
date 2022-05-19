@@ -78,6 +78,6 @@ vim.diagnostic.config({
 vim.g.better_escape_shortcut = "jk"
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	pattern = { "**/nvim/lua/**/*.lua", "**/nvim/plugin/*main.lua" },
+	pattern = { "**/nvim/lua/config/*.lua", "**/nvim/plugin/*main.lua" },
 	command = "source <afile> | PackerCompile",
 })
