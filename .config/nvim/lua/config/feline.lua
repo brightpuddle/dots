@@ -242,6 +242,21 @@ return function()
 		},
 	}
 
+	bubbles.filetype = {
+		{
+			provider = {
+			  name = "file_type",
+			  opts = {
+			    case = 'lowercase',
+			  }
+      },
+			hl = { bg = c.sec.bg },
+			right_sep = sep.block .. sep.right .. " ",
+			left_sep = sep.left .. sep.block,
+			priority = 80,
+		},
+	}
+
 	-- Location information
 	bubbles.location = {
 		-- percentage
@@ -277,16 +292,17 @@ return function()
 				{},
 				flatten({
 					bubbles.diag,
+					bubbles.filetype,
 					bubbles.location,
 				}),
 			},
 			inactive = {
-				flatten({ bubbles.mode, bubbles.file, }),
+				flatten({ bubbles.mode, bubbles.file }),
 				{},
 				flatten({
 					bubbles.location,
 				}),
-			}
+			},
 		},
 		theme = {
 			bg = colors.base00,
