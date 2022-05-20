@@ -2,9 +2,7 @@
 
 import subprocess
 
-editor = "com.microsoft.VSCode"
-# editor = 'com.qvacua.VimR'
-
+editor = "com.apple.automator.NeoKitty"
 
 extensions = [
     ".asm",
