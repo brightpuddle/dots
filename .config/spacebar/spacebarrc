@@ -16,7 +16,6 @@ spacebar -m config background_color   0xff22252d
 spacebar -m config foreground_color   0xffa7adba
 # spacebar -m config space_icon_color   0xff458588
 # spacebar -m config power_icon_color   0xffcd950c
-# spacebar -m config battery_icon_color 0xffd75f5f
 # spacebar -m config dnd_icon_color     0xffa8a8a8
 
 ############################################################
@@ -50,8 +49,10 @@ spacebar -m config clock_icon   " "
 # spacebar -m config clock_icon_color   0xffa8a8a8
 
 # Power
-spacebar -m config power            off
-spacebar -m config power_icon_strip  
+spacebar -m config power            on
+spacebar -m config power_icon_strip   
+spacebar -m config power_icon_color 0xff65737e
+spacebar -m config battery_icon_color 0xffebcb8b
 
 # DND
 spacebar -m config dnd_icon 
