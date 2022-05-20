@@ -13,6 +13,10 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# Prompt
+zinit ice lucid atload'source ~/.p10k.zsh; _p9k_precmd'
+zinit light romkatv/powerlevel10k
+
 # Load a few important annexes, without Turbo
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
@@ -20,10 +24,6 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-
-# Fast directory jumping
-zinit ice wait lucid
-zinit light rupa/z
 
 # Git prefixes
 zinit ice wait lucid
@@ -33,10 +33,13 @@ zinit light wfxr/forgit
 zinit ice lucid wait'0'
 zinit light joshskidmore/zsh-fzf-history-search
 
-# Prompt
-zinit ice lucid atload'source ~/.p10k.zsh; _p9k_precmd'
-zinit light romkatv/powerlevel10k
-
+# cd
+zinit ice wait"2" as"command" from"gh-r" lucid \
+  mv"zoxide -> zoxide" \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
+# eval "$(zoxide init zsh)"
 ############################################################
 # Aliases
 ############################################################
