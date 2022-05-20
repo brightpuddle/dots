@@ -87,10 +87,11 @@ font:
   italic:
     style: Italic
   bold_italic:
+    family: VictorMono Nerd Font Mono
     style: "Bold Italic"
   offset:
-    y: 2
-  size: 16
+    y: 0
+  size: 15
   use_thin_strokes: true
 
 ############################################################
