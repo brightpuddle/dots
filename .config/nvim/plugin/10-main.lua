@@ -42,6 +42,7 @@ require("packer").startup({
 		-- startup time analysis
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 
+		-- auto-pair closures
 		use({
 			"windwp/nvim-autopairs",
 			config = function()
@@ -157,7 +158,7 @@ require("packer").startup({
 			"kyazdani42/nvim-tree.lua",
 			requires = { "kyazdani42/nvim-web-devicons" },
 			cmd = "NvimTreeToggle",
-			config = require('config.nvimtree'),
+			config = require("config.nvimtree"),
 		})
 
 		-- fzf/CtrlP

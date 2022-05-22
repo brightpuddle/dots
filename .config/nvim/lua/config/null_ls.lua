@@ -30,8 +30,8 @@ return function()
 			code_actions.eslint_d,
 
 			-- Formatting
-			formatting.jq,
 			formatting.black,
+			formatting.fixjson,
 			formatting.golines,
 			formatting.isort,
 			formatting.prettierd.with({

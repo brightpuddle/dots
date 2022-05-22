@@ -35,11 +35,11 @@ alt - s : yabai -m space --layout float
 alt - d : yabai -m space --layout bsp
 
 
-alt - 0x1B : yabai -m space --gap rel:8;\
-  yabai -m space --padding rel:8:8:8:8
-
-alt - 0x18 : yabai -m space --gap rel:-8;\
+alt - 0x1B : yabai -m space --gap rel:-8;\
   yabai -m space --padding rel:-8:-8:-8:-8
+
+alt - 0x18 : yabai -m space --gap rel:8;\
+  yabai -m space --padding rel:8:8:8:8
 
 
 alt - h : yabai -m window --focus west
