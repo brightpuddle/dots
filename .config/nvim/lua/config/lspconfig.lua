@@ -3,17 +3,12 @@
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 return function()
-  -- Sign column icons
+	-- Sign column icons
 	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
-	-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	-- 	underline = false,
-	-- 	virtual_text = false,
-	-- 	update_in_insert = false,
-	-- })
 	local function on_attach(formatting)
 		return function(client, buf)
 			local k = vim.keymap
@@ -31,14 +26,23 @@ return function()
 	local lsp = require("lspconfig")
 	-- local w_coq = require("coq").lsp_ensure_capabilities
 	local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-	local default = {
-		capabilities = capabilities,
-		on_attach = on_attach(false),
-	}
-	lsp.pyright.setup(default)
-	lsp.rust_analyzer.setup(default)
-	lsp.tsserver.setup(default)
-	lsp.gopls.setup(default)
+	local function settings(format)
+		if format == nil then
+			format = false
+		end
+		return {
+			capabilities = capabilities,
+			on_attach = on_attach(format),
+		}
+	end
+	lsp.pyright.setup(settings())
+	lsp.rust_analyzer.setup(settings())
+	lsp.tsserver.setup(settings())
+	lsp.gopls.setup(settings())
+	lsp.html.setup(settings())
+	lsp.jsonls.setup(settings())
+	lsp.cssls.setup(settings())
+	lsp.eslint.setup(settings())
 	lsp.sumneko_lua.setup({
 		capabilities = capabilities,
 		on_attach = on_attach(false),

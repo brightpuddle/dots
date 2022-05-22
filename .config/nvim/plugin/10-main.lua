@@ -30,6 +30,15 @@ require("packer").startup({
 			end,
 		})
 
+		-- buffer switch window
+		use({
+			"ghillb/cybu.nvim",
+			branch = "main",
+			requires = { "kyazdani42/nvim-web-devicons" },
+			config = function()
+				require("cybu").setup()
+			end,
+		})
 		-- faster filetypes
 		use({ "nathom/filetype.nvim" })
 
@@ -89,13 +98,13 @@ require("packer").startup({
 		})
 
 		-- "tab" line with buffers
-		use({
-			"akinsho/bufferline.nvim",
-			tag = "*",
-			requires = { "kyazdani42/nvim-web-devicons" },
-			after = "nvim-base16",
-			config = require("config.bufferline"),
-		})
+		-- use({
+		-- 	"akinsho/bufferline.nvim",
+		-- 	tag = "*",
+		-- 	requires = { "kyazdani42/nvim-web-devicons" },
+		-- 	after = "nvim-base16",
+		-- 	config = require("config.bufferline"),
+		-- })
 
 		-- syntax highlighting, etc
 		use({ "nvim-treesitter/nvim-treesitter", config = require("config.treesitter") })

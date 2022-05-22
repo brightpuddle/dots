@@ -76,6 +76,7 @@ return function()
 				}
 			end,
 			right_sep = sep.right,
+			left_sep = sep.left,
 			priority = 90,
 		},
 	}
@@ -245,11 +246,11 @@ return function()
 	bubbles.filetype = {
 		{
 			provider = {
-			  name = "file_type",
-			  opts = {
-			    case = 'lowercase',
-			  }
-      },
+				name = "file_type",
+				opts = {
+					case = "lowercase",
+				},
+			},
 			hl = { bg = c.sec.bg },
 			right_sep = sep.block .. sep.right .. " ",
 			left_sep = sep.left .. sep.block,
@@ -280,7 +281,7 @@ return function()
 				}
 			end,
 			left_sep = sep.left .. sep.block,
-			right_sep = sep.block,
+			right_sep = sep.block .. sep.right,
 			priority = 90,
 		},
 	}
