@@ -28,6 +28,7 @@ require("packer").startup({
 			config = function()
 				require("which-key").setup({})
 			end,
+			opt = true,
 		})
 
 		-- buffer switch window
@@ -55,7 +56,7 @@ require("packer").startup({
 		use({
 			"windwp/nvim-autopairs",
 			config = function()
-				require("nvim-autopairs").setup({ map_bs = false, map_cr = false })
+				require("nvim-autopairs").setup()
 			end,
 		})
 
@@ -64,6 +65,9 @@ require("packer").startup({
 
 		-- edit surrounds
 		use("tpope/vim-surround")
+
+		-- use sad for project-wide find/replace
+		use({ "ray-x/sad.nvim", requires = "ray-x/guihua.lua", cmd = "Sad" })
 
 		-- auto-close tags
 		use({
@@ -104,7 +108,6 @@ require("packer").startup({
 			requires = { "kyazdani42/nvim-web-devicons" },
 			after = "nvim-base16",
 			config = require("config.bufferline"),
-			opt = true,
 		})
 
 		-- syntax highlighting, etc
@@ -122,6 +125,7 @@ require("packer").startup({
 			config = function()
 				require("trouble").setup()
 			end,
+			cmd = { "Telescope", "TroubleToggle" },
 		})
 
 		-- zen mode
@@ -194,15 +198,17 @@ require("packer").startup({
 
 		-- completion
 		use({
-			"ms-jpq/coq_nvim",
-			branch = "coq",
-			run = "python3 -m coq deps",
-			config = require("config.coq"),
-			after = "nvim-autopairs",
+			"hrsh7th/nvim-cmp",
 			requires = {
-				{ "ms-jpq/coq.artifacts", branch = "artifacts" },
-				{ "ms-jpq/coq.thirdparty", branch = "3p" },
+
+				{ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" },
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-cmdline",
+				{ "tzachar/cmp-tabnine", run = "./install.sh" },
 			},
+			config = require("config.cmp"),
 		})
 
 		-- LS for non-LS tooling

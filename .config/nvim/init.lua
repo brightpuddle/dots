@@ -82,16 +82,6 @@ vim.diagnostic.config({
 -- Plugins that use settings for config
 vim.g.better_escape_shortcut = "jk"
 
-vim.g.coq_settings = {
-	auto_start = "shut-up",
-	keymap = {
-		recommended = false,
-	},
-	clients = {
-		tabnine = { enabled = true },
-	},
-}
-
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = { "**/nvim/lua/config/*.lua", "**/nvim/plugin/*main.lua" },
 	command = "source <afile> | PackerCompile",
