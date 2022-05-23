@@ -33,7 +33,7 @@ sketchybar --default \
   drawing=on \
   icon.font="RobotoMono Nerd Font:Medium:13.0" \
   icon.color="0xffa7adba" \
-  label.font="SF Pro:Medium:13.0" \
+  label.font="SF Pro:Semibold:13.0" \
   label.color="0xffc0c5ce" \
   label.padding_left=4 \
   label.padding_right=8 \
