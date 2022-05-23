@@ -24,16 +24,19 @@ return function()
 	end
 
 	local lsp = require("lspconfig")
-	-- local w_coq = require("coq").lsp_ensure_capabilities
-	local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	local coq = require("coq")
+	-- local coq = {
+	-- 	lsp_ensure_capabilities = function(cfg)
+	-- 		return cfg
+	-- 	end,
+	-- }
 	local function settings(format)
 		if format == nil then
 			format = false
 		end
-		return {
-			capabilities = capabilities,
+		return coq.lsp_ensure_capabilities({
 			on_attach = on_attach(format),
-		}
+		})
 	end
 	lsp.pyright.setup(settings())
 	lsp.rust_analyzer.setup(settings())
@@ -43,8 +46,7 @@ return function()
 	lsp.jsonls.setup(settings())
 	lsp.cssls.setup(settings())
 	lsp.eslint.setup(settings())
-	lsp.sumneko_lua.setup({
-		capabilities = capabilities,
+	lsp.sumneko_lua.setup(coq.lsp_ensure_capabilities({
 		on_attach = on_attach(false),
 		settings = {
 			Lua = {
@@ -56,5 +58,5 @@ return function()
 				},
 			},
 		},
-	})
+	}))
 end

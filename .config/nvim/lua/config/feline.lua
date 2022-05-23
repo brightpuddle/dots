@@ -53,38 +53,24 @@ return function()
 		return false
 	end
 
-	local function flatten(sections)
-		local res = {}
-		for _, section in ipairs(sections) do
-			for _, component in ipairs(section) do
-				table.insert(res, component)
-			end
-		end
-		return res
-	end
-
-	local bubbles = {}
+	local comps = {}
 	-- VIM mode
-	bubbles.mode = {
-		-- mode chili
-		{
-			provider = "  ",
-			hl = function()
-				return {
-					bg = vi_mode.get_mode_color(),
-					fg = colors.base00,
-				}
-			end,
-			right_sep = sep.right,
-			left_sep = sep.left,
-			priority = 90,
-		},
+	comps.mode = {
+		provider = "  ",
+		hl = function()
+			return {
+				bg = vi_mode.get_mode_color(),
+				fg = colors.base00,
+			}
+		end,
+		right_sep = sep.right,
+		left_sep = sep.left,
+		priority = 90,
 	}
 
 	-- File info
-	bubbles.file = {
-		-- folder
-		{
+	comps.file = {
+		folder = {
 			provider = function()
 				return vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " "
 			end,
@@ -93,8 +79,7 @@ return function()
 			left_sep = " " .. sep.left,
 			priority = 50,
 		},
-		-- filename
-		{
+		filename = {
 			provider = {
 				name = "file_info",
 				opts = {
@@ -120,9 +105,8 @@ return function()
 	}
 
 	-- Git
-	bubbles.git = {
-		-- branch
-		{
+	comps.git = {
+		branch = {
 			provider = "git_branch",
 			hl = { bg = c.sec.bg },
 			left_sep = " " .. sep.left .. sep.block,
@@ -135,8 +119,7 @@ return function()
 			truncate_hide = true,
 			priority = 10,
 		},
-		-- add
-		{
+		add = {
 			provider = "git_diff_added",
 			icon = "+",
 			hl = { fg = colors.base0B, bg = colors.base01 },
@@ -144,8 +127,7 @@ return function()
 			truncate_hide = true,
 			priority = 10,
 		},
-		-- change
-		{
+		change = {
 			provider = "git_diff_changed",
 			icon = "~",
 			hl = { fg = colors.base0C, bg = colors.base01 },
@@ -153,8 +135,7 @@ return function()
 			truncate_hide = true,
 			priority = 10,
 		},
-		-- remove
-		{
+		remove = {
 			provider = "git_diff_removed",
 			icon = "-",
 			hl = { fg = colors.base08, bg = colors.base01 },
@@ -162,8 +143,7 @@ return function()
 			truncate_hide = true,
 			priority = 10,
 		},
-		-- sep
-		{
+		sep = {
 			provider = function()
 				if has_git_changes() then
 					return sep.block .. sep.right
@@ -177,9 +157,8 @@ return function()
 	}
 
 	-- Diagnostics
-	bubbles.diag = {
-		-- status
-		{
+	comps.diag = {
+		status = {
 			provider = function()
 				if lsp.is_lsp_attached() then
 					return " "
@@ -197,40 +176,35 @@ return function()
 			truncate_hide = true,
 			priority = 20,
 		},
-		-- error
-		{
+		error = {
 			provider = "diagnostic_errors",
 			hl = { fg = colors.base08, bg = colors.base01 },
 			left_sep = sep.block,
 			truncate_hide = true,
 			priority = 20,
 		},
-		-- warning
-		{
+		warning = {
 			provider = "diagnostic_warnings",
 			hl = { fg = colors.base0A, bg = colors.base01 },
 			left_sep = sep.block,
 			truncate_hide = true,
 			priority = 20,
 		},
-		-- info
-		{
+		info = {
 			provider = "diagnostic_info",
 			hl = { fg = colors.base0C, bg = colors.base01 },
 			left_sep = sep.block,
 			truncate_hide = true,
 			priority = 20,
 		},
-		-- hint
-		{
+		hint = {
 			provider = "diagnostic_hints",
 			hl = { fg = colors.base0E, bg = colors.base01 },
 			left_sep = sep.block,
 			truncate_hide = true,
 			priority = 20,
 		},
-		-- sep
-		{
+		sep = {
 			provider = function()
 				if has_diags() then
 					return sep.block .. sep.right .. " "
@@ -243,33 +217,29 @@ return function()
 		},
 	}
 
-	bubbles.filetype = {
-		{
-			provider = {
-				name = "file_type",
-				opts = {
-					case = "lowercase",
-				},
+	comps.filetype = {
+		provider = {
+			name = "file_type",
+			opts = {
+				case = "lowercase",
 			},
-			hl = { bg = c.sec.bg },
-			right_sep = sep.block .. sep.right .. " ",
-			left_sep = sep.left .. sep.block,
-			priority = 80,
 		},
+		hl = { bg = c.sec.bg },
+		right_sep = sep.block .. sep.right .. " ",
+		left_sep = sep.left .. sep.block,
+		priority = 80,
 	}
 
 	-- Location information
-	bubbles.location = {
-		-- percentage
-		{
+	comps.location = {
+		percentage = {
 			provider = "line_percentage",
 			hl = { bg = c.sec.bg },
 			right_sep = sep.block .. sep.right .. " ",
 			left_sep = sep.left .. sep.block,
 			priority = 90,
 		},
-		-- location
-		{
+		location = {
 			provider = {
 				name = "position",
 				opts = { padding = true },
@@ -289,20 +259,45 @@ return function()
 	require("feline").setup({
 		components = {
 			active = {
-				flatten({ bubbles.mode, bubbles.file, bubbles.git }),
+				{
+					-- Mode
+					comps.mode,
+					-- File info
+					comps.file.folder,
+					comps.file.filename,
+					-- Git
+					comps.git.branch,
+					comps.git.change,
+					comps.git.add,
+					comps.git.remove,
+					comps.git.sep,
+				},
 				{},
-				flatten({
-					bubbles.diag,
-					bubbles.filetype,
-					bubbles.location,
-				}),
+				{
+					-- Diag
+					comps.diag.status,
+					comps.diag.error,
+					comps.diag.warning,
+					comps.diag.info,
+					comps.diag.hint,
+					comps.diag.sep,
+					-- Filetype
+					comps.filetype,
+					-- Location
+					comps.location.percentage,
+					comps.location.location,
+				},
 			},
 			inactive = {
-				flatten({ bubbles.mode, bubbles.file }),
+				{
+					-- File info
+					comps.file.folder,
+					comps.file.filename,
+				},
 				{},
-				flatten({
-					bubbles.location,
-				}),
+				{
+					comps.location.percentage,
+				},
 			},
 		},
 		theme = {

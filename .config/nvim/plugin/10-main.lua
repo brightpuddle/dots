@@ -55,7 +55,7 @@ require("packer").startup({
 		use({
 			"windwp/nvim-autopairs",
 			config = function()
-				require("nvim-autopairs").setup()
+				require("nvim-autopairs").setup({ map_bs = false, map_cr = false })
 			end,
 		})
 
@@ -98,13 +98,14 @@ require("packer").startup({
 		})
 
 		-- "tab" line with buffers
-		-- use({
-		-- 	"akinsho/bufferline.nvim",
-		-- 	tag = "*",
-		-- 	requires = { "kyazdani42/nvim-web-devicons" },
-		-- 	after = "nvim-base16",
-		-- 	config = require("config.bufferline"),
-		-- })
+		use({
+			"akinsho/bufferline.nvim",
+			tag = "*",
+			requires = { "kyazdani42/nvim-web-devicons" },
+			after = "nvim-base16",
+			config = require("config.bufferline"),
+			opt = true,
+		})
 
 		-- syntax highlighting, etc
 		use({ "nvim-treesitter/nvim-treesitter", config = require("config.treesitter") })
@@ -147,6 +148,7 @@ require("packer").startup({
 			config = function()
 				require("gitsigns").setup({ signcolumn = false })
 			end,
+			cmd = "Gitsigns",
 		})
 
 		-- easymotion
@@ -192,17 +194,15 @@ require("packer").startup({
 
 		-- completion
 		use({
-			"hrsh7th/nvim-cmp",
+			"ms-jpq/coq_nvim",
+			branch = "coq",
+			run = "python3 -m coq deps",
+			config = require("config.coq"),
+			after = "nvim-autopairs",
 			requires = {
-
-				{ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" },
-				"hrsh7th/cmp-nvim-lsp",
-				"hrsh7th/cmp-buffer",
-				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-cmdline",
-				{ "tzachar/cmp-tabnine", run = "./install.sh" },
+				{ "ms-jpq/coq.artifacts", branch = "artifacts" },
+				{ "ms-jpq/coq.thirdparty", branch = "3p" },
 			},
-			config = require("config.cmp"),
 		})
 
 		-- LS for non-LS tooling
@@ -230,6 +230,13 @@ require("packer").startup({
 			"fatih/vim-go",
 			run = ":GoInstallBinaries",
 			cmd = { "GoInstallBinaries", "GoDoc" },
+		})
+
+		-- Markdown
+		use({
+			"preservim/vim-markdown",
+			requires = "godlygeek/tabular",
+			ft = { "markdown" },
 		})
 
 		if PackerBootstrap then

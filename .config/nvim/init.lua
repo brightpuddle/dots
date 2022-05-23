@@ -44,7 +44,7 @@ o.foldenable = false
 o.grepprg = "rg --color=never"
 o.guicursor = "a:blinkon0,i:ver25-iCursor"
 o.ignorecase = true
-o.laststatus = 3
+o.laststatus = 2
 o.linebreak = true
 o.mouse = "a"
 o.number = true
@@ -53,6 +53,7 @@ o.shiftwidth = 2
 o.shortmess = o.shortmess .. "c"
 o.showcmd = false
 o.swapfile = false
+o.syntax = true
 o.signcolumn = "number"
 o.smartcase = true
 o.softtabstop = 2
@@ -78,7 +79,18 @@ vim.diagnostic.config({
 	severity_sort = false,
 })
 
+-- Plugins that use settings for config
 vim.g.better_escape_shortcut = "jk"
+
+vim.g.coq_settings = {
+	auto_start = "shut-up",
+	keymap = {
+		recommended = false,
+	},
+	clients = {
+		tabnine = { enabled = true },
+	},
+}
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = { "**/nvim/lua/config/*.lua", "**/nvim/plugin/*main.lua" },
