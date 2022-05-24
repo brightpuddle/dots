@@ -72,17 +72,17 @@ vim.g.python3_host_skip_check = 1
 o.pyxversion = 3
 
 vim.diagnostic.config({
-	virtual_text = false,
-	signs = true,
-	underline = false,
-	update_in_insert = false,
-	severity_sort = false,
+  virtual_text = false,
+  signs = true,
+  underline = false,
+  update_in_insert = false,
+  severity_sort = false,
 })
 
 -- Plugins that use settings for config
 vim.g.better_escape_shortcut = "jk"
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	pattern = { "**/nvim/lua/config/*.lua", "**/nvim/plugin/*main.lua" },
-	command = "source <afile> | PackerCompile",
+  pattern = { "**/nvim/lua/config/*.lua", "**/nvim/plugin/*main.lua" },
+  command = "source <afile> | PackerCompile",
 })

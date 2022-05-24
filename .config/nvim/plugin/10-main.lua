@@ -224,6 +224,9 @@ require("packer").startup({
       config = require("config.lspconfig"),
     })
 
+    -- proper formatting (harder than it should be)
+    use({'lukas-reineke/lsp-format.nvim'})
+
     -- symbol outline (uses LSP)
     use({ "simrat39/symbols-outline.nvim", cmd = "SymbolsOutline" })
 

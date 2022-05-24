@@ -11,13 +11,6 @@ k.set({ "n", "i" }, "<C-o>w", "<cmd>write<cr>", { silent = true })
 k.set({ "n", "i" }, "<C-d>", "<cmd>BufDel<cr>", { silent = true })
 -- Undo
 k.set({ "n", "i" }, "<C-o>z", "<cmd>undo<cr>")
--- Format
-k.set({ "i", "n" }, "<C-o>F", "", { silent = true, noremap = true })
-k.set({ "i", "n" }, "<C-o>F", function()
-	-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-	vim.lsp.buf.formatting_sync()
-end)
-
 -- One window
 k.set("n", "<leader>wo", "<cmd>only<cr>")
 
