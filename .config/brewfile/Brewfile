@@ -197,7 +197,6 @@ brew pinentry
 brew pixman
 brew pkg-config
 brew poppler
-brew pyenv
 brew pygments
 brew pyright
 brew python@3.10
