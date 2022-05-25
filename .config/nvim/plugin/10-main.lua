@@ -125,7 +125,7 @@ require("packer").startup({
       config = function()
         require("trouble").setup()
       end,
-      cmd = { "Telescope", "TroubleToggle" },
+      cmd = { "TroubleToggle" },
     })
 
     -- zen mode
@@ -152,7 +152,7 @@ require("packer").startup({
       config = function()
         require("gitsigns").setup({ signcolumn = false })
       end,
-      cmd = "Gitsigns",
+      -- cmd = "Gitsigns",
     })
 
     -- easymotion
@@ -184,7 +184,7 @@ require("packer").startup({
         { "nvim-lua/plenary.nvim" },
         { "kyazdani42/nvim-web-devicons" },
       },
-      cmd = "Telescope",
+      cmd = { "Telescope" },
       config = require("config.telescope"),
     })
 
@@ -225,7 +225,7 @@ require("packer").startup({
     })
 
     -- proper formatting (harder than it should be)
-    use({'lukas-reineke/lsp-format.nvim'})
+    use({ 'lukas-reineke/lsp-format.nvim' })
 
     -- symbol outline (uses LSP)
     use({ "simrat39/symbols-outline.nvim", cmd = "SymbolsOutline" })
