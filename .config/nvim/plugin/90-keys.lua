@@ -48,7 +48,7 @@ k.set({ "n", "i" }, "<C-o>j", "<cmd>TroubleToggle<cr>", { silent = true })
 k.set("n", "<leader>oj", "<cmd>TroubleToggle<cr>")
 k.set("n", "<leader>j", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 k.set("n", "<leader>k", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
--- k.set("n", "<leader>e", "<cmd>lua vim.diagnostic.setloclist()<cr>")
+k.set({ "n", "i" }, "<C-o>k", "<cmd>SymbolsOutline<cr>", { silent = true })
 
 -- Hop / Easymotion
 k.set("n", "<leader><leader>w", "<cmd>HopWord<cr>")
