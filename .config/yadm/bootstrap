@@ -2,19 +2,33 @@
 
 os="$(uname)"
 
+pause() {
+	read -p "Press enter to continue "
+}
+
 if [[ "$os" == "Darwin" ]]; then
 	# xcode dev tools
+	echo Installing xcode CLI tools
 	xcode-select --install
+  pause()
 
 	# homebrew
+	echo Installing homebrew
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  pause()
 
 	# Essentials
-	brew install git yadm gpg
+	echo Installing essentials
+  brew tap rcmdnk/file
+	brew install git yadm gpg brew-file
+  pause()
 
+	echo Cloning dots
 	yadm clone git@github.com:brightpuddle/dots.git
 	yadm decrypt
+  pause()
 
-	# Brewing (take 5... or more)
-	brew bundle install --global
+	echo Brewing...
+	brew file install
+  pause()
 fi
