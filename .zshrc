@@ -33,6 +33,13 @@ zinit light wfxr/forgit
 zinit ice lucid wait'0'
 zinit light joshskidmore/zsh-fzf-history-search
 
+# Pyenv
+zinit ice wait"0" atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
+  silent \
+  atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
+  as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
+zinit light pyenv/pyenv
+
 # cd
 zinit ice wait"2" as"command" from"gh-r" lucid \
   mv"zoxide -> zoxide" \
