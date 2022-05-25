@@ -19,67 +19,88 @@
 
 # Bar settings
 sketchybar --bar \
-  position=top \
-  margin=8 \
-  color=0xff191e26 \
-  padding_left=8 \
-  padding_right=0 \
-  corner_radius=9 \
-  font_smoothing=on
+	position=top \
+	margin=8 \
+	color=0xff191e26 \
+	padding_left=8 \
+	padding_right=0 \
+	corner_radius=9 \
+	font_smoothing=on
 
 # Defaults
 sketchybar --default \
-  updates=when_shown \
-  drawing=on \
-  icon.font="RobotoMono Nerd Font:Medium:13.0" \
-  icon.color="0xffa7adba" \
-  label.font="SF Pro:Semibold:13.0" \
-  label.color="0xffc0c5ce" \
-  label.padding_left=4 \
-  label.padding_right=8 \
-  icon.padding_left=8 \
-  icon.padding_right=4
+	updates=when_shown \
+	drawing=on \
+	icon.font="RobotoMono Nerd Font:Medium:13.0" \
+	icon.color="0xffa7adba" \
+	label.font="SF Pro:Semibold:13.0" \
+	label.color="0xffc0c5ce" \
+	label.padding_left=4 \
+	label.padding_right=8 \
+	icon.padding_left=8 \
+	icon.padding_right=4
 
 # Events
 sketchybar -m \
-  --add event window_focus \
-  --add event title_change \
-  --add event window_created \
-  --add event window_destroyed \
+	--add event window_focus \
+	--add event title_change \
+	--add event window_created \
+	--add event window_destroyed
 
 # Clock
 sketchybar --add alias "Control Center,Clock" right \
-  --set "Control Center,Clock" \
-    alias.color=0xffc0c5ce \
-    label.padding_right=0
+	--set "Control Center,Clock" \
+	alias.color=0xffc0c5ce \
+	label.padding_right=0
 
 # Battery
 sketchybar -m --add item battery right \
-  --set battery script="$HOME/.config/sketchybar/plugins/battery.sh" \
-  --set battery update_freq=5
+	--set battery script="$HOME/.config/sketchybar/plugins/battery.sh" \
+	--set battery update_freq=5
+
+# CPU graph
+# sketchybar --add graph cpu_user right 200 \
+#   --set cpu_user graph.color=0xffffffff \
+#     update_freq=2 \
+#     width=0 \
+#     associated_space=1 \
+#     label.padding_left=0 \
+#     icon=  \
+#     script="~/.config/sketchybar/plugins/cpu_graph.sh" \
+#     lazy=on \
+#   --add graph cpu_sys right 200 \
+#   --set cpu_sys label.padding_left=0 \
+#     associated_space=1 \
+#     icon=  \
+#     graph.color=0xff48aa2a \
+#   --add item topproc right \
+#   --set topproc associated_space=1 \
+#     label.padding_right=10 \
+#     update_freq=15 \
+#     script="~/.config/sketchybar/plugins/topproc.sh"
 
 # Window Title
 sketchybar -m --add item title center \
-  --set title script="$HOME/.config/sketchybar/plugins/window_title.sh" \
-  --subscribe \
-    title \
-    window_focus \
-    front_app_switched \
-    space_change \
-    title_change
+	--set title script="$HOME/.config/sketchybar/plugins/window_title.sh" \
+	--subscribe \
+	title \
+	window_focus \
+	front_app_switched \
+	space_change \
+	title_change
 
 # Spaces
 sketchybar -m --add item yabai_spaces left \
-  --set yabai_spaces \
-    drawing=off \
-    updates=on \
-    script="~/.config/sketchybar/plugins/yabai_spaces.sh" \
-  --subscribe yabai_spaces space_change window_created window_destroyed \
-  --add item space_template left \
-  --set space_template \
-    drawing=off \
-    click_script="yabai -m space --focus \$NAME" \
-    lazy=off
+	--set yabai_spaces \
+	drawing=off \
+	updates=on \
+	script="~/.config/sketchybar/plugins/yabai_spaces.sh" \
+	--subscribe yabai_spaces space_change window_created window_destroyed \
+	--add item space_template left \
+	--set space_template \
+	drawing=off \
+	click_script="yabai -m space --focus \$NAME" \
+	lazy=off
 
 # Update on start
 sketchybar --update
