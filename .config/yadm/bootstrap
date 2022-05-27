@@ -29,6 +29,6 @@ if [[ "$os" == "Darwin" ]]; then
   pause()
 
 	echo Brewing...
-	brew file install
+	brew bundle --global
   pause()
 fi
