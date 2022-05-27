@@ -31,15 +31,6 @@ require("packer").startup({
       opt = true,
     })
 
-    -- buffer switch window
-    use({
-      "ghillb/cybu.nvim",
-      branch = "main",
-      requires = { "kyazdani42/nvim-web-devicons" },
-      config = function()
-        require("cybu").setup()
-      end,
-    })
     -- faster filetypes
     use({ "nathom/filetype.nvim" })
 
@@ -247,6 +238,9 @@ require("packer").startup({
       requires = "godlygeek/tabular",
       ft = { "markdown" },
     })
+
+    -- Jinja
+    use({ "lepture/vim-jinja", ft = { "jinja", "html.jinja" } })
 
     if PackerBootstrap then
       require("packer").sync()

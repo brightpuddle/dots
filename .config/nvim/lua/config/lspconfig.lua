@@ -50,7 +50,7 @@ return function()
   lsp.rust_analyzer.setup(config())
   lsp.tsserver.setup(config())
   lsp.gopls.setup(config())
-  lsp.html.setup(config())
+  lsp.html.setup(config({ format = true }))
   lsp.jsonls.setup(config())
   lsp.cssls.setup(config())
   -- lsp.eslint.setup(config())
@@ -76,6 +76,7 @@ return function()
       diagnostics.flake8,
       diagnostics.revive,
       diagnostics.eslint_d,
+      diagnostics.curlylint,
 
       -- Code Actions
 
@@ -89,6 +90,7 @@ return function()
           -- "javascript",
           -- "typescript",
           "json",
+          "html",
         },
       }),
       -- formatting.rome,

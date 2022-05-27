@@ -16,52 +16,53 @@
 -- base0F = #ab7967
 
 return function()
-	local base16 = require("base16-colorscheme")
-	base16.setup("ocean")
+  local base16 = require("base16-colorscheme")
+  base16.setup("ocean")
 
-	local hi = base16.highlight
-	local c = base16.colors
-	-- VSCode ocean dark extended UI colors
-	local dark = {
-		c00 = "#1d2027", -- title bar
-		c01 = "#21252d", -- side nav, tab bar background
-		c02 = "#252932", -- bottom drawer (trouble)
-	}
+  local hi = base16.highlight
+  local c = base16.colors
+  -- VSCode ocean dark extended UI colors
+  local dark = {
+    c00 = "#1d2027", -- title bar
+    c01 = "#21252d", -- side nav, tab bar background
+    c02 = "#252932", -- bottom drawer (trouble)
+  }
 
-	-- -- Swap colors around with imports
-	hi.TSInclude = { guifg = c.base08 }
-	hi.TSNamespace = { guifg = c.base05 }
+  -- -- Swap colors around with imports
+  hi.TSInclude = { guifg = c.base08 }
+  hi.TSNamespace = { guifg = c.base05 }
 
-	-- Variables to default
-	hi.TSVariable = { guifg = c.base05 }
+  -- Variables to default
+  hi.TSVariable = { guifg = c.base05 }
 
-	-- Builtin red
-	hi.TSFuncBuiltin = { guifg = c.base08 }
+  -- Builtin red
+  hi.TSFuncBuiltin = { guifg = c.base08 }
 
-	-- Darken line numbers
-	hi.LineNr = { guifg = c.base02 }
+  -- Darken line numbers
+  hi.LineNr = { guifg = c.base02 }
 
-	-- Give float a slightly lighter BG
-	hi.NormalFloat = { guibg = c.base01 }
+  -- Give float a slightly lighter BG
+  hi.NormalFloat = { guibg = c.base01 }
 
-	-- Switch warnings to yellow instead of magenta
-	hi.DiagnosticWarn = { guifg = c.base0A }
+  -- Switch warnings to yellow instead of magenta
+  hi.DiagnosticWarn = { guifg = c.base0A }
 
-	-- Highlight active search item
-	hi.SearchLight = { guibg = c.base09, guifg = c.base01 }
+  -- Highlight active search item
+  hi.Search = { guibg = c.base01, guifg = c.base05 }
+  hi.SearchLight = { guibg = c.base02, guifg = c.base06 }
 
-	-- NvimTree
-	-- hi.NvimTreeNormal = { guibg = dark.c01 }
-	hi.VertSplit = { guifg = c.base02 }
+  -- NvimTree
+  -- hi.NvimTreeNormal = { guibg = dark.c01 }
+  hi.VertSplit = { guifg = c.base02 }
 
-	-- Trouble
-	-- hi.TroubleNormal = { guibg = dark.c02 }
-	-- hi.TroubleFoldIcon = { guibg = c.base00, guifg = c.base04 }
-	-- hi.TroubleCount = { guibg = c.base00, guifg = c.base0B }
-	-- hi.TroubleIndent = { guibg = dark.c02, guifg = c.base02 }
-	-- hi.TroubleLocation = { guibg = dark.c02, guifg = c.base02 }
-	-- hi.TroubleTextInformation = { guibg = dark.c02 }
+  -- Trouble
+  -- hi.TroubleNormal = { guibg = dark.c02 }
+  -- hi.TroubleFoldIcon = { guibg = c.base00, guifg = c.base04 }
+  -- hi.TroubleCount = { guibg = c.base00, guifg = c.base0B }
+  -- hi.TroubleIndent = { guibg = dark.c02, guifg = c.base02 }
+  -- hi.TroubleLocation = { guibg = dark.c02, guifg = c.base02 }
+  -- hi.TroubleTextInformation = { guibg = dark.c02 }
 
-	-- Command line / message area
-	-- hi.MsgArea = { guibg = dark.c01}
+  -- Command line / message area
+  -- hi.MsgArea = { guibg = dark.c01}
 end

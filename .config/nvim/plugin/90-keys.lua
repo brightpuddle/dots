@@ -17,10 +17,10 @@ k.set("n", "<leader>wo", "<cmd>only<cr>")
 -- Buffer navigation
 k.set("n", "<leader>]", "<cmd>bnext<cr>")
 k.set("n", "<leader>[", "<cmd>bprev<cr>")
+k.set("n", "L", "<cmd>bnext<cr>")
+k.set("n", "H", "<cmd>bprev<cr>")
 k.set({ "n", "i" }, "<C-o>n", "<cmd>bnext<cr>")
 k.set({ "n", "i" }, "<C-o>p", "<cmd>bprev<cr>")
-k.set("n", "H", "<Plug>(CybuPrev)")
-k.set("n", "L", "<Plug>(CybuNext)")
 
 -- Integrated split nav
 g.tmux_navigator_no_mappings = 1
