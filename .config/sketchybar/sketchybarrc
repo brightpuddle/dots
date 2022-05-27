@@ -48,10 +48,9 @@ sketchybar -m \
 	--add event window_destroyed
 
 # Clock
-sketchybar --add alias "Control Center,Clock" right \
-	--set "Control Center,Clock" \
-	alias.color=0xffc0c5ce \
-	label.padding_right=0
+sketchybar -m --add item clock right \
+	--set clock script="$HOME/.config/sketchybar/plugins/clock.sh" \
+	--set clock update_freq=5
 
 # Battery
 sketchybar -m --add item battery right \
