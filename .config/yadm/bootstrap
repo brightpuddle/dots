@@ -19,8 +19,8 @@ if [[ "$os" == "Darwin" ]]; then
 
 	# Essentials
 	echo Installing essentials
-  brew tap rcmdnk/file
-	brew install git yadm gpg brew-file
+  brew tap Homebrew/bundle
+	brew install git yadm gpg
   pause()
 
 	echo Cloning dots
