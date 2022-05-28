@@ -87,6 +87,7 @@ brew "ripgrep"
 brew "rlwrap"
 brew "ruby"
 brew "rust-analyzer"
+brew "rustup-init"
 brew "shfmt"
 brew "showkey"
 brew "stylua"
@@ -108,7 +109,6 @@ brew "yadm"
 brew "yarn"
 brew "zig"
 brew "zlib"
-brew "felixkratz/formulae/sketchybar"
 brew "ggp1/tap/kure"
 brew "goreleaser/tap/goreleaser"
 brew "helix-editor/helix/helix"
@@ -137,7 +137,6 @@ cask "font-ubuntu"
 cask "font-victor-mono-nerd-font"
 cask "google-chrome"
 cask "google-drive"
-cask "iina"
 cask "joplin"
 cask "kitty-nightly"
 cask "launchbar"
@@ -160,7 +159,8 @@ mas "Messenger", id: 1480068668
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "MindNode", id: 992076693
 mas "MindNode", id: 1289197285
-mas "Next Meeting", id: 1017470484
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "Tomato 2", id: 1494210770
 mas "Transmit", id: 403388562
