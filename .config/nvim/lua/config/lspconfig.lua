@@ -51,7 +51,7 @@ return function()
   lsp.tsserver.setup(config())
   lsp.gopls.setup(config())
   lsp.html.setup(config({ format = true }))
-  lsp.jsonls.setup(config())
+  lsp.jsonls.setup(config({ format = true }))
   lsp.cssls.setup(config())
   -- lsp.eslint.setup(config())
   lsp.sumneko_lua.setup({
@@ -82,7 +82,7 @@ return function()
 
       -- Formatting
       formatting.black,
-      formatting.fixjson,
+      -- formatting.fixjson,
       formatting.golines,
       formatting.isort,
       formatting.prettierd.with({

@@ -116,7 +116,7 @@ require("packer").startup({
       config = function()
         require("trouble").setup()
       end,
-      cmd = { "TroubleToggle" },
+      -- cmd = { "TroubleToggle" },
     })
 
     -- zen mode
