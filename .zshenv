@@ -22,3 +22,4 @@ HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=5000
 HISTDUP=erase
+. "$HOME/.cargo/env"
