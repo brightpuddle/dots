@@ -107,7 +107,7 @@ autoload -Uz add-zsh-hook
 add-zsh-hook precmd set-title-precmd
 add-zsh-hook preexec set-title-preexec
 
-# eval $(opam env)
+eval $(opam env)
 source $HOME/.config/nnn/config
 
 # CD on quit for nnn
