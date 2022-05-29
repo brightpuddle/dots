@@ -54,6 +54,7 @@ key_bindings:
   - { key: B, mods: Command, chars: "\x0fb" }
   - { key: E, mods: Command|Shift, chars: "\x0fb" }
   - { key: J, mods: Command, chars: "\x0fj" }
+  - { key: K, mods: Command, chars: "\x0fk" }
 
   # Save
   - { key: S, mods: Command, chars: "\x0fw" }
@@ -80,7 +81,7 @@ tabspaces: 2
 
 font:
   normal:
-    family: "RobotoMono Nerd Font"
+    family: RobotoMono Nerd Font
     style: Regular
   bold:
     style: Bold
@@ -88,11 +89,10 @@ font:
     style: Italic
   bold_italic:
     family: VictorMono Nerd Font Mono
-    style: "Bold Italic"
+    style: Bold Italic
   offset:
     y: 0
   size: 15
-  use_thin_strokes: true
 
 ############################################################
 # Colors
