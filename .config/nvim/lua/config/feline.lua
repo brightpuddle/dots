@@ -1,32 +1,52 @@
--- base00 = #2b303b
--- base01 = #343d46
--- base02 = #4f5b66
--- base03 = #65737e
--- base04 = #a7adba
--- base05 = #c0c5ce
--- base06 = #dfe1e8
--- base07 = #eff1f5
--- base08 = #bf616a
--- base09 = #d08770
--- base0A = #ebcb8b
--- base0B = #a3be8c
--- base0C = #96b5b4
--- base0D = #8fa1b3
--- base0E = #b48ead
--- base0F = #ab7967
 return function()
-	local colors = require("base16-colorscheme").colors
 	local vi_mode = require("feline.providers.vi_mode")
 	local lsp = require("feline.providers.lsp")
 	local git = require("feline.providers.git")
+	local function get_color(group, attr)
+		local hl = vim.api.nvim_get_hl_by_name(group, true)
+		if hl and hl[attr] then
+			return string.format("#%06x", hl[attr])
+		end
+	end
 	local c = {
+		b00 = "#2b303b",
+		b01 = "#343d46",
+		b02 = "#4f5b66",
+		b03 = "#65737e",
+		b04 = "#a7adba",
+		b05 = "#c0c5ce",
+		b06 = "#dfe1e8",
+		b07 = "#eff1f5",
+		b08 = "#bf616a",
+		b09 = "#d08770",
+		b0A = "#ebcb8b",
+		b0B = "#a3be8c",
+		b0C = "#96b5b4",
+		b0D = "#8fa1b3",
+		b0E = "#b48ead",
+		b0F = "#ab7967",
 		pri = {
-			bg = colors.base01,
-			fg = colors.base04,
+			bg = get_color("Normal", "background"),
+			fg = get_color("StatusLineNC", "foreground"),
 		},
 		sec = {
-			bg = "#414a53",
-			fg = colors.base03,
+			bg = get_color("StatusLineNC", "background"),
+			fg = get_color("StatusLineNC", "foreground"),
+		},
+		tri = {
+			bg = get_color("Normal", "background"),
+			fg = get_color("SpecialChar", "foreground"),
+		},
+		diag = {
+			error = "#bf616a",
+			warning = "#ebcb8b",
+			info = "#96b5b4",
+			hint = "#b48ead",
+		},
+		git = {
+			add = "#a3be8c",
+			change = "#96b5b4",
+			remove = "#bf616a",
 		},
 	}
 
@@ -44,7 +64,6 @@ return function()
 		provider = function()
 			return string.lower(string.sub(vi_mode.get_vim_mode(), 1, 2))
 		end,
-		-- provider = " ",
 		hl = function()
 			return {
 				fg = vi_mode.get_mode_color(),
@@ -61,7 +80,7 @@ return function()
 			provider = function()
 				return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 			end,
-			icon = { str = "  ", hl = { fg = colors.base03 } },
+			icon = { str = "  ", hl = { fg = get_color("Comment", "foreground") } },
 			left_sep = sep.pri,
 			priority = 50,
 		},
@@ -84,7 +103,7 @@ return function()
 				},
 			},
 			hl = { style = "italic" },
-			left_sep = { str = " / ", hl = { fg = colors.base03 } },
+			left_sep = { str = " / ", hl = { fg = get_color("Comment", "foreground") } },
 			priority = 50,
 		},
 	}
@@ -94,14 +113,14 @@ return function()
 		branch = {
 			provider = "git_branch",
 			left_sep = sep.pri .. sep.left .. sep.block,
-			hl = { bg = colors.base01 },
+			hl = { bg = c.sec.bg },
 			truncate_hide = true,
 			priority = 10,
 		},
 		add = {
 			provider = "git_diff_added",
 			icon = "+",
-			hl = { fg = colors.base0B, bg = colors.base01 },
+			hl = { fg = c.git.add, bg = c.sec.bg },
 			left_sep = sep.block,
 			truncate_hide = true,
 			priority = 10,
@@ -109,7 +128,7 @@ return function()
 		change = {
 			provider = "git_diff_changed",
 			icon = "~",
-			hl = { fg = colors.base0C, bg = colors.base01 },
+			hl = { fg = c.git.change, bg = c.sec.bg },
 			left_sep = sep.block,
 			truncate_hide = true,
 			priority = 10,
@@ -117,7 +136,7 @@ return function()
 		remove = {
 			provider = "git_diff_removed",
 			icon = "-",
-			hl = { fg = colors.base08, bg = colors.base01 },
+			hl = { fg = c.git.remove, bg = c.sec.bg },
 			left_sep = sep.block,
 			truncate_hide = true,
 			priority = 10,
@@ -129,7 +148,7 @@ return function()
 				end
 				return ""
 			end,
-			hl = { fg = colors.base01 },
+			hl = { fg = c.sec.bg },
 			truncate_hide = true,
 			priority = 10,
 		},
@@ -144,7 +163,7 @@ return function()
 				end
 				return ""
 			end,
-			hl = { bg = colors.base01 },
+			hl = { bg = c.sec.bg },
 			right_sep = sep.block,
 			left_sep = sep.left .. sep.block,
 			truncate_hide = true,
@@ -152,28 +171,28 @@ return function()
 		},
 		error = {
 			provider = "diagnostic_errors",
-			hl = { fg = colors.base08, bg = colors.base01 },
+			hl = { fg = c.diag.error, bg = c.sec.bg },
 			right_sep = sep.block,
 			truncate_hide = true,
 			priority = 20,
 		},
 		warning = {
 			provider = "diagnostic_warnings",
-			hl = { fg = colors.base0A, bg = colors.base01 },
+			hl = { fg = c.diag.warning, bg = c.sec.bg },
 			right_sep = sep.block,
 			truncate_hide = true,
 			priority = 20,
 		},
 		info = {
 			provider = "diagnostic_info",
-			hl = { fg = colors.base0C, bg = colors.base01 },
+			hl = { fg = c.diag.info, bg = c.sec.bg },
 			right_sep = sep.block,
 			truncate_hide = true,
 			priority = 20,
 		},
 		hint = {
 			provider = "diagnostic_hints",
-			hl = { fg = colors.base0E, bg = colors.base01 },
+			hl = { fg = c.diag.hint, bg = c.sec.bg },
 			right_sep = sep.block,
 			truncate_hide = true,
 			priority = 20,
@@ -185,7 +204,7 @@ return function()
 				end
 				return ""
 			end,
-			hl = { fg = colors.base01 },
+			hl = { fg = c.sec.bg },
 			truncate_hide = true,
 			priority = 20,
 		},
@@ -198,6 +217,7 @@ return function()
 				case = "lowercase",
 			},
 		},
+		hl = { fg = c.tri.fg },
 		right_sep = sep.pri,
 		priority = 80,
 	}
@@ -221,29 +241,29 @@ return function()
 
 	require("feline").setup({
 		theme = {
-			bg = colors.base00,
+			bg = c.pri.bg,
 			fg = c.pri.fg,
 		},
 		vi_mode_colors = {
 			-- Normal
-			NORMAL = colors.base0B,
-			OP = colors.base0B,
+			NORMAL = c.b0B,
+			OP = c.b0B,
 			-- Insert
-			INSERT = colors.base0C,
+			INSERT = c.b0C,
 			-- Visual modes
-			VISUAL = colors.base0E,
-			LINES = colors.base0E,
-			BLOCK = colors.base0E,
+			VISUAL = c.b0E,
+			LINES = c.b0E,
+			BLOCK = c.b0E,
 			-- Replace
-			REPLACE = colors.base08,
-			["V-REPLACE"] = colors.base08,
-			ENTER = colors.base0D,
-			MORE = colors.base0D,
-			SELECT = colors.base09,
-			COMMAND = colors.base09,
-			SHELL = colors.base0B,
-			TERM = colors.base0C,
-			NONE = colors.base0A,
+			REPLACE = c.b08,
+			["V-REPLACE"] = c.b08,
+			ENTER = c.b0D,
+			MORE = c.b0D,
+			SELECT = c.b09,
+			COMMAND = c.b09,
+			SHELL = c.b0B,
+			TERM = c.b0C,
+			NONE = c.b0A,
 		},
 		components = {
 			active = {
