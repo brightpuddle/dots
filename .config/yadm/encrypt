@@ -3,9 +3,7 @@
 .config/mopidy/mopidy.conf
 .ssh/config
 .ssh/id_rsa
-.task/backlog.data
-.task/completed.data
-.task/pending.data
-.task/undo.data
+.task/*
+.taskrc
 .config/goreleaser/github_token
 .config/goreleaser/cisco_github_token
