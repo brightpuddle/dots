@@ -1,6 +1,7 @@
 # Paths
 export PYTHON3_HOST_PROG=/usr/local/bin/python3
-export GOPATH=$HOME/src/.go
+export GOPATH=$HOME/src/go
+export GO111MODULE=auto
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 export EDITOR=/usr/local/bin/vi
 
