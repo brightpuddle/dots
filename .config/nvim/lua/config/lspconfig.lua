@@ -55,7 +55,7 @@ return function()
   lsp.cssls.setup(config())
   -- lsp.eslint.setup(config())
   lsp.sumneko_lua.setup({
-    on_attach = on_attach({ format = true }),
+    on_attach = on_attach(),
     capabilities = capabilities,
     settings = {
       Lua = {
@@ -96,7 +96,7 @@ return function()
       -- formatting.rome,
       formatting.rustfmt,
       formatting.shfmt,
-      -- formatting.stylua,
+      formatting.stylua,
       formatting.trim_newlines,
       formatting.trim_whitespace,
       formatting.xmllint,
