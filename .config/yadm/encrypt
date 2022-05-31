@@ -7,3 +7,5 @@
 .task/completed.data
 .task/pending.data
 .task/undo.data
+.config/goreleaser/github_token
+.config/goreleaser/cisco_github_token
