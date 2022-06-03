@@ -17,6 +17,10 @@ require("packer").startup({
 		-- package management
 		use({ "wbthomason/packer.nvim" })
 
+		-- TODO
+		-- Google Keep integration???
+		-- https://github.com/stevearc/gkeep.nvim
+
 		-- require module caching
 		use({ "lewis6991/impatient.nvim" })
 
@@ -88,22 +92,17 @@ require("packer").startup({
 
 		-- colorscheme
 		use({
-			"RRethy/nvim-base16",
-			config = require("config.base16"),
+			"shaunsingh/nord.nvim",
+			config = function()
+				vim.cmd([[colorscheme nord]])
+			end,
 		})
-		-- use({
-		-- 	"shaunsingh/nord.nvim",
-		-- 	config = function()
-		-- 		vim.cmd("colorscheme nord")
-		-- 	end,
-		-- })
 
 		-- "tab" line with buffers
 		use({
 			"akinsho/bufferline.nvim",
 			tag = "*",
 			requires = { "kyazdani42/nvim-web-devicons" },
-			after = "nvim-base16",
 			config = require("config.bufferline"),
 		})
 
@@ -113,7 +112,11 @@ require("packer").startup({
 		-- view syntax tree
 		use({ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" })
 
-		use({ "feline-nvim/feline.nvim", after = "nvim-base16", config = require("config.feline") })
+		use({
+			"feline-nvim/feline.nvim",
+			config = require("config.feline"),
+			after = { "nord.nvim" },
+		})
 
 		-- quickfix/problem viewer
 		use({
@@ -161,9 +164,6 @@ require("packer").startup({
 				require("hop").setup()
 			end,
 		})
-
-		-- fix search highlighting for current match
-		use({ "PeterRincker/vim-searchlight" })
 
 		-- file/directory tree
 		use({
@@ -218,7 +218,7 @@ require("packer").startup({
 		-- LSP
 		use({
 			"neovim/nvim-lspconfig",
-			config = require("config.lspconfig"),
+			config = require("config.lsp"),
 		})
 
 		-- proper formatting (harder than it should be)

@@ -48,6 +48,9 @@ return function()
 	-- NvimTree
 	hi.VertSplit = { guifg = c.base02 }
 
+	-- illuminate
+	hi.CursorLine = { guibg = c.base01, gui = nil }
+
 	-- Trouble
 	-- hi.TroubleNormal = { guibg = dark.c02 }
 	-- hi.TroubleFoldIcon = { guibg = c.base00, guifg = c.base04 }

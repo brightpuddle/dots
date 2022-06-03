@@ -2,7 +2,7 @@
 export PYTHON3_HOST_PROG=/usr/local/bin/python3
 export GOPATH=$HOME/src/go
 export GO111MODULE=auto
-export PYTHONSTARTUP=$HOME/.pythonrc.py
+# export PYTHONSTARTUP=$HOME/.pythonrc.py
 export EDITOR=/usr/local/bin/vi
 
 export PATH=$HOME/.local/bin:$PATH
@@ -25,3 +25,7 @@ HISTFILE=~/.zsh_history
 SAVEHIST=5000
 HISTDUP=erase
 . "$HOME/.cargo/env"
+
+# FZF
+# Alternatively --no-ignore-vcs
+export FZF_DEFAULT_COMMAND='rg --files --hidden'

@@ -9,44 +9,24 @@ return function()
 		end
 	end
 	local c = {
-		b00 = "#2b303b",
-		b01 = "#343d46",
-		b02 = "#4f5b66",
-		b03 = "#65737e",
-		b04 = "#a7adba",
-		b05 = "#c0c5ce",
-		b06 = "#dfe1e8",
-		b07 = "#eff1f5",
-		b08 = "#bf616a",
-		b09 = "#d08770",
-		b0A = "#ebcb8b",
-		b0B = "#a3be8c",
-		b0C = "#96b5b4",
-		b0D = "#8fa1b3",
-		b0E = "#b48ead",
-		b0F = "#ab7967",
 		pri = {
-			bg = get_color("Normal", "background"),
-			fg = get_color("StatusLineNC", "foreground"),
-		},
-		sec = {
 			bg = get_color("StatusLineNC", "background"),
 			fg = get_color("StatusLineNC", "foreground"),
 		},
-		tri = {
-			bg = get_color("Normal", "background"),
-			fg = get_color("SpecialChar", "foreground"),
+		sec = {
+			bg = get_color("StatusLine", "background"),
+			fg = get_color("StatusLine", "foreground"),
 		},
 		diag = {
-			error = "#bf616a",
-			warning = "#ebcb8b",
-			info = "#96b5b4",
-			hint = "#b48ead",
+			error = get_color("DiagnosticError", "foreground"),
+			warning = get_color("DiagnosticWarn", "foreground"),
+			info = get_color("DiagnosticInfo", "foreground"),
+			hint = get_color("DiagnosticHint", "foreground"),
 		},
 		git = {
-			add = "#a3be8c",
-			change = "#96b5b4",
-			remove = "#bf616a",
+			add = get_color("DiffAdd", "foreground"),
+			change = get_color("DiffChange", "foreground"),
+			remove = get_color("DiffDelete", "foreground"),
 		},
 	}
 
@@ -60,6 +40,14 @@ return function()
 
 	local comps = {}
 	-- VIM mode
+	comps.left = {
+		provider = sep.left,
+		hl = { bg = "Normal", fg = c.pri.bg },
+	}
+	comps.right = {
+		provider = sep.right,
+		hl = { bg = "Normal", fg = c.pri.bg },
+	}
 	comps.mode = {
 		provider = function()
 			return string.lower(string.sub(vi_mode.get_vim_mode(), 1, 2))
@@ -80,8 +68,8 @@ return function()
 			provider = function()
 				return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 			end,
-			icon = { str = "  ", hl = { fg = get_color("Comment", "foreground") } },
-			left_sep = sep.pri,
+			icon = { str = " ", hl = { fg = get_color("Comment", "foreground") } },
+			left_sep = sep.sec,
 			priority = 50,
 		},
 		filename = {
@@ -217,7 +205,7 @@ return function()
 				case = "lowercase",
 			},
 		},
-		hl = { fg = c.tri.fg },
+		hl = { fg = get_color("Number", "foreground") },
 		right_sep = sep.pri,
 		priority = 80,
 	}
@@ -244,30 +232,31 @@ return function()
 			bg = c.pri.bg,
 			fg = c.pri.fg,
 		},
-		vi_mode_colors = {
-			-- Normal
-			NORMAL = c.b0B,
-			OP = c.b0B,
-			-- Insert
-			INSERT = c.b0C,
-			-- Visual modes
-			VISUAL = c.b0E,
-			LINES = c.b0E,
-			BLOCK = c.b0E,
-			-- Replace
-			REPLACE = c.b08,
-			["V-REPLACE"] = c.b08,
-			ENTER = c.b0D,
-			MORE = c.b0D,
-			SELECT = c.b09,
-			COMMAND = c.b09,
-			SHELL = c.b0B,
-			TERM = c.b0C,
-			NONE = c.b0A,
-		},
+		-- vi_mode_colors = {
+		-- 	-- Normal
+		-- 	NORMAL = c.b0B,
+		-- 	OP = c.b0B,
+		-- 	-- Insert
+		-- 	INSERT = c.b0C,
+		-- 	-- Visual modes
+		-- 	VISUAL = c.b0E,
+		-- 	LINES = c.b0E,
+		-- 	BLOCK = c.b0E,
+		-- 	-- Replace
+		-- 	REPLACE = c.b08,
+		-- 	["V-REPLACE"] = c.b08,
+		-- 	ENTER = c.b0D,
+		-- 	MORE = c.b0D,
+		-- 	SELECT = c.b09,
+		-- 	COMMAND = c.b09,
+		-- 	SHELL = c.b0B,
+		-- 	TERM = c.b0C,
+		-- 	NONE = c.b0A,
+		-- },
 		components = {
 			active = {
 				{
+					comps.left,
 					-- Mode
 					-- comps.mode,
 					-- File info
@@ -294,10 +283,12 @@ return function()
 					-- Location
 					comps.location.percentage,
 					comps.location.location,
+					comps.right,
 				},
 			},
 			inactive = {
 				{
+					comps.left,
 					-- File info
 					comps.file.folder,
 					comps.file.filename,
@@ -305,6 +296,7 @@ return function()
 				{},
 				{
 					comps.location.percentage,
+					comps.right,
 				},
 			},
 		},

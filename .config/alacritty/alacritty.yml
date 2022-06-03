@@ -81,62 +81,70 @@ tabspaces: 2
 
 font:
   normal:
-    family: RobotoMono Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Regular
   bold:
     style: Bold
   italic:
     style: Italic
   bold_italic:
-    family: VictorMono Nerd Font Mono
+    # family: VictorMono Nerd Font Mono
     style: Bold Italic
   offset:
     y: 0
-  size: 15
+  size: 16
 
 ############################################################
 # Colors
 ############################################################
 colors:
-  # Default colors
   primary:
-    background: "0x2b303b" # #2b303b
-    foreground: "0xc0c5ce" # #c0c5ce
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
+    background: '#2e3440'
+    foreground: '#d8dee9'
+    dim_foreground: '#a5abb6'
   cursor:
-    text: "0x2b303b" # #2b303b
-    cursor: "0xc0c5ce" # #c0c5ce
-
-  # Normal colors
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  vi_mode_cursor:
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  selection:
+    text: CellForeground
+    background: '#4c566a'
+  search:
+    matches:
+      foreground: CellBackground
+      background: '#88c0d0'
+    bar:
+      background: '#434c5e'
+      foreground: '#d8dee9'
   normal:
-    black: "0x2b303b"
-    red: "0xbf616a"
-    green: "0xa3be8c"
-    yellow: "0xebcb8b"
-    blue: "0x8fa1b3"
-    magenta: "0xb48ead"
-    cyan: "0x96b5b4"
-    white: "0xc0c5ce"
-
-  # Bright colors
+    black: '#3b4252'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#88c0d0'
+    white: '#e5e9f0'
   bright:
-    black: "0x65737e"
-    red: "0xbf616a"
-    green: "0xa3be8c"
-    yellow: "0xebcb8b"
-    blue: "0x8fa1b3"
-    magenta: "0xb48ead"
-    cyan: "0x96b5b4"
-    white: "0xeff1f5"
-
-  indexed_colors:
-    - { index: 16, color: "0xd08770" }
-    - { index: 17, color: "0xab7967" }
-    - { index: 18, color: "0x343d46" }
-    - { index: 19, color: "0x4f5b66" }
-    - { index: 20, color: "0xa7adba" }
-    - { index: 21, color: "0xdfe1e8" }
+    black: '#4c566a'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#8fbcbb'
+    white: '#eceff4'
+  dim:
+    black: '#373e4d'
+    red: '#94545d'
+    green: '#809575'
+    yellow: '#b29e75'
+    blue: '#68809a'
+    magenta: '#8c738c'
+    cyan: '#6d96a5'
+    white: '#aeb3bb'
 
 draw_bold_text_with_bright_colors: false
 

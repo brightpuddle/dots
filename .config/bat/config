@@ -1,4 +1,4 @@
---theme="base16"
+--theme="Nord"
 #--italic-text=always
 #--paging=never
 --pager="less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse -X"
