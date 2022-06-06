@@ -29,10 +29,8 @@ require("packer").startup({
 
 		use({
 			"folke/which-key.nvim",
-			config = function()
-				require("which-key").setup({})
-			end,
-			opt = true,
+			config = require("config.whichkey"),
+			-- opt = true,
 		})
 
 		-- faster filetypes
@@ -42,7 +40,8 @@ require("packer").startup({
 		use({ "ojroques/nvim-bufdel" })
 
 		-- tmux split integration
-		use({ "christoomey/vim-tmux-navigator" })
+		-- use({ "christoomey/vim-tmux-navigator" })
+		use({ "alexghergh/nvim-tmux-navigation", config = require("config.nav") })
 
 		-- startup time analysis
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" })

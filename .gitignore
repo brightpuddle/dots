@@ -25,5 +25,8 @@ Applications
 # Don't backup known_hosts
 known_hosts
 
-# Don't backup packer compiled
+# Packer compiled
 50-compiled.lua
+
+# Tmux plugins
+.config/tmux/plugins

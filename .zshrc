@@ -85,7 +85,7 @@ h() {
 # Ctrl-P
 fzf-open-file-or-dir() {
   local cmd="command rg . --files --color=never"
-  local out=$(eval $cmd | fzf --exit-0)
+  local out=$(eval $cmd | fzf --exit-0 --height 40%)
 
   if [ -f "$out" ]; then
     vi "$out"

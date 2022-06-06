@@ -22,17 +22,6 @@ k.set("n", "H", "<cmd>bprev<cr>")
 k.set({ "n", "i" }, "<C-o>n", "<cmd>bnext<cr>")
 k.set({ "n", "i" }, "<C-o>p", "<cmd>bprev<cr>")
 
--- Integrated split nav
-g.tmux_navigator_no_mappings = 1
-k.set("n", "<leader>wh", "<cmd>TmuxNavigateLeft<cr>")
-k.set("n", "<leader>wj", "<cmd>TmuxNavigateDown<cr>")
-k.set("n", "<leader>wk", "<cmd>TmuxNavigateUp<cr>")
-k.set("n", "<leader>wl", "<cmd>TmuxNavigateRight<cr>")
-k.set({ "n", "i" }, "<C-w>h", "<cmd>TmuxNavigateLeft<cr>")
-k.set({ "n", "i" }, "<C-w>j", "<cmd>TmuxNavigateDown<cr>")
-k.set({ "n", "i" }, "<C-w>k", "<cmd>TmuxNavigateUp<cr>")
-k.set({ "n", "i" }, "<C-w>l", "<cmd>TmuxNavigateRight<cr>")
-
 -- Find / CtrlP
 k.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
 k.set("n", "<C-o>fa", "<cmd>Telescope<cr>")

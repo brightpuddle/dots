@@ -35,10 +35,10 @@ alt - s : yabai -m space --layout float
 alt - d : yabai -m space --layout bsp
 
 
-alt - 0x1B : yabai -m space --gap rel:-8;\
+alt - 0x18 : yabai -m space --gap rel:-8;\
   yabai -m space --padding rel:-8:-8:-8:-8
 
-alt - 0x18 : yabai -m space --gap rel:8;\
+alt - 0x1B : yabai -m space --gap rel:8;\
   yabai -m space --padding rel:8:8:8:8
 
 
@@ -76,6 +76,7 @@ ctrl + cmd - k : yabai -m window --resize top:0:-60;\
 
 ctrl + cmd - l : yabai -m window --resize right:60:0;\
   yabai -m window --resize left:60:0
+
 
 shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
