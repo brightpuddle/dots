@@ -83,7 +83,10 @@ vim.diagnostic.config({
 })
 
 -- Plugins that use settings for config
-vim.g.better_escape_shortcut = "jk"
+g.better_escape_shortcut = "jk"
+g.nord_contrast = true
+g.nord_borders = false
+g.nord_enable_sidebar_background = true
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = { "**/nvim/lua/config/*.lua", "**/nvim/plugin/*main.lua" },

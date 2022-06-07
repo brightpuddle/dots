@@ -125,3 +125,5 @@ n ()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+
+if [ "$TMUX" = "" ]; then tmux; fi

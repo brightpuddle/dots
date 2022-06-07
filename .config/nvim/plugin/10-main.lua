@@ -21,6 +21,14 @@ require("packer").startup({
 		-- Google Keep integration???
 		-- https://github.com/stevearc/gkeep.nvim
 
+		-- TODO
+		-- Testing
+		-- https://github.com/rcarriga/neotest
+
+		-- TODO
+		-- Debugging
+		-- https://github.com/mfussenegger/nvim-dap
+
 		-- require module caching
 		use({ "lewis6991/impatient.nvim" })
 
@@ -90,12 +98,7 @@ require("packer").startup({
 		})
 
 		-- colorscheme
-		use({
-			"shaunsingh/nord.nvim",
-			config = function()
-				vim.cmd([[colorscheme nord]])
-			end,
-		})
+		use({ "arcticicestudio/nord-vim", config = require("config.color") })
 
 		-- "tab" line with buffers
 		use({
@@ -109,12 +112,12 @@ require("packer").startup({
 		use({ "nvim-treesitter/nvim-treesitter", config = require("config.treesitter") })
 
 		-- view syntax tree
-		use({ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" })
+		use({ "nvim-treesitter/playground" })
 
 		use({
 			"feline-nvim/feline.nvim",
 			config = require("config.feline"),
-			after = { "nord.nvim" },
+			after = { "nord-vim" },
 		})
 
 		-- quickfix/problem viewer
