@@ -26,8 +26,14 @@
 
 return function()
 	vim.cmd("colorscheme nord")
+	-- General visibility
 	vim.api.nvim_set_hl(0, "Keyword", { fg = "#B48EAD" })
 	vim.api.nvim_set_hl(0, "Number", { fg = "#D08770" })
 	vim.api.nvim_set_hl(0, "Float", { link = "Number" })
 	vim.api.nvim_set_hl(0, "Boolean", { link = "Number" })
+	-- Limited cursorline
+	vim.api.nvim_set_hl(0, "CursorLine", {})
+	vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#3B4252", fg = "#5E81AC" })
+	-- SymbolBrowser
+	vim.api.nvim_set_hl(0, "FocusedSymbol", { fg = "#D08770", bold = 1 })
 end

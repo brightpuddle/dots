@@ -11,25 +11,37 @@ return function()
 	end
 
 	local lsp_format = require("lsp-format")
-	lsp_format.setup()
+	lsp_format.setup({
+		force = true,
+		sync = false,
+	})
 
 	-- Buffer attach function
-	local function on_attach(cfg)
-		cfg = cfg or {}
-		cfg.format = cfg.format or false
+	local function on_attach(format)
 		return function(client, bufnr)
-			if cfg.format then
+			if format then
 				lsp_format.on_attach(client, bufnr)
 			end
-			local k = vim.keymap
-			client.resolved_capabilities.document_formatting = cfg.format
-			client.resolved_capabilities.document_range_formatting = cfg.format
+
 			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-			k.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
-			k.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-			k.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
-			k.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
+			local k = vim.keymap
+			local bufopts = { noremap = true, silent = true, buffer = bufnr }
+			k.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+			k.set("n", "gd", vim.lsp.buf.definition, bufopts)
+			k.set("n", "K", vim.lsp.buf.hover, bufopts)
+			k.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+			k.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+			k.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+			k.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+			k.set("n", "<leader>wl", function()
+				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			end, bufopts)
+			k.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
+			k.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+			k.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+			k.set("n", "gr", vim.lsp.buf.references, bufopts)
+			-- k.set("n", "<leader>f", vim.lsp.buf.formatting, bufopts)
 		end
 	end
 
@@ -40,9 +52,9 @@ return function()
 	local lsp = require("lspconfig")
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-	local function config(cfg)
+	local function config(format)
 		return {
-			on_attach = on_attach(cfg),
+			on_attach = on_attach(format),
 			capabilities = capabilities,
 		}
 	end
@@ -51,8 +63,8 @@ return function()
 	lsp.rust_analyzer.setup(config())
 	lsp.tsserver.setup(config())
 	lsp.gopls.setup(config())
-	lsp.html.setup(config({ format = true }))
-	lsp.jsonls.setup(config({ format = true }))
+	lsp.html.setup(config(true))
+	lsp.jsonls.setup(config(true))
 	lsp.cssls.setup(config())
 	-- lsp.eslint.setup(config())
 	lsp.sumneko_lua.setup({
@@ -71,7 +83,7 @@ return function()
 	})
 
 	null_ls.setup({
-		on_attach = on_attach({ format = true }),
+		on_attach = on_attach(true),
 		sources = {
 			-- Diagnostics
 			diagnostics.ansiblelint,

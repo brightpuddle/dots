@@ -39,6 +39,7 @@ local o = vim.o
 o.autoindent = true
 o.cb = "unnamed"
 o.copyindent = true
+-- o.cursorline = true
 o.backup = false
 o.expandtab = true
 o.foldmethod = "expr"
@@ -88,7 +89,10 @@ g.nord_contrast = true
 g.nord_borders = false
 g.nord_enable_sidebar_background = true
 
+local packerSyncGrp = vim.api.nvim_create_augroup("PackerSyncGrp", {})
+vim.api.nvim_clear_autocmds({ group = packerSyncGrp })
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	group = packerSyncGrp,
 	pattern = { "**/nvim/lua/config/*.lua", "**/nvim/plugin/*main.lua" },
 	command = "source <afile> | PackerCompile",
 })

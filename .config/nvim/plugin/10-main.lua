@@ -187,6 +187,10 @@ require("packer").startup({
 			config = require("config.telescope"),
 		})
 
+		-- Better search highlighting
+		-- use({ "wincent/loupe" })
+		-- use({ "qxxxb/vim-searchhi" })
+
 		-- highlight and search for todo tags
 		use({
 			"folke/todo-comments.nvim",
