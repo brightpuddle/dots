@@ -17,9 +17,10 @@ return function()
 	})
 
 	-- Buffer attach function
-	local function on_attach(format)
+	local function on_attach(cfg)
+		cfg = cfg or {}
 		return function(client, bufnr)
-			if format then
+			if cfg.format then
 				lsp_format.on_attach(client, bufnr)
 			end
 
@@ -63,8 +64,8 @@ return function()
 	lsp.rust_analyzer.setup(config())
 	lsp.tsserver.setup(config())
 	lsp.gopls.setup(config())
-	lsp.html.setup(config(true))
-	lsp.jsonls.setup(config(true))
+	lsp.html.setup(config({ format = true }))
+	lsp.jsonls.setup(config({ format = true }))
 	lsp.cssls.setup(config())
 	-- lsp.eslint.setup(config())
 	lsp.sumneko_lua.setup({
@@ -83,7 +84,7 @@ return function()
 	})
 
 	null_ls.setup({
-		on_attach = on_attach(true),
+		on_attach = on_attach({ format = true }),
 		sources = {
 			-- Diagnostics
 			diagnostics.ansiblelint,

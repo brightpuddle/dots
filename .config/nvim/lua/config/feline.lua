@@ -232,27 +232,6 @@ return function()
 			bg = c.pri.bg,
 			fg = c.pri.fg,
 		},
-		-- vi_mode_colors = {
-		-- 	-- Normal
-		-- 	NORMAL = c.b0B,
-		-- 	OP = c.b0B,
-		-- 	-- Insert
-		-- 	INSERT = c.b0C,
-		-- 	-- Visual modes
-		-- 	VISUAL = c.b0E,
-		-- 	LINES = c.b0E,
-		-- 	BLOCK = c.b0E,
-		-- 	-- Replace
-		-- 	REPLACE = c.b08,
-		-- 	["V-REPLACE"] = c.b08,
-		-- 	ENTER = c.b0D,
-		-- 	MORE = c.b0D,
-		-- 	SELECT = c.b09,
-		-- 	COMMAND = c.b09,
-		-- 	SHELL = c.b0B,
-		-- 	TERM = c.b0C,
-		-- 	NONE = c.b0A,
-		-- },
 		components = {
 			active = {
 				{
