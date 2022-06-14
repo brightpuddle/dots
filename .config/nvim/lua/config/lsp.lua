@@ -46,10 +46,6 @@ return function()
 		end
 	end
 
-	local null_ls = require("null-ls")
-	local formatting = null_ls.builtins.formatting
-	local diagnostics = null_ls.builtins.diagnostics
-
 	local lsp = require("lspconfig")
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
@@ -65,9 +61,8 @@ return function()
 	lsp.tsserver.setup(config())
 	lsp.gopls.setup(config())
 	lsp.html.setup(config({ format = true }))
-	lsp.jsonls.setup(config({ format = true }))
+	lsp.jsonls.setup(config())
 	lsp.cssls.setup(config())
-	-- lsp.eslint.setup(config())
 	lsp.sumneko_lua.setup({
 		on_attach = on_attach(),
 		capabilities = capabilities,
@@ -82,39 +77,9 @@ return function()
 			},
 		},
 	})
-
-	null_ls.setup({
+	lsp.efm.setup({
 		on_attach = on_attach({ format = true }),
-		sources = {
-			-- Diagnostics
-			diagnostics.ansiblelint,
-			diagnostics.flake8,
-			diagnostics.revive,
-			diagnostics.eslint_d,
-			diagnostics.curlylint,
-
-			-- Code Actions
-
-			-- Formatting
-			formatting.black,
-			formatting.golines,
-			formatting.isort,
-			formatting.prettierd.with({
-				filetypes = {
-					"markdown",
-					"javascript",
-					"javascriptreact",
-					"yaml",
-				},
-			}),
-			-- formatting.rome,
-			formatting.rustfmt,
-			formatting.shfmt,
-			formatting.stylua,
-			formatting.terraform_fmt,
-			formatting.trim_newlines,
-			formatting.trim_whitespace,
-			formatting.xmllint,
-		},
+		cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "1" },
+		init_options = { documentFormatting = true },
 	})
 end

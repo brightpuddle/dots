@@ -1,0 +1,91 @@
+version: 2
+root-markers:
+  - .git/
+tools:
+  format-black: &format-black
+    format-command: "black --quiet -"
+    format-stdin: true
+  lint-eslint: &lint-eslint
+    lint-command: "eslint_d -f unix --stdin --stdin-filename ${INPUT}"
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    root-markers:
+      - package.json
+  format-fixjson: &format-fixjson
+    format-command: "fixjson"
+    format-stdin: true
+  lint-flake8: &lint-flake8
+    lint-command: "flake8 --stdin-display-name ${INPUT} -"
+    lint-stdin: true
+    lint-formats:
+      - "%f:%l:%c: %m"
+  format-golines: &format-golines
+    format-command: "golines"
+    format-stdin: true
+  lint-hadolint: &lint-hadolint
+    lint-command: "hadolint --no-color"
+    lint-formats:
+      - "%f:%l %.%# %t%.%#: %m"
+  format-isort: &format-isort
+    format-command: "isort --quiet -"
+    format-stdin: true
+  lint-revive: &lint-revive
+    lint-command: "revive ./..."
+    lint-ignore-exit-code: true
+    lint-formats:
+      - "%f:%l:%c: %m"
+  format-rustfmt: &format-rustfmt
+    format-command: "rustfmt"
+    format-stdin: true
+  format-prettier: &format-prettier
+    format-command: "prettierd ${INPUT}"
+    format-stdin: true
+  format-shfmt: &format-shfmt
+    format-command: "shfmt -ci -s -bn -"
+    format-stdin: true
+  format-stylua: &format-stylua
+    format-command: "stylua -"
+    format-stdin: true
+  format-terraform: &format-terraform
+    format-command: "terraform fmt -"
+    format-stdin: true
+  format-xmllint: &format-xmllint
+    format-command: "xmllint --format -"
+    format-stdin: true
+
+# ansiblelint
+# eslint_d
+languages:
+  css:
+    - <<: *format-prettier
+  dockerfile:
+    - <<: *lint-hadolint
+  go:
+    - <<: *format-golines
+    - <<: *lint-revive
+  javascript:
+    - <<: *format-prettier
+    - <<: *lint-eslint
+  javascriptreact:
+    - <<: *format-prettier
+    - <<: *lint-eslint
+  json:
+    - <<: *format-fixjson
+  lua:
+    - <<: *format-stylua
+  markdown:
+    - <<: *format-prettier
+  python:
+    - <<: *format-black
+    - <<: *format-isort
+    - <<: *lint-flake8
+  rust:
+    - <<: *format-rustfmt
+  sh:
+    - <<: *format-shfmt
+  tf:
+    - <<: *format-terraform
+  xml:
+    - <<: *format-xmllint
+  yaml:
+    - <<: *format-prettier
