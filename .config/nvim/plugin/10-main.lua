@@ -29,6 +29,18 @@ require("packer").startup({
 		-- Debugging
 		-- https://github.com/mfussenegger/nvim-dap
 
+		-- TODO
+		-- Go coverage
+		-- https://github.com/rafaelsq/nvim-goc.lua
+
+		-- TODO
+		-- Easier whichkey setup (need to test without first)
+		-- https://github.com/AckslD/nvim-whichkey-setup.lua
+
+		-- TODO
+		-- Tmux and neovim splits
+		-- https://github.com/declancm/windex.nvim
+
 		-- require module caching
 		use({ "lewis6991/impatient.nvim" })
 
@@ -42,7 +54,7 @@ require("packer").startup({
 		})
 
 		-- faster filetypes
-		use({ "nathom/filetype.nvim" })
+		use({ "nathom/filetype.nvim", config = require("config.filetype") })
 
 		-- delete buffer or quit (consistent cmd-w)
 		use({ "ojroques/nvim-bufdel" })

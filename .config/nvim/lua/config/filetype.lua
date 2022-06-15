@@ -1,3 +1,9 @@
 return function()
-	require("filetype").setup({})
+	require("filetype").setup({
+		overrides = {
+			extensions = {
+				v = "vlang",
+			},
+		},
+	})
 end

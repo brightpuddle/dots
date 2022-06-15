@@ -49,6 +49,9 @@ tools:
   format-terraform: &format-terraform
     format-command: "terraform fmt -"
     format-stdin: true
+  format-vfmt: &format-vfmt
+    format-command: "v fmt -"
+    format-stdin: true
   format-xmllint: &format-xmllint
     format-command: "xmllint --format -"
     format-stdin: true
@@ -87,5 +90,7 @@ languages:
     - <<: *format-terraform
   xml:
     - <<: *format-xmllint
+  vlang:
+    - <<: *format-vfmt
   yaml:
     - <<: *format-prettier
