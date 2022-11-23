@@ -55,6 +55,7 @@ o.number = true
 o.shiftround = true
 o.shiftwidth = 2
 o.shortmess = o.shortmess .. "c"
+o.shortmess = o.shortmess .. "I"
 o.showcmd = false
 o.swapfile = false
 o.syntax = true

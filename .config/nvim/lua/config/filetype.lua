@@ -3,6 +3,7 @@ return function()
 		overrides = {
 			extensions = {
 				v = "vlang",
+				tf = "terraform",
 			},
 		},
 	})

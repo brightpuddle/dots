@@ -48,7 +48,7 @@ return function()
 
 	local lsp = require("lspconfig")
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 	local function config(format)
 		return {
 			on_attach = on_attach(format),
@@ -63,6 +63,7 @@ return function()
 	lsp.html.setup(config({ format = true }))
 	lsp.jsonls.setup(config())
 	lsp.cssls.setup(config())
+	lsp.tailwindcss.setup(config())
 	lsp.sumneko_lua.setup({
 		on_attach = on_attach(),
 		capabilities = capabilities,
@@ -77,9 +78,46 @@ return function()
 			},
 		},
 	})
-	lsp.efm.setup({
+
+	local null_ls = require("null-ls")
+	local formatting = null_ls.builtins.formatting
+	local diagnostics = null_ls.builtins.diagnostics
+	null_ls.setup({
 		on_attach = on_attach({ format = true }),
-		cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "1" },
-		init_options = { documentFormatting = true },
+		sources = {
+			-- Diagnostics
+			diagnostics.ansiblelint,
+			diagnostics.curlylint,
+			diagnostics.eslint_d,
+			diagnostics.flake8,
+			diagnostics.hadolint,
+			diagnostics.revive,
+
+			-- Code Actions
+
+			-- Formatting
+			formatting.black,
+			formatting.fixjson,
+			formatting.golines,
+			formatting.isort,
+			formatting.prettierd.with({
+				filetypes = {
+					"css",
+					"markdown",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"yaml",
+				},
+			}),
+			formatting.rustfmt,
+			formatting.shfmt,
+			formatting.stylua,
+			formatting.terraform_fmt,
+			formatting.trim_newlines,
+			formatting.trim_whitespace,
+			formatting.xmllint,
+		},
 	})
 end

@@ -4,6 +4,10 @@ local k = vim.keymap
 ------------------------------------------------------------
 -- Keybindings
 ------------------------------------------------------------
+-- j/k for wrapped text
+k.set({ "n", "v" }, "j", "gj", { silent = true })
+k.set({ "n", "v" }, "k", "gk", { silent = true })
+
 -- Save
 k.set({ "n", "i" }, "<C-o>w", "<cmd>write<cr>", { silent = true })
 -- Exit

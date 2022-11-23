@@ -47,11 +47,15 @@ require("packer").startup({
 		-- Pretty menus
 		use({ "stevearc/dressing.nvim" })
 
+		-- Keymaps
 		use({
 			"folke/which-key.nvim",
 			config = require("config.whichkey"),
 			-- opt = true,
 		})
+
+		-- Indent guides
+		use({ "lukas-reineke/indent-blankline.nvim", ft = { "python" } })
 
 		-- faster filetypes
 		use({ "nathom/filetype.nvim", config = require("config.filetype") })
@@ -85,21 +89,27 @@ require("packer").startup({
 
 		-- auto-close tags
 		use({
-			"alvan/vim-closetag",
-			ft = {
-				"html",
-				"xml",
-				"xhtml",
-				"javascript",
-				"javascriptreact",
-				"typescript",
-				"typescriptreact",
-				"reason",
-				"rescript",
-				"html.handlebars",
-			},
-			config = require("config.closetag"),
+			"windwp/nvim-ts-autotag",
+			config = function()
+				require("nvim-ts-autotag").setup()
+			end,
 		})
+		-- use({
+		-- 	"alvan/vim-closetag",
+		-- 	ft = {
+		-- 		"html",
+		-- 		"xml",
+		-- 		"xhtml",
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"reason",
+		-- 		"rescript",
+		-- 		"html.handlebars",
+		-- 	},
+		-- 	config = require("config.closetag"),
+		-- })
 
 		-- fast jq using autocmds
 		use({
@@ -143,13 +153,13 @@ require("packer").startup({
 		})
 
 		-- zen mode
-		use({
-			"Pocco81/TrueZen.nvim",
-			cmd = "TZAtaraxis",
-			config = function()
-				require("true-zen").setup()
-			end,
-		})
+		-- use({
+		-- 	"Pocco81/TrueZen.nvim",
+		-- 	cmd = "TZAtaraxis",
+		-- 	config = function()
+		-- 		require("true-zen").setup()
+		-- 	end,
+		-- })
 
 		-- colorize hex codes
 		use({
@@ -230,7 +240,6 @@ require("packer").startup({
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = "nvim-lua/plenary.nvim",
-			-- config = require("config.null_ls"),
 		})
 
 		-- LSP
@@ -246,8 +255,24 @@ require("packer").startup({
 		use({ "simrat39/symbols-outline.nvim", cmd = "SymbolsOutline" })
 
 		-- Javascript / JSX
-		use({ "yuezk/vim-js", ft = { "javascript", "javascriptreact" } })
-		use({ "maxmellon/vim-jsx-pretty", ft = { "javascript", "javascriptreact" } })
+		use({
+			"yuezk/vim-js",
+			ft = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+			},
+		})
+		use({
+			"maxmellon/vim-jsx-pretty",
+			ft = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+			},
+		})
 
 		-- Go
 		use({
@@ -255,6 +280,12 @@ require("packer").startup({
 			run = ":GoInstallBinaries",
 			cmd = { "GoInstallBinaries", "GoDoc" },
 		})
+
+		-- Nginx
+		use({ "chr4/nginx.vim", ft = { "nginx" } })
+
+		-- Robot
+		use({ "mfukar/robotframework-vim", ft = { "robot" } })
 
 		-- Markdown
 		use({
@@ -275,10 +306,10 @@ require("packer").startup({
 		profile = {
 			enable = true,
 		},
-		-- display = {
-		-- 	open_fn = function()
-		-- 		return require("packer.util").float({ border = "single" })
-		-- 	end,
-		-- },
+		display = {
+			open_fn = function()
+				return require("packer.util").float({ border = "none" })
+			end,
+		},
 	},
 })

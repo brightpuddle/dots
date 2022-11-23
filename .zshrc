@@ -53,13 +53,12 @@ zinit light ajeetdsouza/zoxide
 # Aliases
 alias ls="ls -G"
 alias ll="ls -al"
+alias t="task"
 alias tt="taskwarrior-tui"
-alias vcat="~/src/nvimpager/nvimpager -c "
 alias icat="kitty +kitten icat"
 alias lg='lazygit'
-alias config='lazygit -g $HOME/.local/share/yadm/repo.git'
+alias lg-yadm='lazygit -g $HOME/.local/share/yadm/repo.git'
 alias cat='bat -p'
-alias l='exa'
 
 ############################################################
 # Options
