@@ -56,14 +56,17 @@ return function()
 		}
 	end
 
-	lsp.pyright.setup(config())
-	lsp.rust_analyzer.setup(config())
-	lsp.tsserver.setup(config())
+	lsp.ansiblels.setup(config({ format = true }))
+	lsp.cssls.setup(config())
 	lsp.gopls.setup(config())
 	lsp.html.setup(config({ format = true }))
 	lsp.jsonls.setup(config())
-	lsp.cssls.setup(config())
+	lsp.pyright.setup(config())
+	lsp.robotframework_ls.setup(config({ format = true }))
+	lsp.rust_analyzer.setup(config())
 	lsp.tailwindcss.setup(config())
+	lsp.terraformls.setup(config())
+	lsp.tsserver.setup(config())
 	lsp.sumneko_lua.setup({
 		on_attach = on_attach(),
 		capabilities = capabilities,

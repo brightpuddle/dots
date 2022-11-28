@@ -252,7 +252,13 @@ require("packer").startup({
 		use({ "lukas-reineke/lsp-format.nvim" })
 
 		-- symbol outline (uses LSP)
-		use({ "simrat39/symbols-outline.nvim", cmd = "SymbolsOutline" })
+		use({
+			"simrat39/symbols-outline.nvim",
+			cmd = "SymbolsOutline",
+			config = function()
+				require("symbols-outline").setup()
+			end,
+		})
 
 		-- Javascript / JSX
 		use({
