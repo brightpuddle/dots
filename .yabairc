@@ -3,8 +3,8 @@
 # https://github.com/koekeishiya/yabai/wiki/Configuration
 # codesign -fs 'yabai-cert' $(brew --prefix yabai)/bin/yabai
 # launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# sudo yabai --load-sa
 
 # borders
 yabai -m config window_border off

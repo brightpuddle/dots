@@ -184,6 +184,8 @@ brew "tcl-tk"
 brew "telnet"
 # Tool to build, change, and version infrastructure
 brew "terraform"
+# Terraform Language Server
+brew "terraform-ls"
 # Text interface for Git repositories
 brew "tig"
 # Command-line time tracking application
@@ -192,6 +194,8 @@ brew "timewarrior"
 brew "tmux"
 # Digital clock in ncurses
 brew "tty-clock"
+# Ncurses-based file manager with vi-like keybindings
+brew "vifm"
 # Image processing library
 brew "vips"
 # V programming language
@@ -242,6 +246,8 @@ cask "bunch"
 cask "citrix-workspace"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
+# Application window manager focusing on simplicity
+cask "divvy"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Developer platform
@@ -263,12 +269,10 @@ cask "font-roboto-mono-nerd-font"
 cask "font-ubuntu"
 # Web browser
 cask "google-chrome"
-# Web browser
-cask "google-chrome-beta"
 # Client for the Google Drive storage service
 cask "google-drive"
-# Note taking and to-do application with synchronization capabilities
-cask "joplin"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # GPU-based terminal emulator
 cask "kitty-nightly"
 # Productivity tool
@@ -279,8 +283,14 @@ cask "launchcontrol"
 cask "obsidian"
 # Visual communication software
 cask "omnigraffle"
+# VPN client
+cask "private-internet-access"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
 # View Spaces / Virtual Desktops in the menu bar

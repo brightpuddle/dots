@@ -303,6 +303,9 @@ require("packer").startup({
 		-- Jinja
 		use({ "lepture/vim-jinja", ft = { "jinja", "html.jinja" } })
 
+		-- Terraform
+		use({ "hashivim/vim-terraform", ft = { "terraform" } })
+
 		if PackerBootstrap then
 			require("packer").sync()
 		end
