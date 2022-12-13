@@ -232,6 +232,8 @@ brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 brew "ms-jpq/sad/sad"
 # Maintained ctags implementation
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 # Prebuilt OpenJDK binaries
 cask "adoptopenjdk8"
 # GPU-accelerated terminal emulator
@@ -246,8 +248,6 @@ cask "bunch"
 cask "citrix-workspace"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
-# Application window manager focusing on simplicity
-cask "divvy"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Developer platform
@@ -279,8 +279,6 @@ cask "kitty-nightly"
 cask "launchbar"
 # Create, manage and debug system- and user services
 cask "launchcontrol"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # Visual communication software
 cask "omnigraffle"
 # VPN client
@@ -299,14 +297,12 @@ cask "spaceman"
 cask "steam"
 # Replacement for RCDefaultApps, written in Swift
 cask "swiftdefaultappsprefpane"
+# Configurable document editor that supports Markdown
+cask "typora"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# Rust-based terminal
-cask "warp"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 # Open-source markdown editor
@@ -319,10 +315,8 @@ mas "Capital One Shopping", id: 1477110326
 mas "Evernote", id: 406056744
 mas "Messenger", id: 1480068668
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "MindNode", id: 992076693
 mas "MindNode", id: 1289197285
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "MindNode", id: 992076693
 mas "The Unarchiver", id: 425424353
 mas "Tomato 2", id: 1494210770
 mas "Transmit", id: 403388562
