@@ -1,0 +1,4 @@
+# [[language]]
+# name = "go"
+# file-types = ["go"]
+# language-server = { command = "efm-langserver" }

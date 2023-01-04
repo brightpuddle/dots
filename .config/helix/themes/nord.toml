@@ -1,6 +1,3 @@
-# Author : RayGervais<raygervais@hotmail.ca>
-
-"ui.linenr.selected" = { fg = "nord4" }
 "ui.text.focus" = { fg = "nord8", modifiers= ["bold"] }
 "ui.menu" = { fg = "nord6", bg = "#232d38" }
 "ui.menu.selected" = { fg = "nord8", bg = "nord2" }
@@ -16,7 +13,7 @@
 
 
 # nord1 - status bars, panels, modals, autocompletion
-"ui.statusline" = { fg = "nord4", bg = "#4c566a" }
+"ui.statusline" = { fg = "nord3", bg = "nord1" }
 "ui.popup" = { bg = "#232d38" }
 "ui.window" = { bg = "#232d38" }
 "ui.help" = { bg = "#232d38", fg = "nord4" }

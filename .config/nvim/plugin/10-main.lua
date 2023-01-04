@@ -152,15 +152,6 @@ require("packer").startup({
 			-- cmd = { "TroubleToggle" },
 		})
 
-		-- zen mode
-		-- use({
-		-- 	"Pocco81/TrueZen.nvim",
-		-- 	cmd = "TZAtaraxis",
-		-- 	config = function()
-		-- 		require("true-zen").setup()
-		-- 	end,
-		-- })
-
 		-- colorize hex codes
 		use({
 			"norcalli/nvim-colorizer.lua",
@@ -225,7 +216,6 @@ require("packer").startup({
 		use({
 			"hrsh7th/nvim-cmp",
 			requires = {
-
 				{ "saadparwaiz1/cmp_luasnip", requires = "L3MON4D3/LuaSnip" },
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-buffer",
@@ -280,6 +270,9 @@ require("packer").startup({
 			},
 		})
 
+		-- Zen
+		use({ "folke/zen-mode.nvim", cmd = { "ZenMode" }, config = require("config.zen") })
+
 		-- Go
 		use({
 			"fatih/vim-go",
@@ -305,6 +298,12 @@ require("packer").startup({
 
 		-- Terraform
 		use({ "hashivim/vim-terraform", ft = { "terraform" } })
+
+		-- V
+		use({ "ollykel/v-vim", ft = { "vlang" } })
+
+		-- Crystal
+		use({ "vim-crystal/vim-crystal", ft = { "crystal" } })
 
 		if PackerBootstrap then
 			require("packer").sync()

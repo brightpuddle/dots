@@ -27,7 +27,6 @@ alt - space : yabai -m window --toggle float;\
 alt - w : yabai -m window --toggle float;\
   yabai -m window --grid 1:9:1:0:7:1
 
-
 alt - f : yabai -m space --layout float;\
   yabai -m window --grid 1:1:1:1:1:1;
 

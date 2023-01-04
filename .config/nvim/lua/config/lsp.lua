@@ -67,6 +67,7 @@ return function()
 	lsp.tailwindcss.setup(config())
 	lsp.terraformls.setup(config())
 	lsp.tsserver.setup(config())
+	lsp.vls.setup(config({ format = true }))
 	lsp.sumneko_lua.setup({
 		on_attach = on_attach(),
 		capabilities = capabilities,
@@ -99,6 +100,8 @@ return function()
 			-- Code Actions
 
 			-- Formatting
+			formatting.trim_newlines,
+			formatting.trim_whitespace,
 			formatting.black,
 			formatting.fixjson,
 			formatting.golines,
@@ -118,8 +121,6 @@ return function()
 			formatting.shfmt,
 			formatting.stylua,
 			formatting.terraform_fmt,
-			formatting.trim_newlines,
-			formatting.trim_whitespace,
 			formatting.xmllint,
 		},
 	})
