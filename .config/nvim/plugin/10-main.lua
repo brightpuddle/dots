@@ -24,14 +24,18 @@ require("packer").startup({
 		-- TODO
 		-- Testing
 		-- https://github.com/rcarriga/neotest
+		-- use {
+		-- "nvim-neotest/neotest",
+		-- requires = {
+		-- "nvim-lua/plenary.nvim",
+		-- "nvim-treesitter/nvim-treesitter",
+		-- "antoinemadec/FixCursorHold.nvim"
+		-- }
+		-- }
 
 		-- TODO
 		-- Debugging
 		-- https://github.com/mfussenegger/nvim-dap
-
-		-- TODO
-		-- Go coverage
-		-- https://github.com/rafaelsq/nvim-goc.lua
 
 		-- TODO
 		-- Easier whichkey setup (need to test without first)
@@ -41,30 +45,31 @@ require("packer").startup({
 		-- Tmux and neovim splits
 		-- https://github.com/declancm/windex.nvim
 
-		-- require module caching
+		-- module caching for "require" statements
 		use({ "lewis6991/impatient.nvim" })
 
-		-- Pretty menus
+		-- pretty menus
 		use({ "stevearc/dressing.nvim" })
 
 		-- Keymaps
 		use({
 			"folke/which-key.nvim",
 			config = require("config.whichkey"),
-			-- opt = true,
 		})
 
-		-- Indent guides
+		-- indent guides
 		use({ "lukas-reineke/indent-blankline.nvim", ft = { "python" } })
 
 		-- faster filetypes
 		use({ "nathom/filetype.nvim", config = require("config.filetype") })
 
+		-- base64 encode/decode
+		use({ "taybart/b64.nvim" })
+
 		-- delete buffer or quit (consistent cmd-w)
 		use({ "ojroques/nvim-bufdel" })
 
 		-- tmux split integration
-		-- use({ "christoomey/vim-tmux-navigator" })
 		use({ "alexghergh/nvim-tmux-navigation", config = require("config.nav") })
 
 		-- startup time analysis
@@ -94,22 +99,6 @@ require("packer").startup({
 				require("nvim-ts-autotag").setup()
 			end,
 		})
-		-- use({
-		-- 	"alvan/vim-closetag",
-		-- 	ft = {
-		-- 		"html",
-		-- 		"xml",
-		-- 		"xhtml",
-		-- 		"javascript",
-		-- 		"javascriptreact",
-		-- 		"typescript",
-		-- 		"typescriptreact",
-		-- 		"reason",
-		-- 		"rescript",
-		-- 		"html.handlebars",
-		-- 	},
-		-- 	config = require("config.closetag"),
-		-- })
 
 		-- fast jq using autocmds
 		use({
@@ -133,9 +122,10 @@ require("packer").startup({
 		-- syntax highlighting, etc
 		use({ "nvim-treesitter/nvim-treesitter", config = require("config.treesitter") })
 
-		-- view syntax tree
+		-- treesitter syntax tree
 		use({ "nvim-treesitter/playground" })
 
+		-- status bar
 		use({
 			"feline-nvim/feline.nvim",
 			config = require("config.feline"),
@@ -149,7 +139,6 @@ require("packer").startup({
 			config = function()
 				require("trouble").setup()
 			end,
-			-- cmd = { "TroubleToggle" },
 		})
 
 		-- colorize hex codes
@@ -167,7 +156,6 @@ require("packer").startup({
 			config = function()
 				require("gitsigns").setup({ signcolumn = false })
 			end,
-			-- cmd = "Gitsigns",
 		})
 
 		-- easymotion
@@ -199,10 +187,6 @@ require("packer").startup({
 			cmd = { "Telescope" },
 			config = require("config.telescope"),
 		})
-
-		-- Better search highlighting
-		-- use({ "wincent/loupe" })
-		-- use({ "qxxxb/vim-searchhi" })
 
 		-- highlight and search for todo tags
 		use({
@@ -250,7 +234,21 @@ require("packer").startup({
 			end,
 		})
 
-		-- Javascript / JSX
+		-- zen
+		use({ "folke/zen-mode.nvim", cmd = { "ZenMode" }, config = require("config.zen") })
+
+		-- languges (alaphabetical)
+		-- crystal
+		use({ "vim-crystal/vim-crystal", ft = { "crystal" } })
+		-- go
+		use({
+			"ray-x/go.nvim",
+			ft = { "go" },
+			config = function()
+				require("go").setup()
+			end,
+		})
+		-- javascript / JSX
 		use({
 			"yuezk/vim-js",
 			ft = {
@@ -269,41 +267,22 @@ require("packer").startup({
 				"typescriptreact",
 			},
 		})
-
-		-- Zen
-		use({ "folke/zen-mode.nvim", cmd = { "ZenMode" }, config = require("config.zen") })
-
-		-- Go
-		use({
-			"fatih/vim-go",
-			run = ":GoInstallBinaries",
-			cmd = { "GoInstallBinaries", "GoDoc" },
-		})
-
-		-- Nginx
-		use({ "chr4/nginx.vim", ft = { "nginx" } })
-
-		-- Robot
-		use({ "mfukar/robotframework-vim", ft = { "robot" } })
-
-		-- Markdown
+		-- jinja
+		use({ "Glench/Vim-Jinja2-Syntax", ft = { "jinja", "html.jinja" } })
+		-- markdown
 		use({
 			"preservim/vim-markdown",
 			requires = "godlygeek/tabular",
 			ft = { "markdown" },
 		})
-
-		-- Jinja
-		use({ "lepture/vim-jinja", ft = { "jinja", "html.jinja" } })
-
-		-- Terraform
+		-- nginx
+		use({ "chr4/nginx.vim", ft = { "nginx" } })
+		-- robot
+		use({ "mfukar/robotframework-vim", ft = { "robot" } })
+		-- terraform
 		use({ "hashivim/vim-terraform", ft = { "terraform" } })
-
-		-- V
+		-- v
 		use({ "ollykel/v-vim", ft = { "vlang" } })
-
-		-- Crystal
-		use({ "vim-crystal/vim-crystal", ft = { "crystal" } })
 
 		if PackerBootstrap then
 			require("packer").sync()

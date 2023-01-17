@@ -1,6 +1,6 @@
 ---
 env:
-  TERM: xterm-256color
+  TERM: alacritty
 
 ############################################################
 # Keybindings
@@ -44,11 +44,11 @@ key_bindings:
   - { key: K, mods: Command|Shift, chars: "\x17k" }
   - { key: L, mods: Command|Shift, chars: "\x17l" }
   # Vim tab nav
-  - { key: RBracket, mods: Command|Shift, chars: "\x0fn" }
-  - { key: LBracket, mods: Command|Shift, chars: "\x0fp" }
+  - { key: RBracket, mods: Command, chars: "\x0fn" }
+  - { key: LBracket, mods: Command, chars: "\x0fp" }
   # Tmux tab nav
-  - { key: RBracket, mods: Command, chars: "\x01]" }
-  - { key: LBracket, mods: Command, chars: "\x01[" }
+  - { key: RBracket, mods: Command|Shift, chars: "\x01]" }
+  - { key: LBracket, mods: Command|Shift, chars: "\x01[" }
 
   # Mirror VSCode panels
   - { key: B, mods: Command, chars: "\x0fb" }
@@ -84,13 +84,13 @@ font:
     family: RobotoMono Nerd Font
     style: Regular
   bold:
-    style: Bold
+    style: Medium
   italic:
     style: Italic
   bold_italic:
-    style: Bold Italic
+    style: Medium Italic
   offset:
-    y: 0
+    y: 1
   size: 15
 
 ############################################################
