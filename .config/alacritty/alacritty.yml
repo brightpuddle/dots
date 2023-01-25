@@ -1,10 +1,66 @@
 ---
 env:
-  TERM: alacritty
+  TERM: xterm-256color
 
-############################################################
-# Keybindings
-############################################################
+window:
+  decorations: buttonless
+  opacity: 1.0
+  startup_mode: Windowed
+  padding:
+    x: 6
+    y: 6
+  dynamic_padding: true
+
+tabspaces: 2
+
+font:
+  normal:
+    family: RobotoMono Nerd Font
+    style: Regular
+  bold:
+    style: Medium
+  italic:
+    style: Italic
+  bold_italic:
+    style: Medium Italic
+  offset:
+    y: 1
+  size: 15
+
+draw_bold_text_with_bright_colors: false
+
+bell:
+  animation: EaseOutExpo
+  color: "0xffffff" # #ffffff
+  duration: 0
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+  hide_when_typing: true
+
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  save_to_clipboard: false
+
+mouse_bindings:
+  - mouse: Middle
+    action: PasteSelection
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+dynamic_title: true
+
+live_config_reload: true
+
+debug:
+  render_timer: false
+  persistent_logging: false
+  log_level: WARN
+  print_events: false
+  ref_test: false
 
 # <C-a> \x01 - tmux prefix
 # <C-o> \x0f - vim term leader
@@ -68,34 +124,6 @@ key_bindings:
     mods: Command
     chars: "vi ~/.config/alacritty/alacritty.yml\r"
 
-window:
-  decorations: buttonless
-  opacity: 1.0
-  startup_mode: Windowed
-  padding:
-    x: 6
-    y: 6
-  dynamic_padding: true
-
-tabspaces: 2
-
-font:
-  normal:
-    family: RobotoMono Nerd Font
-    style: Regular
-  bold:
-    style: Medium
-  italic:
-    style: Italic
-  bold_italic:
-    style: Medium Italic
-  offset:
-    y: 1
-  size: 15
-
-############################################################
-# Colors
-############################################################
 colors:
   primary:
     background: "#2e3440"
@@ -144,38 +172,3 @@ colors:
     magenta: "#8c738c"
     cyan: "#6d96a5"
     white: "#aeb3bb"
-
-draw_bold_text_with_bright_colors: false
-
-bell:
-  animation: EaseOutExpo
-  color: "0xffffff" # #ffffff
-  duration: 0
-
-mouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
-  hide_when_typing: true
-
-selection:
-  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
-  save_to_clipboard: false
-
-mouse_bindings:
-  - mouse: Middle
-    action: PasteSelection
-
-cursor:
-  style: Block
-  unfocused_hollow: true
-
-dynamic_title: true
-
-live_config_reload: true
-
-debug:
-  render_timer: false
-  persistent_logging: false
-  log_level: WARN
-  print_events: false
-  ref_test: false
