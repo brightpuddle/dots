@@ -1,3 +1,4 @@
+
 # MacOS cruft
 .DS_Store
 
@@ -30,3 +31,6 @@ known_hosts
 
 # Tmux plugins
 .config/tmux/plugins
+
+# Spicetify extensions
+.config/spicetify
