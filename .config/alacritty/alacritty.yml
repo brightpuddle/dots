@@ -24,7 +24,7 @@ font:
   bold_italic:
     style: Medium Italic
   offset:
-    y: 1
+    y: 2
   size: 15
 
 draw_bold_text_with_bright_colors: false
@@ -76,10 +76,10 @@ key_bindings:
   - { key: A, mods: Command, chars: "\x01" }
 
   # Ctrl-O for vim
-  - { key: O, mods: Command, chars: "\x0ff" }
 
   # Find/search
   - { key: P, mods: Command, chars: "\x10" }
+  - { key: O, mods: Command, chars: "\x0ffb" }
   - { key: P, mods: Command|Shift, chars: "\x0ffa" }
   - { key: F, mods: Command, chars: "\x01c" }
 
