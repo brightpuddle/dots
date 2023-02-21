@@ -13,7 +13,8 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.ghcup/bin:$PATH
 export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
-export PATH=$PATH:/Users/nathan/.spicetify
+export PATH=$PATH:$HOME/.spicetify
+export PATH=$PATH:$HOME/.dotnet/tools
 
 export GPG_TTY=$(tty)
 
