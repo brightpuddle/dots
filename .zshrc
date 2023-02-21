@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 ############################################################
 # Plugins
 ############################################################
@@ -57,6 +64,7 @@ alias t="task"
 alias tt="taskwarrior-tui"
 alias icat="kitty +kitten icat"
 alias lg='lazygit'
+alias ly='lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git'
 alias lg-yadm='lazygit -g $HOME/.local/share/yadm/repo.git'
 alias cat='bat -p'
 
@@ -125,3 +133,7 @@ n ()
 }
 
 # if [ "$TMUX" = "" ]; then tmux; fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+(( ! ${+functions[p10k]} )) || p10k finalize
