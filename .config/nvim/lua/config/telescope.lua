@@ -11,5 +11,10 @@ return function()
 				n = { ["<C-o>j"] = trouble.open_with_trouble },
 			},
 		},
+		pickers = {
+			buffers = {
+				theme = "ivy",
+			},
+		},
 	})
 end

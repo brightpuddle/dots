@@ -36,4 +36,8 @@ return function()
 	vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#3B4252", fg = "#5E81AC" })
 	-- SymbolBrowser
 	vim.api.nvim_set_hl(0, "FocusedSymbol", { fg = "#D08770", bold = 1 })
+	-- Neotree
+	vim.api.nvim_set_hl(0, "NeoTreeCursorLine", { bg = "#3B4252" })
+	-- Transparent background
+	-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", fg = "NONE" })
 end

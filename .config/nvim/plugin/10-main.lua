@@ -70,7 +70,8 @@ require("packer").startup({
 		use({ "ojroques/nvim-bufdel" })
 
 		-- tmux split integration
-		use({ "alexghergh/nvim-tmux-navigation", config = require("config.nav") })
+		-- use({ "alexghergh/nvim-tmux-navigation", config = require("config.nav") })
+		use({ "numToStr/Navigator.nvim", config = require("config.nav") })
 
 		-- startup time analysis
 		use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
@@ -82,6 +83,8 @@ require("packer").startup({
 				require("nvim-autopairs").setup()
 			end,
 		})
+		-- autotag
+		use({ "windwp/nvim-ts-autotag" })
 
 		-- comment mgmt
 		use("tpope/vim-commentary")
@@ -91,14 +94,6 @@ require("packer").startup({
 
 		-- use sad for project-wide find/replace
 		use({ "ray-x/sad.nvim", requires = "ray-x/guihua.lua", cmd = "Sad" })
-
-		-- auto-close tags
-		use({
-			"windwp/nvim-ts-autotag",
-			config = function()
-				require("nvim-ts-autotag").setup()
-			end,
-		})
 
 		-- fast jq using autocmds
 		use({
@@ -116,6 +111,7 @@ require("packer").startup({
 			"akinsho/bufferline.nvim",
 			tag = "*",
 			requires = { "kyazdani42/nvim-web-devicons" },
+			opt = true,
 			config = require("config.bufferline"),
 		})
 
@@ -126,8 +122,10 @@ require("packer").startup({
 		use({ "nvim-treesitter/playground" })
 
 		-- status bar
+		use({ "kyazdani42/nvim-web-devicons" })
 		use({
 			"feline-nvim/feline.nvim",
+			requires = { "kyazdani42/nvim-web-devicons" },
 			config = require("config.feline"),
 			after = { "nord-vim" },
 		})
@@ -170,11 +168,21 @@ require("packer").startup({
 
 		-- file/directory tree
 		use({
-			"kyazdani42/nvim-tree.lua",
-			requires = { "kyazdani42/nvim-web-devicons" },
-			cmd = "NvimTreeToggle",
-			config = require("config.nvimtree"),
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v2.x",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+				"MunifTanjim/nui.nvim",
+			},
+			config = require("config.neotree"),
 		})
+		-- use({
+		-- 	"kyazdani42/nvim-tree.lua",
+		-- 	requires = { "kyazdani42/nvim-web-devicons" },
+		-- 	cmd = "NvimTreeToggle",
+		-- 	config = require("config.nvimtree"),
+		-- })
 
 		-- fzf/CtrlP
 		use({

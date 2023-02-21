@@ -69,7 +69,7 @@ return function()
 	lsp.terraformls.setup(config())
 	lsp.tsserver.setup(config())
 	lsp.vls.setup(config({ format = true }))
-	lsp.sumneko_lua.setup({
+	lsp.lua_ls.setup({
 		on_attach = on_attach(),
 		capabilities = capabilities,
 		settings = {
@@ -78,7 +78,7 @@ return function()
 					version = "LuaJIT",
 				},
 				diagnostics = {
-					globals = { "vim" },
+					globals = { "vim", "hs" },
 				},
 			},
 		},
@@ -101,9 +101,8 @@ return function()
 			-- Code Actions
 
 			-- Formatting
-			formatting.trim_newlines,
-			formatting.trim_whitespace,
 			formatting.black,
+			formatting.csharpier,
 			formatting.fixjson,
 			formatting.golines,
 			formatting.isort,
@@ -122,6 +121,8 @@ return function()
 			formatting.shfmt,
 			formatting.stylua,
 			formatting.terraform_fmt,
+			formatting.trim_newlines,
+			formatting.trim_whitespace,
 			formatting.xmllint,
 		},
 	})

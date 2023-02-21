@@ -6,5 +6,8 @@ return function()
 		playground = {
 			enable = true,
 		},
+		autotag = {
+			enable = true,
+		},
 	})
 end
