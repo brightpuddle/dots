@@ -17,25 +17,17 @@ require("packer").startup({
 		-- package management
 		use({ "wbthomason/packer.nvim" })
 
-		-- TODO
-		-- Google Keep integration???
-		-- https://github.com/stevearc/gkeep.nvim
-
-		-- TODO
 		-- Testing
-		-- https://github.com/rcarriga/neotest
-		-- use {
-		-- "nvim-neotest/neotest",
-		-- requires = {
-		-- "nvim-lua/plenary.nvim",
-		-- "nvim-treesitter/nvim-treesitter",
-		-- "antoinemadec/FixCursorHold.nvim"
-		-- }
-		-- }
+		use({
+			"nvim-neotest/neotest",
+			opt = true,
+			requires = {
+				"antoinemadec/FixCursorHold.nvim",
+			},
+		})
 
-		-- TODO
 		-- Debugging
-		-- https://github.com/mfussenegger/nvim-dap
+		use({ "rcarriga/nvim-dap-ui", opt = true, requires = { "mfussenegger/nvim-dap" } })
 
 		-- TODO
 		-- Easier whichkey setup (need to test without first)
@@ -105,13 +97,14 @@ require("packer").startup({
 
 		-- colorscheme
 		use({ "arcticicestudio/nord-vim", config = require("config.color") })
+		-- use({ "shaunsingh/nord.nvim", config = require("config.color") })
 
 		-- "tab" line with buffers
 		use({
 			"akinsho/bufferline.nvim",
 			tag = "*",
 			requires = { "kyazdani42/nvim-web-devicons" },
-			opt = true,
+			-- opt = true,
 			config = require("config.bufferline"),
 		})
 
@@ -175,6 +168,7 @@ require("packer").startup({
 				"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 				"MunifTanjim/nui.nvim",
 			},
+			cmd = "Neotree",
 			config = require("config.neotree"),
 		})
 		-- use({
