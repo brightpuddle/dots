@@ -46,17 +46,23 @@ return {
 	color_scheme = "nord",
 	window_decorations = "RESIZE",
 	disable_default_key_bindings = true,
+	native_macos_fullscreen_mode = true,
 	-- debug_key_events = true,
 	window_padding = {
 		left = 8,
 		right = 8,
-		top = 4,
-		bottom = 4,
+		top = 8,
+		bottom = 8,
 	},
-	hide_tab_bar_if_only_one_tab = true,
+	enable_tab_bar = false,
+	-- use_fancy_tab_bar = false,
+	-- show_tabs_in_tab_bar = false,
+	-- show_new_tab_button_in_tab_bar = false,
 	window_frame = {
-		active_titlebar_bg = "#191c23",
-		inactive_titlebar_bg = "#191c23",
+		-- active_titlebar_bg = "#191c23",
+		-- inactive_titlebar_bg = "#191c23",
+		active_titlebar_bg = "#000000",
+		inactive_titlebar_bg = "#000000",
 	},
 	colors = {
 		tab_bar = {
@@ -86,6 +92,7 @@ return {
 		map("=", "CMD", a.IncreaseFontSize),
 		map("-", "CMD", a.DecreaseFontSize),
 		map("0", "CMD", a.ResetFontSize),
+		map("Space", "CTRL|SHIFT", a.ActivateCommandPalette),
 
 		-- "Ctrl-A" for tmux
 		map("a", "CMD", send(ctrl_a)),
