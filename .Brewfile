@@ -145,6 +145,8 @@ brew "telnet"
 brew "terraform"
 # Terraform Language Server
 brew "terraform-ls"
+# Multi-platform code-search similar to ack and ag
+brew "the_platinum_searcher"
 # Command-line time tracking application
 brew "timewarrior"
 # Terminal multiplexer
@@ -186,8 +188,6 @@ cask "1password-cli"
 cask "adoptopenjdk8"
 # GPU-accelerated terminal emulator
 cask "alacritty"
-# Automatic tiling window manager similar to xmonad
-cask "amethyst"
 # Android SDK component
 cask "android-platform-tools"
 # Menu bar icon organizer
@@ -210,13 +210,13 @@ cask "flutter"
 # Icon set and toolkit
 cask "font-fontawesome"
 cask "font-material-icons"
+# Font with a mechanical skeleton and the forms are largely geometric
+cask "font-roboto"
 cask "font-roboto-mono"
 # Developer targeted fonts with a high number of glyphs
 cask "font-roboto-mono-nerd-font"
 # Web browser
 cask "google-chrome"
-# Web browser
-cask "google-chrome-beta"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Desktop automation application
@@ -225,8 +225,6 @@ cask "hammerspoon"
 cask "iterm2"
 # GPU-based terminal emulator
 cask "kitty-nightly"
-# Productivity tool
-cask "launchbar"
 # Create, manage and debug system- and user services
 cask "launchcontrol"
 # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -239,6 +237,8 @@ cask "onyx"
 cask "private-internet-access"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
+# Archive manager for data compression and backups
+cask "rar"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Move and resize windows using keyboard shortcuts or snap areas
@@ -255,6 +255,8 @@ cask "steam"
 cask "swiftdefaultappsprefpane"
 # To-do list
 cask "todoist"
+# Utility to hide the notch
+cask "topnotch"
 # Configurable document editor that supports Markdown
 cask "typora"
 # Open-source code editor
@@ -272,8 +274,9 @@ mas "Eno From Capital One", id: 1590422864
 mas "Evernote", id: 406056744
 mas "Messenger", id: 1480068668
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft To Do", id: 1274495053
 mas "MindNode", id: 992076693
-mas "rcmd", id: 1596283165
 mas "The Unarchiver", id: 425424353
+mas "ToDo", id: 1498581975
 mas "Transmit", id: 403388562
 mas "Trello", id: 1278508951
