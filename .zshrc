@@ -66,7 +66,7 @@ alias icat="kitty +kitten icat"
 alias lg='lazygit'
 alias ly='lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git'
 alias lg-yadm='lazygit -g $HOME/.local/share/yadm/repo.git'
-alias cat='bat -p'
+alias cat='bat -Pp'
 
 ############################################################
 # Options
