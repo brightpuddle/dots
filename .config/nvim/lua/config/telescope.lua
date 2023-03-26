@@ -13,7 +13,7 @@ return function()
 		},
 		pickers = {
 			buffers = {
-				theme = "ivy",
+				theme = "dropdown",
 			},
 		},
 	})
