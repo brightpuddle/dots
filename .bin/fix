@@ -4,5 +4,3 @@ HN=e3bc2
 scutil --set ComputerName $HN
 scutil --set HostName $HN
 scutil --set LocalHostName $HN
-
-/usr/bin/defaults write /Library/Preferences/com.apple.screensaver loginWindowIdleTime 0
