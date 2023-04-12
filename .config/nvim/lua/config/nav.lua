@@ -11,4 +11,8 @@ return function()
 	k.set({ "n", "i" }, "<C-w>j", "<cmd>NavigatorDown<cr>")
 	k.set({ "n", "i" }, "<C-w>k", "<cmd>NavigatorUp<cr>")
 	k.set({ "n", "i" }, "<C-w>l", "<cmd>NavigatorRight<cr>")
+	k.set({ "n", "i" }, "<C-h>", "<cmd>NavigatorLeft<cr>")
+	k.set({ "n", "i" }, "<C-j>", "<cmd>NavigatorDown<cr>")
+	k.set({ "n", "i" }, "<C-k>", "<cmd>NavigatorUp<cr>")
+	k.set({ "n", "i" }, "<C-l>", "<cmd>NavigatorRight<cr>")
 end

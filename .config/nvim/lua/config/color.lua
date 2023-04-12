@@ -40,4 +40,6 @@ return function()
 	vim.api.nvim_set_hl(0, "NeoTreeCursorLine", { bg = "#3B4252" })
 	-- Transparent background
 	-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#282E39" })
+	vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#2E3440", bg = "#2E3440" })
 end

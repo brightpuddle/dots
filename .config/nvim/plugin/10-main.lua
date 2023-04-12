@@ -26,6 +26,8 @@ require("packer").startup({
 			},
 		})
 
+		use({ "epwalsh/obsidian.nvim", requires = "nvim-lua/plenary.nvim", config = require("config.obsidian") })
+
 		-- Debugging
 		use({ "rcarriga/nvim-dap-ui", opt = true, requires = { "mfussenegger/nvim-dap" } })
 
@@ -62,7 +64,6 @@ require("packer").startup({
 		use({ "ojroques/nvim-bufdel" })
 
 		-- tmux split integration
-		-- use({ "alexghergh/nvim-tmux-navigation", config = require("config.nav") })
 		use({ "numToStr/Navigator.nvim", config = require("config.nav") })
 
 		-- startup time analysis
@@ -112,12 +113,12 @@ require("packer").startup({
 		use({ "nvim-treesitter/nvim-treesitter", config = require("config.treesitter") })
 
 		-- treesitter syntax tree
-		use({ "nvim-treesitter/playground" })
+		-- use({ "nvim-treesitter/playground" })
 
 		-- status bar
 		use({ "kyazdani42/nvim-web-devicons" })
 		use({
-			"feline-nvim/feline.nvim",
+			"freddiehaddad/feline.nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
 			config = require("config.feline"),
 			after = { "nord-vim" },

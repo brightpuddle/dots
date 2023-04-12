@@ -58,3 +58,12 @@ k.set("n", "\\", "<cmd>noh<cr>")
 -- Directory Tree
 k.set({ "n", "i" }, "<C-o>b", "<cmd>Neotree toggle<cr>")
 k.set("n", "<leader>ob", "<cmd>Neotree toggle buffers<cr>")
+
+-- Obsidian follow links
+k.set("n", "gf", function()
+	if require("obsidian").util.cursor_on_markdown_link() then
+		return "<cmd>ObsidianFollowLink<CR>"
+	else
+		return "gf"
+	end
+end, { noremap = false, expr = true })

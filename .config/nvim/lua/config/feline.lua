@@ -267,15 +267,15 @@ return function()
 			},
 			inactive = {
 				{
-					comps.left,
+					-- comps.left,
 					-- File info
-					comps.file.folder,
-					comps.file.filename,
+					-- comps.file.folder,
+					-- comps.file.filename,
 				},
 				{},
 				{
-					comps.location.percentage,
-					comps.right,
+					-- comps.location.percentage,
+					-- comps.right,
 				},
 			},
 		},

@@ -96,6 +96,7 @@ return function()
 			diagnostics.eslint_d,
 			diagnostics.flake8,
 			diagnostics.hadolint,
+			diagnostics.npm_groovy_lint,
 			diagnostics.revive,
 
 			-- Code Actions
@@ -106,6 +107,7 @@ return function()
 			formatting.fixjson,
 			formatting.golines,
 			formatting.isort,
+			formatting.npm_groovy_lint,
 			formatting.prettierd.with({
 				filetypes = {
 					"css",

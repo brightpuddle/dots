@@ -40,30 +40,32 @@ return {
 	-- Font
 	font = w.font("RobotoMono Nerd Font", { weight = "Medium" }),
 	font_size = 15.0,
-	-- cell_width = 1,
+	-- cell_width
 	line_height = 1.1,
 	--
 	color_scheme = "nord",
+	check_for_updates = false,
 	window_decorations = "RESIZE",
 	disable_default_key_bindings = true,
 	native_macos_fullscreen_mode = true,
 	-- debug_key_events = true,
-	window_padding = {
-		left = 8,
-		right = 8,
-		top = 8,
-		bottom = 8,
-	},
+	-- window_padding = {
+	-- 	left = 8,
+	-- 	right = 8,
+	-- 	top = 8,
+	-- 	bottom = 8,
+	-- },
 	enable_tab_bar = false,
-	-- use_fancy_tab_bar = false,
-	-- show_tabs_in_tab_bar = false,
-	-- show_new_tab_button_in_tab_bar = false,
+	use_fancy_tab_bar = true,
+	show_tabs_in_tab_bar = false,
+	show_new_tab_button_in_tab_bar = false,
 	window_frame = {
 		-- active_titlebar_bg = "#191c23",
 		-- inactive_titlebar_bg = "#191c23",
 		active_titlebar_bg = "#000000",
 		inactive_titlebar_bg = "#000000",
 	},
+	tab_max_width = 8,
 	colors = {
 		tab_bar = {
 			active_tab = {
@@ -78,15 +80,16 @@ return {
 	},
 	scrollback_lines = 3500,
 	keys = {
-		-- MacOS defaults
-		map(",", "CMD", a.SendString("vi ~/.config/wezterm/wezterm.lua\r")),
+		-- MacOS default
 		map("s", "CMD", send(ctrl_o, "w")),
 		map("w", "CMD", send(map("d", "CTRL"))),
+		map(",", "CMD", a.SendString("vi ~/.config/wezterm/wezterm.lua\r")),
 		map("z", "CMD", send(ctrl_a, "z")),
 		map("c", "CMD", a.CopyTo("Clipboard")),
 		map("v", "CMD", a.PasteFrom("Clipboard")),
 		map("m", "CMD", a.Hide),
 		map("h", "CMD", a.HideApplication),
+		-- map("h", "CMD|SHIFT", a.Hide)
 		map("n", "CMD", a.SpawnWindow),
 		map("f", "CMD|SHIFT", a.ToggleFullScreen),
 		map("=", "CMD", a.IncreaseFontSize),
@@ -94,11 +97,21 @@ return {
 		map("0", "CMD", a.ResetFontSize),
 		map("Space", "CTRL|SHIFT", a.ActivateCommandPalette),
 
-		-- "Ctrl-A" for tmux
-		map("a", "CMD", send(ctrl_a)),
-
+		-- Split
+		-- map("d", "CMD", a.SplitVertical({ domain = "CurrentPaneDomain" })),
+		-- map("d", "CMD|SHIFT", a.SplitHorizontal({ domain = "CurrentPaneDomain" })),
+		map("d", "CMD", send(ctrl_w, "s")),
+		map("d", "CMD|SHIFT", send(ctrl_w, "S")),
+		-- Vim/tmux nav
+		map("h", "CMD|SHIFT", send(ctrl_w, "h")),
+		map("j", "CMD|SHIFT", send(ctrl_w, "j")),
+		map("k", "CMD|SHIFT", send(ctrl_w, "k")),
+		map("l", "CMD|SHIFT", send(ctrl_w, "l")),
 		-- "CtrlP"
 		map("p", "CMD", send(map("p", "CTRL"))),
+
+		-- "Ctrl-A" for tmux
+		map("a", "CMD", send(ctrl_a)),
 
 		-- Find/search
 		map("p", "CMD", send(map("p", "CTRL"))),
@@ -109,22 +122,12 @@ return {
 		-- Splits / windows
 		map("Enter", "CMD", send(ctrl_a, "z")),
 
-		-- Split
-		map("d", "CMD", send(ctrl_w, "s")),
-		map("d", "CMD|SHIFT", send(ctrl_w, "S")),
-
 		-- Rotate
 		map("r", "CMD", send(ctrl_a, "r")),
 		-- Mirror
 		map("y", "CMD", send(ctrl_a, "y")),
 		-- Tab
 		map("t", "CMD", send(ctrl_a, "n")),
-
-		-- Vim/tmux nav
-		map("h", "CMD|SHIFT", send(ctrl_w, "h")),
-		map("j", "CMD|SHIFT", send(ctrl_w, "j")),
-		map("k", "CMD|SHIFT", send(ctrl_w, "k")),
-		map("l", "CMD|SHIFT", send(ctrl_w, "l")),
 
 		-- Vim tab nav
 		map("]", "CMD", send(ctrl_o, "n")),
@@ -142,4 +145,5 @@ return {
 		map("j", "CMD", send(ctrl_o, "j")),
 		map("k", "CMD", send(ctrl_o, "k")),
 	},
+	-- },
 }

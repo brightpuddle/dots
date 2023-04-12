@@ -48,7 +48,8 @@ o.foldenable = false
 o.grepprg = "rg --color=never"
 o.guicursor = "a:blinkon0,i:ver25-iCursor"
 o.ignorecase = true
-o.laststatus = 2
+o.laststatus = 3
+o.cmdheight = 0
 o.linebreak = true
 o.mouse = "a"
 o.number = true
