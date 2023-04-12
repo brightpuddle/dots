@@ -25,8 +25,12 @@ brew "libpng"
 brew "xz"
 # Spell checker with better logic than ispell
 brew "aspell"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
 # Core application library for C
 brew "glib"
 # Cross-platform make
@@ -36,7 +40,7 @@ brew "cmatrix"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # .NET Core
-brew "dotnet@6"
+brew "dotnet"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
 # Run arbitrary commands when files change
@@ -77,10 +81,6 @@ brew "harfbuzz"
 brew "helix"
 # Command-line oriented TCP/IP packet assembler/analyzer
 brew "hping"
-# Text-based UI library
-brew "ncurses"
-# Improved top (interactive process viewer)
-brew "htop"
 # Command-line benchmarking tool
 brew "hyperfine"
 # International Ispell
@@ -101,6 +101,8 @@ brew "luarocks"
 brew "mas"
 # Minimalist GNU for Windows and GCC cross-compilers
 brew "mingw-w64"
+# Text-based UI library
+brew "ncurses"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -113,8 +115,12 @@ brew "nnn"
 brew "node"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 # Static type checker for Python
 brew "pyright"
+# Python interface to Tcl/Tk
+brew "python-tk@3.11"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
 # Search tool like grep and The Silver Searcher
@@ -129,6 +135,8 @@ brew "rustup-init"
 brew "shfmt"
 # Simple keystroke visualizer
 brew "showkey"
+# SOcket CAT: netcat on steroids
+brew "socat"
 # Terminal-based client for Spotify
 brew "spotify-tui"
 # Spotify daemon
@@ -145,6 +153,8 @@ brew "telnet"
 brew "terraform"
 # Terraform Language Server
 brew "terraform-ls"
+# Thin wrapper for Terraform e.g. for locking state
+brew "terragrunt"
 # Multi-platform code-search similar to ack and ag
 brew "the_platinum_searcher"
 # Command-line time tracking application
@@ -190,6 +200,8 @@ cask "adoptopenjdk8"
 cask "alacritty"
 # Android SDK component
 cask "android-platform-tools"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Menu bar icon organizer
 cask "bartender"
 cask "beardedspice"
@@ -221,18 +233,18 @@ cask "google-chrome"
 cask "google-drive"
 # Desktop automation application
 cask "hammerspoon"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
-# GPU-based terminal emulator
-cask "kitty-nightly"
 # Create, manage and debug system- and user services
 cask "launchcontrol"
+# Open source implementation of Microsoft's .NET Framework
+cask "mono-mdk-for-visual-studio"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Visual communication software
 cask "omnigraffle"
 # Verify system files structure, run miscellaneous maintenance and more
 cask "onyx"
+# Collaboration platform for API development
+cask "postman"
 # VPN client
 cask "private-internet-access"
 # Peer to peer Bitorrent client
@@ -241,8 +253,6 @@ cask "qbittorrent"
 cask "rar"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
 # View Spaces / Virtual Desktops in the menu bar
@@ -259,24 +269,24 @@ cask "todoist"
 cask "topnotch"
 # Configurable document editor that supports Markdown
 cask "typora"
+# Integrated development environment
+cask "visual-studio"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm-nightly"
-mas "1Password for Safari", id: 1569813296
+cask "wezterm"
+# Open-source markdown editor
+cask "zettlr"
 mas "Amphetamine", id: 937984704
 mas "Balance", id: 1637311725
-mas "Capital One Shopping", id: 1477110326
 mas "Developer", id: 640199958
-mas "Eno From Capital One", id: 1590422864
 mas "Evernote", id: 406056744
 mas "Messenger", id: 1480068668
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft To Do", id: 1274495053
 mas "MindNode", id: 992076693
 mas "The Unarchiver", id: 425424353
-mas "ToDo", id: 1498581975
 mas "Transmit", id: 403388562
 mas "Trello", id: 1278508951
