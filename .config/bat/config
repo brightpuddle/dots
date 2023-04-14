@@ -2,5 +2,6 @@
 #--italic-text=always
 #--paging=never
 --pager="less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse -X"
+--theme="Nord"
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"

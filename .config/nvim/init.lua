@@ -87,9 +87,12 @@ vim.diagnostic.config({
 
 -- Plugins that use settings for config
 g.better_escape_shortcut = "jk"
+
+-- Nord colorscheme settings
 g.nord_contrast = true
-g.nord_borders = false
+g.nord_borders = true
 g.nord_enable_sidebar_background = true
+g.nord_italic = false
 
 local packerSyncGrp = vim.api.nvim_create_augroup("PackerSyncGrp", {})
 vim.api.nvim_clear_autocmds({ group = packerSyncGrp })

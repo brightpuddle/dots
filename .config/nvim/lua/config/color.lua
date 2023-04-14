@@ -25,21 +25,31 @@
 -- #B48EAD
 
 return function()
-	vim.cmd("colorscheme nord")
+	vim.cmd.colorscheme("nord")
+	-- require("catppuccin").setup({
+	-- 	custom_highlights = function(c)
+	-- 		return {
+	-- 		  ["@"]
+	-- 		}
+	-- 	end,
+	-- })
+
 	-- General visibility
+	vim.api.nvim_set_hl(0, "Comment", { fg = "#616e88", italic = 1 })
 	vim.api.nvim_set_hl(0, "Keyword", { fg = "#B48EAD" })
 	vim.api.nvim_set_hl(0, "Number", { fg = "#D08770" })
 	vim.api.nvim_set_hl(0, "Float", { link = "Number" })
 	vim.api.nvim_set_hl(0, "Boolean", { link = "Number" })
-	-- Limited cursorline
-	vim.api.nvim_set_hl(0, "CursorLine", {})
-	vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#3B4252", fg = "#5E81AC" })
+
+	-- Cursorline
+	vim.api.nvim_set_hl(0, "CursorLine", { bg = "#282E39", fg = "#282E39" })
+	vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#282E39", fg = "#282E39" })
+
 	-- SymbolBrowser
 	vim.api.nvim_set_hl(0, "FocusedSymbol", { fg = "#D08770", bold = 1 })
+
 	-- Neotree
 	vim.api.nvim_set_hl(0, "NeoTreeCursorLine", { bg = "#3B4252" })
-	-- Transparent background
-	-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", fg = "NONE" })
 	vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#282E39" })
 	vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#2E3440", bg = "#2E3440" })
 end

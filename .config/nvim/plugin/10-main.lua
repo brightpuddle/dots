@@ -32,10 +32,6 @@ require("packer").startup({
 		use({ "rcarriga/nvim-dap-ui", opt = true, requires = { "mfussenegger/nvim-dap" } })
 
 		-- TODO
-		-- Easier whichkey setup (need to test without first)
-		-- https://github.com/AckslD/nvim-whichkey-setup.lua
-
-		-- TODO
 		-- Tmux and neovim splits
 		-- https://github.com/declancm/windex.nvim
 
@@ -50,12 +46,12 @@ require("packer").startup({
 			"folke/which-key.nvim",
 			config = require("config.whichkey"),
 		})
+		-- TODO
+		-- Easier whichkey setup (need to test without first)
+		-- https://github.com/AckslD/nvim-whichkey-setup.lua
 
 		-- indent guides
 		use({ "lukas-reineke/indent-blankline.nvim", ft = { "python" } })
-
-		-- faster filetypes
-		use({ "nathom/filetype.nvim", config = require("config.filetype") })
 
 		-- base64 encode/decode
 		use({ "taybart/b64.nvim" })
@@ -97,8 +93,8 @@ require("packer").startup({
 		})
 
 		-- colorscheme
-		use({ "arcticicestudio/nord-vim", config = require("config.color") })
-		-- use({ "shaunsingh/nord.nvim", config = require("config.color") })
+		use({ "nordtheme/vim", as = "nord", config = require("config.color") })
+		-- use({ "catppuccin/nvim", as = "catppuccin", config = require("config.color") })
 
 		-- "tab" line with buffers
 		use({
@@ -111,9 +107,7 @@ require("packer").startup({
 
 		-- syntax highlighting, etc
 		use({ "nvim-treesitter/nvim-treesitter", config = require("config.treesitter") })
-
-		-- treesitter syntax tree
-		-- use({ "nvim-treesitter/playground" })
+		use({ "nvim-treesitter/playground" })
 
 		-- status bar
 		use({ "kyazdani42/nvim-web-devicons" })
@@ -121,7 +115,7 @@ require("packer").startup({
 			"freddiehaddad/feline.nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
 			config = require("config.feline"),
-			after = { "nord-vim" },
+			after = "nord",
 		})
 
 		-- quickfix/problem viewer
@@ -172,12 +166,6 @@ require("packer").startup({
 			cmd = "Neotree",
 			config = require("config.neotree"),
 		})
-		-- use({
-		-- 	"kyazdani42/nvim-tree.lua",
-		-- 	requires = { "kyazdani42/nvim-web-devicons" },
-		-- 	cmd = "NvimTreeToggle",
-		-- 	config = require("config.nvimtree"),
-		-- })
 
 		-- fzf/CtrlP
 		use({

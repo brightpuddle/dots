@@ -11,6 +11,8 @@ yabai -m config window_border on
 
 # opacity
 yabai -m config window_opacity off
+# First two digits are opacity
+yabai -m config active_window_border_color "0x70D08770"
 
 # animation
 # yabai -m config window_animation_duration 0.35

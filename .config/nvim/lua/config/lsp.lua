@@ -85,11 +85,14 @@ return function()
 	})
 
 	local null_ls = require("null-ls")
-	local formatting = null_ls.builtins.formatting
+	-- local actions = null_ls.builtins.code_actions
 	local diagnostics = null_ls.builtins.diagnostics
+	local formatting = null_ls.builtins.formatting
 	null_ls.setup({
 		on_attach = on_attach({ format = true }),
 		sources = {
+			-- Code Actions
+
 			-- Diagnostics
 			diagnostics.ansiblelint,
 			diagnostics.curlylint,
@@ -98,8 +101,6 @@ return function()
 			diagnostics.hadolint,
 			diagnostics.npm_groovy_lint,
 			diagnostics.revive,
-
-			-- Code Actions
 
 			-- Formatting
 			formatting.black,
