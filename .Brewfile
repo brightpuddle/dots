@@ -37,6 +37,8 @@ brew "glib"
 brew "cmake"
 # Console Matrix
 brew "cmatrix"
+# Fast and statically typed, compiled language with Ruby-like syntax
+brew "crystal"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # .NET Core
@@ -173,6 +175,10 @@ brew "wget"
 brew "yadm"
 # JavaScript package manager
 brew "yarn"
+# Programming language designed for robustness, optimality, and clarity
+brew "zig"
+# Language Server for Zig
+brew "zls"
 # Deliver Go binaries as fast and easily as possible
 brew "goreleaser/tap/goreleaser"
 # instant coding answers via the command line (howdoi in rust)
@@ -287,6 +293,8 @@ mas "Messenger", id: 1480068668
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft To Do", id: 1274495053
 mas "MindNode", id: 992076693
+mas "Silicio", id: 933627574
 mas "The Unarchiver", id: 425424353
 mas "Transmit", id: 403388562
 mas "Trello", id: 1278508951
+mas "Xcode", id: 497799835
