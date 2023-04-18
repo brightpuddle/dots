@@ -39,7 +39,7 @@ require("packer").startup({
 		use({ "lewis6991/impatient.nvim" })
 
 		-- pretty menus
-		use({ "stevearc/dressing.nvim" })
+		-- use({ "stevearc/dressing.nvim" })
 
 		-- Keymaps
 		use({
@@ -94,15 +94,21 @@ require("packer").startup({
 
 		-- colorscheme
 		use({ "nordtheme/vim", as = "nord", config = require("config.color") })
-		-- use({ "catppuccin/nvim", as = "catppuccin", config = require("config.color") })
+		-- use({ "shaunsingh/nord.nvim", as = "nord", config = require("config.color") })
 
 		-- "tab" line with buffers
+		-- use({
+		-- 	"akinsho/bufferline.nvim",
+		-- 	tag = "*",
+		-- 	requires = { "kyazdani42/nvim-web-devicons" },
+		-- 	-- opt = true,
+		-- 	config = require("config.bufferline"),
+		-- })
 		use({
-			"akinsho/bufferline.nvim",
-			tag = "*",
-			requires = { "kyazdani42/nvim-web-devicons" },
-			-- opt = true,
-			config = require("config.bufferline"),
+			"willothy/nvim-cokeline",
+			requires = "kyazdani42/nvim-web-devicons",
+			config = require("config.cokeline"),
+			after = "nord",
 		})
 
 		-- syntax highlighting, etc

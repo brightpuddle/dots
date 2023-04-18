@@ -36,7 +36,85 @@ local ctrl_a = { key = "a", mods = "CTRL" }
 -- cross-tool window mgmt
 local ctrl_w = { key = "w", mods = "CTRL" }
 
+local C = {
+	active = {
+		fg = "#d8dee9",
+		bg = "#434c5e",
+	},
+	inactive = {
+		fg = "#d8dee9",
+		bg = "#2e3440",
+	},
+	bg = "#2a2e38",
+	-- bg = "#000000",
+	fg = "#d8dee9",
+}
+-- local sep = {
+-- 	left = "",
+-- 	right = "",
+-- }
+
+-- tab, tabs, panes, config, hover, max_width
+-- w.on("format-tab-title", function(tab, _, _, _, _, max_width)
+-- 	local title = string.gmatch(tab.active_pane.title, "([^/]+)$")()
+-- 	local width = max_width - 9
+-- 	if #title > width then
+-- 		title = string.sub(title, #title - width, #title)
+-- 	end
+-- 	if tab.is_active then
+-- 		return {
+-- 			{ Foreground = { Color = "#8fbcbb" } },
+-- 			{ Text = "  " },
+-- 			{ Foreground = { Color = C.active.fg } },
+-- 			{ Text = " " .. title .. " " },
+-- 		}
+-- 	else
+-- 		return {
+-- 			{ Foreground = { Color = C.inactive.fg } },
+-- 			{ Text = "  " },
+-- 			{ Text = " " .. title .. " " },
+-- 		}
+-- 	end
+-- 	-- if tab.is_active then
+-- 	-- 	return {
+-- 	-- 		{ Background = { Color = C.bg } },
+-- 	-- 		{ Text = " " },
+-- 	-- 		{ Background = { Color = C.bg } },
+-- 	-- 		{ Foreground = { Color = C.active.bg } },
+-- 	-- 		{ Text = sep.left },
+-- 	-- 		{ Background = { Color = C.active.bg } },
+-- 	-- 		{ Foreground = { Color = "#8fbcbb" } },
+-- 	-- 		{ Text = "  " },
+-- 	-- 		{ Foreground = { Color = C.active.fg } },
+-- 	-- 		{ Text = " " .. title .. " " },
+-- 	-- 		{ Background = { Color = C.bg } },
+-- 	-- 		{ Foreground = { Color = C.active.bg } },
+-- 	-- 		{ Text = sep.right },
+-- 	-- 		{ Background = { Color = C.bg } },
+-- 	-- 		{ Text = " " },
+-- 	-- 	}
+-- 	-- else
+-- 	-- 	return {
+-- 	-- 		{ Background = { Color = C.bg } },
+-- 	-- 		{ Text = " " },
+-- 	-- 		{ Background = { Color = C.bg } },
+-- 	-- 		{ Foreground = { Color = C.inactive.bg } },
+-- 	-- 		{ Text = sep.left },
+-- 	-- 		{ Background = { Color = C.inactive.bg } },
+-- 	-- 		{ Foreground = { Color = C.inactive.fg } },
+-- 	-- 		{ Text = "  " },
+-- 	-- 		{ Text = " " .. title .. " " },
+-- 	-- 		{ Background = { Color = C.bg } },
+-- 	-- 		{ Foreground = { Color = C.inactive.bg } },
+-- 	-- 		{ Text = sep.right },
+-- 	-- 		{ Background = { Color = C.bg } },
+-- 	-- 		{ Text = " " },
+-- 	-- 	}
+-- 	-- end
+-- end)
+
 return {
+	-- window_background_image = "/Users/nathan/Pictures/dancer.jpeg",
 	-- Font
 	font = w.font("RobotoMono Nerd Font", { weight = "Medium" }),
 	font_size = 15.0,
@@ -48,33 +126,34 @@ return {
 	window_decorations = "RESIZE",
 	disable_default_key_bindings = true,
 	native_macos_fullscreen_mode = true,
-	-- debug_key_events = true,
-	-- window_padding = {
-	-- 	left = 8,
-	-- 	right = 8,
-	-- 	top = 8,
-	-- 	bottom = 8,
-	-- },
 	enable_tab_bar = false,
-	use_fancy_tab_bar = true,
-	show_tabs_in_tab_bar = false,
+	use_fancy_tab_bar = false,
+	show_tabs_in_tab_bar = true,
 	show_new_tab_button_in_tab_bar = false,
-	window_frame = {
-		-- active_titlebar_bg = "#191c23",
-		-- inactive_titlebar_bg = "#191c23",
-		active_titlebar_bg = "#000000",
-		inactive_titlebar_bg = "#000000",
+	tab_max_width = 32,
+	default_prog = { "zsh", "-c", "tmux" },
+	window_padding = {
+		left = 8,
+		right = 8,
+		top = 8,
+		bottom = 8,
 	},
-	tab_max_width = 8,
+	window_frame = {
+		active_titlebar_bg = C.bg,
+		inactive_titlebar_bg = C.bg,
+		font = w.font({ family = "Roboto Mono", weight = "Bold" }),
+		font_size = 14.0,
+	},
 	colors = {
 		tab_bar = {
+			background = C.bg,
 			active_tab = {
-				bg_color = "#2e3440",
-				fg_color = "#d8dee9",
+				bg_color = C.active.bg,
+				fg_color = C.active.fg,
 			},
 			inactive_tab = {
-				bg_color = "#222730",
-				fg_color = "#616e88",
+				bg_color = C.inactive.bg,
+				fg_color = C.inactive.fg,
 			},
 		},
 	},

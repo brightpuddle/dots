@@ -15,6 +15,7 @@ export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$PATH:$HOME/.spicetify
 export PATH=$PATH:$HOME/.dotnet/tools
+export PATH=$PATH:$HOME/.pub-cache/bin
 
 export GPG_TTY=$(tty)
 
@@ -34,3 +35,4 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
     --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
     --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
 # TERM="alacritty-direct"
+

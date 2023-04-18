@@ -26,13 +26,8 @@
 
 return function()
 	vim.cmd.colorscheme("nord")
-	-- require("catppuccin").setup({
-	-- 	custom_highlights = function(c)
-	-- 		return {
-	-- 		  ["@"]
-	-- 		}
-	-- 	end,
-	-- })
+
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
 	-- General visibility
 	vim.api.nvim_set_hl(0, "Comment", { fg = "#616e88", italic = 1 })
@@ -51,5 +46,12 @@ return function()
 	-- Neotree
 	vim.api.nvim_set_hl(0, "NeoTreeCursorLine", { bg = "#3B4252" })
 	vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#282E39" })
+	vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#282E39" })
 	vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#2E3440", bg = "#2E3440" })
+
+	-- Trouble
+	vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "#282E39" })
+
+	-- Cokeline
+	vim.api.nvim_set_hl(0, "TabLine", { bg = "#2E3440" })
 end

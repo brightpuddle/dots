@@ -69,6 +69,7 @@ return function()
 	lsp.terraformls.setup(config())
 	lsp.tsserver.setup(config())
 	lsp.vls.setup(config({ format = true }))
+	lsp.zls.setup(config())
 	lsp.lua_ls.setup({
 		on_attach = on_attach(),
 		capabilities = capabilities,
