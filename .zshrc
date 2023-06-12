@@ -115,6 +115,7 @@ add-zsh-hook precmd set-title-precmd
 add-zsh-hook preexec set-title-preexec
 
 source $HOME/.config/nnn/config
+eval $(opam env)
 
 # CD on quit for nnn
 n ()

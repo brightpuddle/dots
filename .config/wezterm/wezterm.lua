@@ -118,8 +118,7 @@ return {
 	-- Font
 	font = w.font("RobotoMono Nerd Font", { weight = "Medium" }),
 	font_size = 15.0,
-	-- cell_width
-	line_height = 1.1,
+	line_height = 0.90,
 	--
 	color_scheme = "nord",
 	check_for_updates = false,

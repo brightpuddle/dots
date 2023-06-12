@@ -14,8 +14,33 @@ end
 
 require("packer").startup({
 	function(use)
-		-- package management
 		use({ "wbthomason/packer.nvim" })
+		use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
+		use({ "ojroques/nvim-bufdel" })
+		use({ "numToStr/Navigator.nvim", config = require("config.nav") })
+		use({ "lewis6991/impatient.nvim" })
+		use({ "tpope/vim-commentary" })
+		use({ "windwp/nvim-ts-autotag" })
+		use({ "tpope/vim-surround" })
+		use({ "folke/which-key.nvim", config = require("config.whichkey") })
+		use({ "lukas-reineke/indent-blankline.nvim", ft = { "python" } })
+		use({ "ray-x/sad.nvim", requires = "ray-x/guihua.lua", cmd = "Sad" })
+		use({ "nvim-treesitter/nvim-treesitter", config = require("config.treesitter") })
+		use({ "nvim-treesitter/playground" })
+
+		use({
+			"max397574/better-escape.nvim",
+			config = function()
+				require("better_escape").setup({ mapping = { "jk" } })
+			end,
+		})
+
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("nvim-autopairs").setup()
+			end,
+		})
 
 		-- Testing
 		use({
@@ -25,95 +50,20 @@ require("packer").startup({
 				"antoinemadec/FixCursorHold.nvim",
 			},
 		})
-
-		use({ "epwalsh/obsidian.nvim", requires = "nvim-lua/plenary.nvim", config = require("config.obsidian") })
-
 		-- Debugging
 		use({ "rcarriga/nvim-dap-ui", opt = true, requires = { "mfussenegger/nvim-dap" } })
 
-		-- TODO
-		-- Tmux and neovim splits
-		-- https://github.com/declancm/windex.nvim
-
-		-- module caching for "require" statements
-		use({ "lewis6991/impatient.nvim" })
-
-		-- pretty menus
-		-- use({ "stevearc/dressing.nvim" })
-
-		-- Keymaps
-		use({
-			"folke/which-key.nvim",
-			config = require("config.whichkey"),
-		})
-		-- TODO
-		-- Easier whichkey setup (need to test without first)
-		-- https://github.com/AckslD/nvim-whichkey-setup.lua
-
-		-- indent guides
-		use({ "lukas-reineke/indent-blankline.nvim", ft = { "python" } })
-
-		-- base64 encode/decode
-		use({ "taybart/b64.nvim" })
-
-		-- delete buffer or quit (consistent cmd-w)
-		use({ "ojroques/nvim-bufdel" })
-
-		-- tmux split integration
-		use({ "numToStr/Navigator.nvim", config = require("config.nav") })
-
-		-- startup time analysis
-		use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
-
-		-- auto-pair closures
-		use({
-			"windwp/nvim-autopairs",
-			config = function()
-				require("nvim-autopairs").setup()
-			end,
-		})
-		-- autotag
-		use({ "windwp/nvim-ts-autotag" })
-
-		-- comment mgmt
-		use("tpope/vim-commentary")
-
-		-- edit surrounds
-		use("tpope/vim-surround")
-
-		-- use sad for project-wide find/replace
-		use({ "ray-x/sad.nvim", requires = "ray-x/guihua.lua", cmd = "Sad" })
-
 		-- fast jq using autocmds
-		use({
-			"max397574/better-escape.nvim",
-			config = function()
-				require("better_escape").setup({ mapping = { "jk" } })
-			end,
-		})
 
 		-- colorscheme
 		use({ "nordtheme/vim", as = "nord", config = require("config.color") })
-		-- use({ "shaunsingh/nord.nvim", as = "nord", config = require("config.color") })
 
-		-- "tab" line with buffers
-		-- use({
-		-- 	"akinsho/bufferline.nvim",
-		-- 	tag = "*",
-		-- 	requires = { "kyazdani42/nvim-web-devicons" },
-		-- 	-- opt = true,
-		-- 	config = require("config.bufferline"),
-		-- })
 		use({
 			"willothy/nvim-cokeline",
 			requires = "kyazdani42/nvim-web-devicons",
 			config = require("config.cokeline"),
 			after = "nord",
 		})
-
-		-- syntax highlighting, etc
-		use({ "nvim-treesitter/nvim-treesitter", config = require("config.treesitter") })
-		use({ "nvim-treesitter/playground" })
 
 		-- status bar
 		use({ "kyazdani42/nvim-web-devicons" })
@@ -166,7 +116,7 @@ require("packer").startup({
 			branch = "v2.x",
 			requires = {
 				"nvim-lua/plenary.nvim",
-				"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+				"nvim-tree/nvim-web-devicons",
 				"MunifTanjim/nui.nvim",
 			},
 			cmd = "Neotree",
@@ -202,27 +152,28 @@ require("packer").startup({
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
 				"hrsh7th/cmp-cmdline",
-				{ "tzachar/cmp-tabnine", run = "./install.sh" },
+				"onsails/lspkind.nvim",
+				-- { "tzachar/cmp-tabnine", run = "./install.sh" },
 			},
 			config = require("config.cmp"),
 		})
 
-		-- LS for non-LS tooling
+		-- LSP for CLI tooling
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = "nvim-lua/plenary.nvim",
 		})
 
-		-- LSP
+		-- LSP pre-built configs
 		use({
 			"neovim/nvim-lspconfig",
 			config = require("config.lsp"),
 		})
 
-		-- proper formatting (harder than it should be)
+		-- Proper formatting (harder than it should be)
 		use({ "lukas-reineke/lsp-format.nvim" })
 
-		-- symbol outline (uses LSP)
+		-- Symbol outline (uses LSP)
 		use({
 			"simrat39/symbols-outline.nvim",
 			cmd = "SymbolsOutline",
@@ -231,13 +182,8 @@ require("packer").startup({
 			end,
 		})
 
-		-- zen
-		use({ "folke/zen-mode.nvim", cmd = { "ZenMode" }, config = require("config.zen") })
-
-		-- languges (alaphabetical)
-		-- crystal
-		use({ "vim-crystal/vim-crystal", ft = { "crystal" } })
-		-- go
+		-- Languges (alaphabetical)
+		-- Go
 		use({
 			"ray-x/go.nvim",
 			ft = { "go" },
@@ -245,7 +191,7 @@ require("packer").startup({
 				require("go").setup()
 			end,
 		})
-		-- javascript / JSX
+		-- Javascript/Typescript
 		use({
 			"yuezk/vim-js",
 			ft = {
@@ -255,6 +201,7 @@ require("packer").startup({
 				"typescriptreact",
 			},
 		})
+		-- JSX/TSX
 		use({
 			"maxmellon/vim-jsx-pretty",
 			ft = {
@@ -264,22 +211,30 @@ require("packer").startup({
 				"typescriptreact",
 			},
 		})
-		-- jinja
+		-- Jinja
 		use({ "Glench/Vim-Jinja2-Syntax", ft = { "jinja", "html.jinja" } })
-		-- markdown
+		-- Markdown
 		use({
 			"preservim/vim-markdown",
 			requires = "godlygeek/tabular",
 			ft = { "markdown" },
 		})
-		-- nginx
+		-- Nginx
 		use({ "chr4/nginx.vim", ft = { "nginx" } })
-		-- robot
+		-- Robot
 		use({ "mfukar/robotframework-vim", ft = { "robot" } })
-		-- terraform
+		-- Rust
+		use({
+			"simrat39/rust-tools.nvim",
+			requires = {
+				"neovim/nvim-lspconfig",
+				"simrat39/rust-tools.nvim",
+				"nvim-lua/plenary.nvim",
+				"mfussenegger/nvim-dap",
+			},
+		})
+		-- Terraform
 		use({ "hashivim/vim-terraform", ft = { "terraform" } })
-		-- v
-		use({ "ollykel/v-vim", ft = { "vlang" } })
 
 		if PackerBootstrap then
 			require("packer").sync()

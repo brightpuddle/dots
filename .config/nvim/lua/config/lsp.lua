@@ -57,19 +57,9 @@ return function()
 	end
 
 	lsp.ansiblels.setup(config({ format = true }))
-	lsp.cssls.setup(config())
 	lsp.gopls.setup(config())
 	lsp.html.setup(config({ format = true }))
 	lsp.jsonls.setup(config())
-	lsp.pyright.setup(config())
-	lsp.robotframework_ls.setup(config({ format = true }))
-	lsp.rust_analyzer.setup(config())
-	lsp.sourcekit.setup(config({ format = true }))
-	lsp.tailwindcss.setup(config())
-	lsp.terraformls.setup(config())
-	lsp.tsserver.setup(config())
-	lsp.vls.setup(config({ format = true }))
-	lsp.zls.setup(config())
 	lsp.lua_ls.setup({
 		on_attach = on_attach(),
 		capabilities = capabilities,
@@ -84,6 +74,18 @@ return function()
 			},
 		},
 	})
+	lsp.pyright.setup(config()) -- Python
+	lsp.robotframework_ls.setup(config({ format = true })) -- Robot
+	lsp.rome.setup(config({ format = true })) -- JS, TS, CSS, etc
+	-- lsp.rust_analyzer.setup(config()) -- Rust
+	lsp.tailwindcss.setup(config()) -- Tailwind
+	lsp.terraformls.setup(config()) -- Terraform
+	lsp.tsserver.setup(config()) -- Typescript
+	-- lsp.vls.setup(config({ format = true }))
+	-- lsp.zls.setup(config())
+
+	local rt = require("rust-tools")
+	rt.setup(config(true))
 
 	local null_ls = require("null-ls")
 	-- local actions = null_ls.builtins.code_actions
@@ -96,38 +98,38 @@ return function()
 
 			-- Diagnostics
 			diagnostics.ansiblelint,
-			diagnostics.curlylint,
-			diagnostics.eslint_d,
-			diagnostics.flake8,
-			diagnostics.hadolint,
-			diagnostics.npm_groovy_lint,
-			diagnostics.revive,
+			diagnostics.curlylint, -- Jinja, etc
+			-- diagnostics.eslint_d,
+			diagnostics.flake8, -- Python
+			diagnostics.hadolint, -- Dockerfile
+			diagnostics.npm_groovy_lint, -- Jenkinsfile
+			diagnostics.revive, -- Go
 
 			-- Formatting
 			formatting.black,
-			formatting.csharpier,
-			formatting.fixjson,
-			formatting.golines,
-			formatting.isort,
-			formatting.npm_groovy_lint,
+			formatting.fixjson, -- JSON
+			formatting.golines, -- Go
+			formatting.isort, -- Python
+			formatting.npm_groovy_lint, -- Jenkinsfile
 			formatting.prettierd.with({
 				filetypes = {
-					"css",
+					-- Handled by rome
+					-- "css",
+					-- "javascript",
+					-- "javascriptreact",
+					-- "typescript",
+					-- "typescriptreact",
 					"markdown",
-					"javascript",
-					"javascriptreact",
-					"typescript",
-					"typescriptreact",
 					"yaml",
 				},
 			}),
-			formatting.rustfmt,
-			formatting.shfmt,
-			formatting.stylua,
-			formatting.terraform_fmt,
+			formatting.rustfmt, -- Rust
+			formatting.shfmt, -- Shell
+			formatting.stylua, -- Lua
+			formatting.terraform_fmt, -- Terraform
 			formatting.trim_newlines,
 			formatting.trim_whitespace,
-			formatting.xmllint,
+			formatting.xmllint, -- XML
 		},
 	})
 end

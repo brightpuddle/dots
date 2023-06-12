@@ -8,7 +8,6 @@
 
 # Polar Night
 # nord0 - background color
-"ui.background" = { bg = "nord0" }
 "ui.statusline.inactive" = { fg = "nord8", bg = "nord1" }
 
 

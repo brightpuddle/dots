@@ -10,19 +10,22 @@ select = "underline"
 C-d = ":q"
 C-p = "file_picker"
 K = "hover"
-[keys.normal.C-v]
+N = "goto_next_buffer"
+P = "goto_previous_buffer"
+
+[keys.normal.C-o]
 w = ":w"
-n = "goto_next_buffer"
-p = "goto_previous_buffer"
 
 
 [keys.insert]
 j = { k = "normal_mode" }
 C-d = ":q"
-[keys.insert.C-v]
+
+[keys.insert.C-o]
 w = ":w"
 
 [keys.select]
 C-d = ":q"
-[keys.select.C-v]
+
+[keys.select.C-o]
 w = ":w"

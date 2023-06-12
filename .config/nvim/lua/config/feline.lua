@@ -248,7 +248,6 @@ return function()
 					comps.git.remove,
 					comps.git.sep,
 				},
-				{},
 				{
 					-- Diag
 					comps.diag.status,
@@ -265,19 +264,7 @@ return function()
 					comps.right,
 				},
 			},
-			inactive = {
-				{
-					-- comps.left,
-					-- File info
-					-- comps.file.folder,
-					-- comps.file.filename,
-				},
-				{},
-				{
-					-- comps.location.percentage,
-					-- comps.right,
-				},
-			},
+			inactive = {},
 		},
 	})
 end

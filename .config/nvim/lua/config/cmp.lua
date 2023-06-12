@@ -1,6 +1,7 @@
 return function()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
+	local lspkind = require("lspkind")
 
 	local function has_words_before()
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -8,6 +9,16 @@ return function()
 	end
 
 	cmp.setup({
+		formatting = {
+			format = lspkind.cmp_format({
+				mode = "symbol",
+				maxwidth = 50,
+				ellipsis_char = "...",
+				before = function(_, vim_item)
+					return vim_item
+				end,
+			}),
+		},
 		view = {
 			entries = "native",
 		},
@@ -18,7 +29,6 @@ return function()
 		},
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
-			{ name = "cmp_tabnine" },
 			{ name = "luasnip" },
 		}, {
 			{ name = "buffer" },

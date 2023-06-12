@@ -48,7 +48,7 @@ o.foldenable = false
 o.grepprg = "rg --color=never"
 o.guicursor = "a:blinkon0,i:ver25-iCursor"
 o.ignorecase = true
--- o.laststatus = 2
+o.laststatus = 3
 o.cmdheight = 0
 o.linebreak = true
 o.mouse = "a"
@@ -84,9 +84,6 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = false,
 })
-
--- Plugins that use settings for config
-g.better_escape_shortcut = "jk"
 
 -- Nord colorscheme settings
 g.nord_contrast = true

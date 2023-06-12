@@ -36,7 +36,7 @@ return function()
 	vim.api.nvim_set_hl(0, "Float", { link = "Number" })
 	vim.api.nvim_set_hl(0, "Boolean", { link = "Number" })
 
-	-- Cursorline
+	-- CursorLine
 	vim.api.nvim_set_hl(0, "CursorLine", { bg = "#282E39", fg = "#282E39" })
 	vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#282E39", fg = "#282E39" })
 

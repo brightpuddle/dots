@@ -60,7 +60,7 @@ return function()
 				end,
 			},
 			{
-				text = "",
+				text = "󰅖",
 				delete_buffer_on_left_click = true,
 			},
 			{
