@@ -118,6 +118,7 @@ return {
 	-- Font
 	font = w.font("RobotoMono Nerd Font", { weight = "Medium" }),
 	font_size = 15.0,
+	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	line_height = 0.90,
 	--
 	color_scheme = "nord",
@@ -199,6 +200,7 @@ return {
 
 		-- Splits / windows
 		map("Enter", "CMD", send(ctrl_a, "z")),
+		map("Enter", "CMD|SHIFT", send(ctrl_o, "c")),
 
 		-- Rotate
 		map("r", "CMD", send(ctrl_a, "r")),

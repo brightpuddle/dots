@@ -1,7 +1,13 @@
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+local k = vim.keymap
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
+k.set({ "n", "i" }, "<C-o>j", "<cmd>TroubleToggle<cr>", { silent = true })
+k.set("n", "<leader>oj", "<cmd>TroubleToggle<cr>")
+k.set("n", "<leader>j", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+k.set("n", "<leader>k", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+k.set({ "n", "i" }, "<C-o>k", "<cmd>SymbolsOutline<cr>", { silent = true })
+k.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
+k.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
+
 return function()
 	-- Sign column icons
 	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -10,59 +16,40 @@ return function()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
 
-	local lsp_format = require("lsp-format")
-	lsp_format.setup({
-		force = true,
-		sync = false,
+	local lsp = require("lsp-zero").preset({})
+	-- Buffer attach function
+	lsp.on_attach(function(_, bufnr)
+		lsp.default_keymaps({ buffer = bufnr })
+	end)
+
+	lsp.format_on_save({
+		format_opts = {
+			async = false,
+			timeout_ms = 10000,
+		},
+		servers = {
+			["ansiblels"] = { "ansible" },
+			["html"] = { "html" },
+			["null-ls"] = {
+				"go",
+				"jenkins",
+				"json",
+				"lua",
+				"python",
+				"rust",
+				"terraform",
+			},
+			["robotframework_ls"] = { "robot" },
+			["rome"] = {
+				"css",
+				"javascript",
+				"typescript",
+			},
+		},
 	})
 
-	-- Buffer attach function
-	local function on_attach(cfg)
-		cfg = cfg or {}
-		return function(client, bufnr)
-			if cfg.format then
-				lsp_format.on_attach(client, bufnr)
-			end
-
-			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-			local k = vim.keymap
-			local bufopts = { noremap = true, silent = true, buffer = bufnr }
-			k.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-			k.set("n", "gd", vim.lsp.buf.definition, bufopts)
-			k.set("n", "K", vim.lsp.buf.hover, bufopts)
-			k.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-			k.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-			k.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-			k.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-			k.set("n", "<leader>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, bufopts)
-			k.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-			k.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-			k.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-			k.set("n", "gr", vim.lsp.buf.references, bufopts)
-			-- k.set("n", "<leader>f", vim.lsp.buf.formatting, bufopts)
-		end
-	end
-
-	local lsp = require("lspconfig")
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-	local function config(format)
-		return {
-			on_attach = on_attach(format),
-			capabilities = capabilities,
-		}
-	end
-
-	lsp.ansiblels.setup(config({ format = true }))
-	lsp.gopls.setup(config())
-	lsp.html.setup(config({ format = true }))
-	lsp.jsonls.setup(config())
-	lsp.lua_ls.setup({
-		on_attach = on_attach(),
-		capabilities = capabilities,
+	local lspconfig = require("lspconfig")
+	lspconfig.lua_ls.setup({
 		settings = {
 			Lua = {
 				runtime = {
@@ -74,62 +61,46 @@ return function()
 			},
 		},
 	})
-	lsp.pyright.setup(config()) -- Python
-	lsp.robotframework_ls.setup(config({ format = true })) -- Robot
-	lsp.rome.setup(config({ format = true })) -- JS, TS, CSS, etc
-	-- lsp.rust_analyzer.setup(config()) -- Rust
-	lsp.tailwindcss.setup(config()) -- Tailwind
-	lsp.terraformls.setup(config()) -- Terraform
-	lsp.tsserver.setup(config()) -- Typescript
-	-- lsp.vls.setup(config({ format = true }))
-	-- lsp.zls.setup(config())
 
-	local rt = require("rust-tools")
-	rt.setup(config(true))
-
+	lsp.setup()
 	local null_ls = require("null-ls")
-	-- local actions = null_ls.builtins.code_actions
-	local diagnostics = null_ls.builtins.diagnostics
-	local formatting = null_ls.builtins.formatting
+	require("mason-null-ls").setup({
+		ensure_installed = {
+			"golines",
+			"revive",
+		},
+		automatic_installation = true,
+		handlers = {},
+	})
 	null_ls.setup({
-		on_attach = on_attach({ format = true }),
 		sources = {
-			-- Code Actions
-
 			-- Diagnostics
-			diagnostics.ansiblelint,
-			diagnostics.curlylint, -- Jinja, etc
-			-- diagnostics.eslint_d,
-			diagnostics.flake8, -- Python
-			diagnostics.hadolint, -- Dockerfile
-			diagnostics.npm_groovy_lint, -- Jenkinsfile
-			diagnostics.revive, -- Go
+			null_ls.builtins.diagnostics.ansiblelint, -- Ansible
+			null_ls.builtins.diagnostics.curlylint, -- Jinja, etc
+			null_ls.builtins.diagnostics.flake8, -- Python
+			null_ls.builtins.diagnostics.hadolint, -- Dockerfile
+			null_ls.builtins.diagnostics.npm_groovy_lint, -- Jenkinsfile
+			-- null_ls.builtins.diagnostics.revive, -- Go
 
 			-- Formatting
-			formatting.black,
-			formatting.fixjson, -- JSON
-			formatting.golines, -- Go
-			formatting.isort, -- Python
-			formatting.npm_groovy_lint, -- Jenkinsfile
-			formatting.prettierd.with({
+			null_ls.builtins.formatting.black, -- Python
+			null_ls.builtins.formatting.fixjson, -- JSON
+			-- null_ls.builtins.formatting.golines, -- Go
+			null_ls.builtins.formatting.isort, -- Python
+			null_ls.builtins.formatting.npm_groovy_lint, -- Jenkinsfile
+			null_ls.builtins.formatting.prettierd.with({
 				filetypes = {
-					-- Handled by rome
-					-- "css",
-					-- "javascript",
-					-- "javascriptreact",
-					-- "typescript",
-					-- "typescriptreact",
 					"markdown",
 					"yaml",
 				},
 			}),
-			formatting.rustfmt, -- Rust
-			formatting.shfmt, -- Shell
-			formatting.stylua, -- Lua
-			formatting.terraform_fmt, -- Terraform
-			formatting.trim_newlines,
-			formatting.trim_whitespace,
-			formatting.xmllint, -- XML
+			null_ls.builtins.formatting.rustfmt, -- Rust
+			null_ls.builtins.formatting.shfmt, -- Shell
+			null_ls.builtins.formatting.stylua, -- Lua
+			null_ls.builtins.formatting.terraform_fmt, -- Terraform
+			null_ls.builtins.formatting.trim_newlines,
+			null_ls.builtins.formatting.trim_whitespace,
+			null_ls.builtins.formatting.xmllint, -- XML
 		},
 	})
 end

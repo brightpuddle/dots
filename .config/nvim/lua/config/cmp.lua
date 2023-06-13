@@ -1,5 +1,6 @@
 return function()
 	local cmp = require("cmp")
+	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	local luasnip = require("luasnip")
 	local lspkind = require("lspkind")
 
@@ -57,5 +58,17 @@ return function()
 				end
 			end, { "i", "s" }),
 		},
+		["<CR>"] = cmp.mapping({
+			i = function(fallback)
+				if cmp.visible() and cmp.get_active_entry() then
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+				else
+					fallback()
+				end
+			end,
+			s = cmp.mapping.confirm({ select = true }),
+			c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+		}),
 	})
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
