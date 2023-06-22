@@ -45,15 +45,15 @@ alt - 0x1B : yabai -m space --gap rel:8;\
   yabai -m space --padding rel:8:8:8:8
 
 
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+shift + alt - h : yabai -m window --focus west
+shift + alt - j : yabai -m window --focus south
+shift + alt - k : yabai -m window --focus north
+shift + alt - l : yabai -m window --focus east
 
-shift + alt - h : yabai -m window --warp west
-shift + alt - j : yabai -m window --warp south
-shift + alt - k : yabai -m window --warp north
-shift + alt - l : yabai -m window --warp east
+# shift + alt - h : yabai -m window --warp west
+# shift + alt - j : yabai -m window --warp south
+# shift + alt - k : yabai -m window --warp north
+# shift + alt - l : yabai -m window --warp east
 
 # Follow windows when throwing to a new space
 shift + alt - n : wid="$(yabai -m query --windows --window | jq -r '.id')" \
@@ -64,7 +64,7 @@ shift + alt - p : wid="$(yabai -m query --windows --window | jq -r '.id')" \
 	&& yabai -m window --focus "${wid}"
 
 
-alt - return : yabai -m window --toggle zoom-fullscreen
+alt - z : yabai -m window --toggle zoom-fullscreen
 alt - u : yabai -m window --toggle zoom-parent
 alt - i : yabai -m window --toggle split
 
