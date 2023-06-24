@@ -4,7 +4,7 @@ local k = vim.keymap
 -- Move them into the whichkey configuration
 
 -- Search
-k.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
+k.set("n", "<C-p>", "<cmd>Telescope smart_open<cr>")
 k.set("n", "<C-o>fa", "<cmd>Telescope<cr>")
 k.set("n", "<C-o>fb", "<cmd>Telescope buffers<cr>")
 

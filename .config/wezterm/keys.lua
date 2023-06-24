@@ -78,6 +78,7 @@ return {
 	map("r", "CMD", send(ctrl_a, "r")), -- Rotate
 	map("y", "CMD", send(ctrl_a, "y")), -- Mirror
 	map("t", "CMD", send(ctrl_a, "n")), -- Tab
+	map("Enter", "CMD", send(ctrl_a, "z")), -- Zoom
 
 	-- Tmux tab nav
 	map("}", "CMD|SHIFT", send(ctrl_a, "]")),
