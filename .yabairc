@@ -1,24 +1,25 @@
 #!/usr/bin/env sh
 
-sudo yabai --load-sa
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # https://github.com/koekeishiya/yabai/wiki/Configuration
 # shasum -a 256 $(which yabai)
 # codesign -fs 'yabai-cert' $(brew --prefix yabai)/bin/yabai
 
 # borders
-yabai -m config window_border on
+yabai -m config window_border off
 
 # opacity
 yabai -m config window_opacity off
 # First two digits are opacity
-yabai -m config active_window_border_color "0x70D08770"
+# yabai -m config active_window_border_color "0x70D08770"
 
 # animation
 # yabai -m config window_animation_duration 0.35
 
 # global settings
-yabai -m config window_shadow float
+# yabai -m config window_shadow float
+yabai -m config window_shadow off
 yabai -m config window_placement second_child
 yabai -m config auto_balance off
 yabai -m config layout float
@@ -31,11 +32,11 @@ yabai -m config mouse_follows_focus off
 yabai -m config focus_follows_mouse off
 
 # padding and gaps
-yabai -m config top_padding 0
-yabai -m config bottom_padding 0
-yabai -m config left_padding 0
-yabai -m config right_padding 0
-yabai -m config window_gap 0
+yabai -m config top_padding 8
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config window_gap 8
 
 # app exclusions
 # yabai -m rule --add app="^System Settings$" manage=off sticky=on layer=above

@@ -1,6 +1,6 @@
 local k = vim.keymap
 
--- Copilot: move these keybindings into ./lua/plugins/whichkey.lua
+-- Copilot: move th5ese keybindings into ./lua/plugins/whichkey.lua
 -- Move them into the whichkey configuration
 
 -- Search
@@ -40,7 +40,7 @@ k.set("n", "H", "<cmd>bprev<cr>")
 k.set({ "n", "i" }, "<C-o>n", "<cmd>bnext<cr>")
 k.set({ "n", "i" }, "<C-o>p", "<cmd>bprev<cr>")
 
--- Incremental search
+-- Incremental search5
 k.set("n", "<esc>", "<cmd>noh<cr>")
 k.set("n", "\\", "<cmd>noh<cr>")
 

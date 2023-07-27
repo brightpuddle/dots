@@ -4,6 +4,7 @@ return {
 	dependencies = {
 
 		{ "nvim-treesitter/playground", lazy = true },
+		{ "windwp/nvim-ts-autotag", lazy = true, event = { "BufEnter" } },
 	},
 
 	config = function()

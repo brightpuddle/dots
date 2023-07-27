@@ -18,6 +18,7 @@ o.expandtab = true
 o.foldenable = false
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldmethod = "expr"
+-- o.foldmethod = "syntax"
 o.grepprg = "rg --color=never"
 o.guicursor = "a:blinkon0,i:ver25-iCursor"
 o.ignorecase = true

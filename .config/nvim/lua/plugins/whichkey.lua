@@ -25,12 +25,12 @@ return {
 		local wk = require("which-key")
 		wk.register({
 			["<leader>"] = {
-				["<leader>"] = {
-					name = "Easymotion",
-					w = { "<cmd>HopWord<cr>", "Hop line" },
-					j = { "<cmd>HopWordAC<cr>", "Word down" },
-					k = { "<cmd>HopWordBC<cr>", "Word up" },
-				},
+				-- ["<leader>"] = {
+				-- 	name = "Easymotion",
+				-- 	w = { "<cmd>HopWord<cr>", "Hop line" },
+				-- 	j = { "<cmd>HopWordAC<cr>", "Word down" },
+				-- 	k = { "<cmd>HopWordBC<cr>", "Word up" },
+				-- },
 				f = {
 					name = "Find",
 					a = { "<cmd>Telescope<cr>", "Find all" },
