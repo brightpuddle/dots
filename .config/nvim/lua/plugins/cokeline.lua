@@ -3,7 +3,7 @@ return {
 	event = "BufEnter",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local get_hex = require("cokeline/utils").get_hex
+		local hlgroups = require("cokeline.hlgroups")
 		local C = {
 			active = {
 				fg = "#d8dee9",
@@ -17,6 +17,7 @@ return {
 			fg = "#d8dee9",
 		}
 		require("cokeline").setup({
+			fill_hl = "Normal",
 			show_if_buffers_are_at_least = 2,
 			buffers = {
 				-- filter_valid = function(buffer) -> true | false,
@@ -89,8 +90,8 @@ return {
 				components = {
 					{
 						text = "  NeoTree",
-						fg = get_hex("NeoTreeNormal", "fg"),
-						bg = get_hex("NeoTeeNormal", "bg"),
+						fg = hlgroups.get_hl_attr("NeoTreeNormal", "fg"),
+						bg = hlgroups.get_hl_attr("NeoTeeNormal", "bg"),
 						style = "bold",
 					},
 				},

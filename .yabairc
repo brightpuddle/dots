@@ -7,7 +7,7 @@
 # codesign -fs 'yabai-cert' $(brew --prefix yabai)/bin/yabai
 
 # borders
-yabai -m config window_border off
+# yabai -m config window_border off
 
 # opacity
 yabai -m config window_opacity off

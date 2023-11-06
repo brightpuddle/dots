@@ -19,5 +19,6 @@ return {
 				enable = true,
 			},
 		})
+		vim.treesitter.language.register("groovy", "Jenkinsfile")
 	end,
 }

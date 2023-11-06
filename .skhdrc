@@ -66,6 +66,7 @@ shift + alt - p : wid="$(yabai -m query --windows --window | jq -r '.id')" \
 	&& yabai -m window --focus "${wid}"
 
 
+alt - return : yabai -m window --toggle zoom-fullscreen
 alt - z : yabai -m window --toggle zoom-fullscreen
 alt - u : yabai -m window --toggle zoom-parent
 alt - i : yabai -m window --toggle split

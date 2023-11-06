@@ -48,6 +48,12 @@ return {
 					k = { "<cmd>NavigatorUp<cr>", "Window up" },
 					l = { "<cmd>NavigatorRight<cr>", "Window right" },
 				},
+				r = {
+					name = "Rest",
+					x = { "<plug>RestNvim<cr>", "Execute Request" },
+					p = { "<plug>RestNvimPreview<cr>", "Preview Request" },
+					l = { "<plug>RestNvimLast<cr>", "Repeat Last Request" },
+				},
 			},
 		})
 	end,

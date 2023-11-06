@@ -1,6 +1,6 @@
 return {
 	"VonHeikemen/lsp-zero.nvim",
-	branch = "v2.x",
+	branch = "v3.x",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"neovim/nvim-lspconfig",
@@ -30,21 +30,25 @@ return {
 		})
 	end,
 	config = function()
-		-- Sign column icons
-		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
-
-		local lsp = require("lsp-zero").preset({})
+		local lsp_zero = require("lsp-zero")
 		-- Buffer attach function
-		lsp.on_attach(function(_, bufnr)
-			lsp.default_keymaps({ buffer = bufnr })
+		lsp_zero.on_attach(function(_, bufnr)
+			lsp_zero.default_keymaps({
+				buffer = bufnr,
+				preserve_mappings = false,
+			})
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
 		end)
 
-		lsp.format_on_save({
+		-- Sign column icons
+		lsp_zero.set_sign_icons({
+			error = "✘",
+			warn = "▲",
+			hint = "⚑",
+			info = "»",
+		})
+
+		lsp_zero.format_on_save({
 			format_opts = {
 				async = false,
 				timeout_ms = 10000,
@@ -69,8 +73,12 @@ return {
 				["robotframework_ls"] = { "robot" },
 			},
 		})
-		-- require("mason").setup()
-		-- require("mason-lspconfig").setup()
+		require("mason").setup({})
+		require("mason-lspconfig").setup({
+			handlers = {
+				lsp_zero.default_setup,
+			},
+		})
 
 		local lspconfig = require("lspconfig")
 		lspconfig.lua_ls.setup({
@@ -86,7 +94,7 @@ return {
 			},
 		})
 
-		lsp.setup()
+		-- lsp_zero.setup()
 		local null_ls = require("null-ls")
 		require("mason-null-ls").setup({
 			ensure_installed = {
@@ -118,6 +126,7 @@ return {
 						"yaml",
 					},
 				}),
+				null_ls.builtins.formatting.rome.with({ command = "biome" }),
 				null_ls.builtins.formatting.rustfmt, -- Rust
 				null_ls.builtins.formatting.shfmt, -- Shell
 				null_ls.builtins.formatting.stylua, -- Lua

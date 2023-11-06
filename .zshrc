@@ -75,8 +75,6 @@ alias cat='bat -Pp'
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
-# VI keys for command line editing
-bindkey -v
 
 # History
 h() {
@@ -139,6 +137,6 @@ n ()
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
 
-# if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
-#   source /Applications/WezTerm.app/Contents/Resources/wezterm.sh
-# fi
+ 
+# VI keys for command line editing
+bindkey -v
