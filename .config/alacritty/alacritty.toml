@@ -1,0 +1,258 @@
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.bright]
+black = "#4c566a"
+blue = "#81a1c1"
+cyan = "#8fbcbb"
+green = "#a3be8c"
+magenta = "#b48ead"
+red = "#bf616a"
+white = "#eceff4"
+yellow = "#ebcb8b"
+
+[colors.cursor]
+cursor = "#d8dee9"
+text = "#2e3440"
+
+[colors.dim]
+black = "#373e4d"
+blue = "#68809a"
+cyan = "#6d96a5"
+green = "#809575"
+magenta = "#8c738c"
+red = "#94545d"
+white = "#aeb3bb"
+yellow = "#b29e75"
+
+[colors.normal]
+black = "#3b4252"
+blue = "#81a1c1"
+cyan = "#88c0d0"
+green = "#a3be8c"
+magenta = "#b48ead"
+red = "#bf616a"
+white = "#e5e9f0"
+yellow = "#ebcb8b"
+
+[colors.primary]
+background = "#2e3440"
+dim_foreground = "#a5abb6"
+foreground = "#d8dee9"
+
+[colors.search.matches]
+background = "#88c0d0"
+foreground = "CellBackground"
+
+[colors.selection]
+background = "#4c566a"
+text = "CellForeground"
+
+[colors.vi_mode_cursor]
+cursor = "#d8dee9"
+text = "#2e3440"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "WARN"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 15
+
+[font.bold]
+style = "Medium"
+
+[font.bold_italic]
+style = "Medium Italic"
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+family = "RobotoMono Nerd Font"
+style = "Regular"
+
+[font.offset]
+y = 2
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001"
+key = "A"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0010"
+key = "P"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000Ffb"
+key = "O"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000Ffa"
+key = "P"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001c"
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001z"
+key = "Return"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0017s"
+key = "D"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0017S"
+key = "D"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001r"
+key = "R"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001y"
+key = "Y"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001n"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0017h"
+key = "H"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0017j"
+key = "J"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0017k"
+key = "K"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0017l"
+key = "L"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u000Fn"
+key = "RBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000Fp"
+key = "LBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0001]"
+key = "RBracket"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0001["
+key = "LBracket"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u000Fb"
+key = "B"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000Fb"
+key = "E"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u000Fj"
+key = "J"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000Fk"
+key = "K"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000Fw"
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0004"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000Fz"
+key = "Z"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "vi ~/.config/alacritty/alacritty.toml\r"
+key = "Comma"
+mods = "Command"
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = true
+opacity = 1.0
+startup_mode = "Windowed"
+
+[window.padding]
+x = 6
+y = 6

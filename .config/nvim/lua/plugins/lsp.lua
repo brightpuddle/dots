@@ -3,6 +3,7 @@ return {
 	branch = "v3.x",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
+		"lukas-reineke/lsp-format.nvim",
 		"neovim/nvim-lspconfig",
 		{
 			"williamboman/mason.nvim",
@@ -13,14 +14,22 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		{
 			"jay-babu/mason-null-ls.nvim",
+			event = { "BufReadPre", "BufNewFile" },
 			dependencies = {
-				"jose-elias-alvarez/null-ls.nvim",
+				"williamboman/mason.nvim",
+				"nvimtools/none-ls.nvim",
+			},
+		},
+		{
+			"nvimtools/none-ls.nvim",
+			dependencies = {
+				"nvimtools/none-ls.nvim",
 				dependencies = "nvim-lua/plenary.nvim",
 			},
 		},
 		"hrsh7th/nvim-cmp",
 	},
-	init = function()
+	config = function()
 		vim.diagnostic.config({
 			virtual_text = false,
 			signs = true,
@@ -28,15 +37,11 @@ return {
 			update_in_insert = false,
 			severity_sort = false,
 		})
-	end,
-	config = function()
+
 		local lsp_zero = require("lsp-zero")
-		-- Buffer attach function
+
 		lsp_zero.on_attach(function(_, bufnr)
-			lsp_zero.default_keymaps({
-				buffer = bufnr,
-				preserve_mappings = false,
-			})
+			lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
 		end)
 
@@ -48,31 +53,43 @@ return {
 			info = "»",
 		})
 
+		-- Format on save
 		lsp_zero.format_on_save({
 			format_opts = {
 				async = false,
 				timeout_ms = 10000,
 			},
 			servers = {
-				["ansiblels"] = { "ansible" },
-				["html"] = { "html" },
 				["null-ls"] = {
 					"go",
-					"jenkins",
+					"groovy",
+					"javascript",
+					"javascriptreact",
 					"json",
 					"lua",
+					"markdown",
 					"python",
 					"rust",
 					"terraform",
-					"css",
-					"javascript",
 					"typescript",
-					"javascriptreact",
 					"typescriptreact",
+					"yaml",
 				},
+				["templ"] = { "templ" },
+				["ansiblels"] = { "ansible" },
+				["cssls"] = { "css", "scss" },
+				["html"] = { "html" },
+				["jsonls"] = { "json" },
 				["robotframework_ls"] = { "robot" },
+				-- ["ruff_lsp"] = { "python" },
+				["rust_analyzer"] = { "rust" },
+				["terraformls"] = { "terraform" },
+				-- ["tsserver"] = { "typescript", "typescriptreact" },
+				["yamlls"] = { "yaml" },
 			},
 		})
+
+		-- Auto-install
 		require("mason").setup({})
 		require("mason-lspconfig").setup({
 			handlers = {
@@ -80,7 +97,14 @@ return {
 			},
 		})
 
+		-- Language Servers
 		local lspconfig = require("lspconfig")
+		lspconfig.gopls.setup({
+			gopls_cmd = { "$HOME/go/bin/gopls" },
+			fillstruct = "gopls",
+			dap_debug = true,
+			dap_debug_gui = true,
+		})
 		lspconfig.lua_ls.setup({
 			settings = {
 				Lua = {
@@ -93,59 +117,31 @@ return {
 				},
 			},
 		})
+		lspconfig.pyright.setup({
+			settings = {
+				pyright = {
+					disableOrganizeImports = true,
+				},
+			},
+		})
 
-		-- lsp_zero.setup()
+		-- Null setup
 		local null_ls = require("null-ls")
 		require("mason-null-ls").setup({
-			ensure_installed = {
-				"golines",
-				"revive",
-			},
 			automatic_installation = true,
-			handlers = {},
-		})
-		null_ls.setup({
-			sources = {
-				-- Diagnostics
-				null_ls.builtins.diagnostics.ansiblelint, -- Ansible
-				null_ls.builtins.diagnostics.curlylint, -- Jinja, etc
-				null_ls.builtins.diagnostics.flake8, -- Python
-				null_ls.builtins.diagnostics.hadolint, -- Dockerfile
-				null_ls.builtins.diagnostics.npm_groovy_lint, -- Jenkinsfile
-				-- null_ls.builtins.diagnostics.revive, -- Go
-
-				-- Formatting
-				null_ls.builtins.formatting.black, -- Python
-				null_ls.builtins.formatting.fixjson, -- JSON
-				-- null_ls.builtins.formatting.golines, -- Go
-				null_ls.builtins.formatting.isort, -- Python
-				null_ls.builtins.formatting.npm_groovy_lint, -- Jenkinsfile
-				null_ls.builtins.formatting.prettierd.with({
+			handlers = {
+				prettierd = null_ls.register(null_ls.builtins.formatting.prettierd.with({
 					filetypes = {
+						"css",
 						"markdown",
+						"scss",
 						"yaml",
 					},
-				}),
-				null_ls.builtins.formatting.rome.with({ command = "biome" }),
-				null_ls.builtins.formatting.rustfmt, -- Rust
-				null_ls.builtins.formatting.shfmt, -- Shell
-				null_ls.builtins.formatting.stylua, -- Lua
-				null_ls.builtins.formatting.terraform_fmt, -- Terraform
-				null_ls.builtins.formatting.trim_newlines,
-				null_ls.builtins.formatting.trim_whitespace,
-				null_ls.builtins.formatting.xmllint, -- XML
+				})),
 			},
+		})
+		null_ls.setup({
+			root_dir = require("null-ls.utils").root_pattern(".null-ls-root", "go.mod", "Makefile", ".git"),
 		})
 	end,
 }
-
--- {
--- 	"neovim/nvim-lspconfig",
--- 	lazy = true,
--- 	dependencies = {
--- 		"jose-elias-alvarez/null-ls.nvim",
--- 		"hrsh7th/nvim-cmp",
--- 		"lukas-reineke/lsp-format.nvim",
--- 	},
--- 	config = require("config.lsp"),
--- },

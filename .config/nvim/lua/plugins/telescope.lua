@@ -6,7 +6,6 @@ return {
 		"folke/trouble.nvim",
 		"nvim-tree/nvim-web-devicons",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		{ "danielfalk/smart-open.nvim", branch = "0.2.x", dependencies = "kkharji/sqlite.lua" },
 	},
 	cmd = { "Telescope" },
 	config = function()
@@ -27,6 +26,5 @@ return {
 			},
 		})
 		require("telescope").load_extension("fzf")
-		require("telescope").load_extension("smart_open")
 	end,
 }

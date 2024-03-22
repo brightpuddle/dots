@@ -18,6 +18,7 @@ return {
 	show_new_tab_button_in_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_max_width = 32,
+	default_prog = { "zsh", "-c", "tmux" },
 	window_padding = {
 		left = 8,
 		right = 8,
@@ -43,7 +44,28 @@ return {
 			},
 		},
 	},
-	default_prog = { "zsh", "-c", "tmux" },
 	scrollback_lines = 3500,
 	keys = require("keys"),
+	-- key_tables = {
+	-- 	copy_mode = {
+	-- 		{ key = "Escape", mods = "NONE", action = a({ CopyMode = "Close" }) },
+	-- 		{ key = "h", mods = "NONE", action = a({ CopyMode = "MoveLeft" }) },
+	-- 		{ key = "j", mods = "NONE", action = a({ CopyMode = "MoveDown" }) },
+	-- 		{ key = "k", mods = "NONE", action = a({ CopyMode = "MoveUp" }) },
+	-- 		{ key = "l", mods = "NONE", action = a({ CopyMode = "MoveRight" }) },
+	-- 		-- { key = " ", mods = "NONE", action = a({ CopyMode = "ToggleSelectionByCell" }) },
+	-- 		-- Enter search mode to edit the pattern.
+	-- 		-- When the search pattern is an empty string the existing pattern is preserved
+	-- 		{ key = "/", mods = "NONE", action = a({ Search = { CaseSensitiveString = "" } }) },
+	-- 		-- navigate any search mode results
+	-- 		{ key = "n", mods = "NONE", action = a({ CopyMode = "NextMatch" }) },
+	-- 		{ key = "N", mods = "SHIFT", action = a({ CopyMode = "PriorMatch" }) },
+	-- 	},
+	-- 	search_mode = {
+	-- 		{ key = "Escape", mods = "NONE", action = a({ CopyMode = "Close" }) },
+	-- 		-- Go back to copy mode when pressing enter, so that we can use unmodified keys like "n"
+	-- 		-- to navigate search results without conflicting with typing into the search area.
+	-- 		{ key = "Enter", mods = "NONE", action = "ActivateCopyMode" },
+	-- 	},
+	-- },
 }

@@ -1,4 +1,3 @@
-# [[language]]
-# name = "go"
-# file-types = ["go"]
-# language-server = { command = "efm-langserver" }
+[[language]]
+name = "templ"
+auto-format = true

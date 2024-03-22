@@ -22,3 +22,5 @@
   insteadOf = https://wwwin-github.cisco.com
 [pull]
 	rebase = false
+[gitget]
+  root = $HOME/src

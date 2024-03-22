@@ -4,7 +4,7 @@ local k = vim.keymap
 -- Move them into the whichkey configuration
 
 -- Search
-k.set("n", "<C-p>", "<cmd>Telescope smart_open<cr>")
+k.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
 k.set("n", "<C-o>fa", "<cmd>Telescope<cr>")
 k.set("n", "<C-o>fb", "<cmd>Telescope buffers<cr>")
 
@@ -55,3 +55,4 @@ k.set("n", "<leader>k", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 k.set({ "n", "i" }, "<C-o>k", "<cmd>SymbolsOutline<cr>", { silent = true })
 k.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
 k.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
+k.set("n", "<leader>ca", vim.lsp.buf.code_action, { noremap = true, silent = true })

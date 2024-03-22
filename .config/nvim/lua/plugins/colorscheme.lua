@@ -37,18 +37,18 @@ return {
 	config = function()
 		vim.cmd.colorscheme("nord")
 
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 
-		-- General visibility
+		-- -- General visibility
 		vim.api.nvim_set_hl(0, "Comment", { fg = "#616e88", italic = 1 })
 		vim.api.nvim_set_hl(0, "Keyword", { fg = "#B48EAD" })
 		vim.api.nvim_set_hl(0, "Number", { fg = "#D08770" })
 		vim.api.nvim_set_hl(0, "Float", { link = "Number" })
 		vim.api.nvim_set_hl(0, "Boolean", { link = "Number" })
 
-		-- CursorLine
-		vim.api.nvim_set_hl(0, "CursorLine", { bg = "#282E39", fg = "#282E39" })
-		vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#282E39", fg = "#282E39" })
+		-- -- CursorLine
+		-- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#282E39", fg = "#282E39" })
+		-- vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#282E39", fg = "#282E39" })
 
 		-- SymbolBrowser
 		vim.api.nvim_set_hl(0, "FocusedSymbol", { fg = "#D08770", bold = 1 })
@@ -59,8 +59,8 @@ return {
 		vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#282E39" })
 		vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#2E3440", bg = "#2E3440" })
 
-		-- Trouble
-		vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "#282E39" })
+		-- -- Trouble
+		-- vim.api.nvim_set_hl(0, "TroubleNormal", { bg = "#282E39" })
 
 		-- Cokeline
 		vim.api.nvim_set_hl(0, "TabLine", { bg = "#2E3440" })
