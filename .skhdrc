@@ -30,14 +30,12 @@ alt - w : yabai -m window --toggle float;\
 alt - f : yabai -m space --layout float;\
   yabai -m window --grid 1:1:1:1:1:1
 
-alt - s : yabai -m space --layout float
-  #;\
-  # yabai -m config window_border off;\
-  # yabai -m config window_shadow on
-alt - d : yabai -m space --layout bsp
-  #;\
-  # yabai -m config window_border on;\
-  # yabai -m config window_shadow float
+alt - s : yabai -m space --layout float;\
+   yabai -m config window_border off;\
+   yabai -m config window_shadow on
+alt - d : yabai -m space --layout bsp;\
+   yabai -m config window_border on;\
+   yabai -m config window_shadow float
 
 
 alt - 0x18 : yabai -m space --gap rel:-8;\

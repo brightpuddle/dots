@@ -7,6 +7,12 @@ g.loaded_python_provider = 1
 g.python3_host_prog = "/Users/nathan/.local/share/zinit/plugins/pyenv---pyenv/shims/python"
 g.python_host_skip_check = 1
 g.python3_host_skip_check = 1
+g.closetag_filetypes = "html,xhtml,xml,jsx,gohtmltmpl,jinja,jinja.html,templ,javascriptreact"
+g.closetag_xhtml_filenames = "*.xhtml,*.jsx"
+g.closetag_regions = {
+	["typescriptreact"] = "jsxRegion,tsxRegion",
+	["javascriptreact"] = "jsxRegion",
+}
 
 local o = vim.o
 o.autoindent = true

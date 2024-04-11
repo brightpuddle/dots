@@ -4,18 +4,17 @@ return {
 	dependencies = {
 
 		{ "nvim-treesitter/playground", lazy = true },
-		{ "windwp/nvim-ts-autotag", lazy = true, event = { "BufEnter" } },
 	},
 
 	config = function()
 		require("nvim-treesitter.configs").setup({
+			matchup = {
+				enable = true,
+			},
 			highlight = {
 				enable = true,
 			},
 			playground = {
-				enable = true,
-			},
-			autotag = {
 				enable = true,
 			},
 		})

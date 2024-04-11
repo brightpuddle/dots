@@ -4,6 +4,6 @@ return {
 		require("go").setup()
 	end,
 	event = { "CmdlineEnter" },
-	ft = { "go", "gomod" },
+	ft = { "go", "gomod", "gotexttmpl", "gohtmltmpl" },
 	build = ':lua require("go.install").update_all_sync()',
 }
