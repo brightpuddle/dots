@@ -4,11 +4,27 @@ local c = require("colors")
 
 -- require("tabs")
 
+-- function get_appearance()
+-- 	if w.gui then
+-- 		return w.gui.get_appearance()
+-- 	end
+-- 	return "Dark"
+-- end
+--
+-- function scheme_for_appearance(appearance)
+-- 	if appearance:find("Dark") then
+-- 		return "nord"
+-- 	else
+-- 		return "nord_light"
+-- 	end
+-- end
+
 return {
 	font = w.font("RobotoMono Nerd Font", { weight = "Medium" }),
 	font_size = 15.0,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	line_height = 0.90,
+	-- color_scheme = scheme_for_appearance(get_appearance()),
 	color_scheme = "nord",
 	check_for_updates = false,
 	window_decorations = "RESIZE",
@@ -46,26 +62,4 @@ return {
 	},
 	scrollback_lines = 3500,
 	keys = require("keys"),
-	-- key_tables = {
-	-- 	copy_mode = {
-	-- 		{ key = "Escape", mods = "NONE", action = a({ CopyMode = "Close" }) },
-	-- 		{ key = "h", mods = "NONE", action = a({ CopyMode = "MoveLeft" }) },
-	-- 		{ key = "j", mods = "NONE", action = a({ CopyMode = "MoveDown" }) },
-	-- 		{ key = "k", mods = "NONE", action = a({ CopyMode = "MoveUp" }) },
-	-- 		{ key = "l", mods = "NONE", action = a({ CopyMode = "MoveRight" }) },
-	-- 		-- { key = " ", mods = "NONE", action = a({ CopyMode = "ToggleSelectionByCell" }) },
-	-- 		-- Enter search mode to edit the pattern.
-	-- 		-- When the search pattern is an empty string the existing pattern is preserved
-	-- 		{ key = "/", mods = "NONE", action = a({ Search = { CaseSensitiveString = "" } }) },
-	-- 		-- navigate any search mode results
-	-- 		{ key = "n", mods = "NONE", action = a({ CopyMode = "NextMatch" }) },
-	-- 		{ key = "N", mods = "SHIFT", action = a({ CopyMode = "PriorMatch" }) },
-	-- 	},
-	-- 	search_mode = {
-	-- 		{ key = "Escape", mods = "NONE", action = a({ CopyMode = "Close" }) },
-	-- 		-- Go back to copy mode when pressing enter, so that we can use unmodified keys like "n"
-	-- 		-- to navigate search results without conflicting with typing into the search area.
-	-- 		{ key = "Enter", mods = "NONE", action = "ActivateCopyMode" },
-	-- 	},
-	-- },
 }

@@ -81,6 +81,7 @@ return {
 	map("Enter", "CMD", send(ctrl_a, "z")), -- Zoom
 
 	-- Tmux tab nav
+	-- Extra mappings are needed to override the default
 	map("}", "CMD|SHIFT", send(ctrl_a, "]")),
 	map("{", "CMD|SHIFT", send(ctrl_a, "[")),
 

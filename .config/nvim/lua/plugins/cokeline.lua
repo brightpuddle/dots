@@ -7,7 +7,7 @@ return {
 		local C = {
 			active = {
 				fg = "#d8dee9",
-				bg = "#434c5e",
+				bg = "#3b4252",
 			},
 			inactive = {
 				fg = "#d8dee9",

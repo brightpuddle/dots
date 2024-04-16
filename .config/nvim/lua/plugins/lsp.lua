@@ -101,5 +101,10 @@ return {
 		null_ls.setup({
 			root_dir = require("null-ls.utils").root_pattern(".null-ls-root", "go.mod", "Makefile", ".git"),
 		})
+
+		-- Autopairs compatibility
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		local cmp = require("cmp")
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	end,
 }

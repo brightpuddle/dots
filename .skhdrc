@@ -1,21 +1,8 @@
 # vi: ft=config
 
-# alt - n : yabai -m space --focus next
-# alt - p : yabai -m space --focus prev
-# alt - 1 : yabai -m space --focus 1
-# alt - 2 : yabai -m space --focus 2
-# alt - 3 : yabai -m space --focus 3
-# alt - 4 : yabai -m space --focus 4
-# alt - 5 : yabai -m space --focus 5
-# alt - 6 : yabai -m space --focus 6
-# alt - 7 : yabai -m space --focus 7
-# alt - 8 : yabai -m space --focus 8
-# alt - 9 : yabai -m space --focus 9
 
 
 alt - b : yabai -m space --balance
-alt - c : yabai -m space --create
-shift + alt - c : yabai -m space --destroy
 
 alt - x : yabai -m space --mirror x-axis
 alt - y : yabai -m space --mirror y-axis
@@ -38,22 +25,32 @@ alt - d : yabai -m space --layout bsp;\
    yabai -m config window_shadow float
 
 
+# Increase/decrease gaps
 alt - 0x18 : yabai -m space --gap rel:-8;\
   yabai -m space --padding rel:-8:-8:-8:-8
-
 alt - 0x1B : yabai -m space --gap rel:8;\
   yabai -m space --padding rel:8:8:8:8
 
 
+# alt - j : yabai -m window --focus stack.next #|| yabai -m window --focus stack.first
+# alt - k : yabai -m window --focus stack.prev #|| yabai -m window --focus stack.last
 shift + alt - h : yabai -m window --focus west
 shift + alt - j : yabai -m window --focus south
 shift + alt - k : yabai -m window --focus north
 shift + alt - l : yabai -m window --focus east
 
-# shift + alt - h : yabai -m window --warp west
-# shift + alt - j : yabai -m window --warp south
-# shift + alt - k : yabai -m window --warp north
-# shift + alt - l : yabai -m window --warp east
+## Stacks ##
+# stack window
+shift + ctrl + alt - h : yabai -m window --stack west
+shift + ctrl + alt - j : yabai -m window --stack south
+shift + ctrl + alt - k : yabai -m window --stack north
+shift + ctrl + alt - l : yabai -m window --stack east
+
+# cycle through stacked window
+alt - j : yabai -m window --focus stack.next || yabai -m window --focus stack.prev
+alt - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.next
+
+
 
 # Follow windows when throwing to a new space
 shift + alt - n : wid="$(yabai -m query --windows --window | jq -r '.id')" \
@@ -82,7 +79,22 @@ ctrl + cmd - l : yabai -m window --resize right:60:0;\
   yabai -m window --resize left:60:0
 
 
-shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-
-ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-# cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window
+shift + alt - r : launchctl kickstart -k "gui/${UID}/com.koekeishiya.yabai"
+ 
+# shift + alt - h : yabai -m window --warp west
+# shift + alt - j : yabai -m window --warp south
+# shift + alt - k : yabai -m window --warp north
+# shift + alt - l : yabai -m window --warp east
+# alt - n : yabai -m space --focus next
+# alt - p : yabai -m space --focus prev
+# alt - 1 : yabai -m space --focus 1
+# alt - 2 : yabai -m space --focus 2
+# alt - 3 : yabai -m space --focus 3
+# alt - 4 : yabai -m space --focus 4
+# alt - 5 : yabai -m space --focus 5
+# alt - 6 : yabai -m space --focus 6
+# alt - 7 : yabai -m space --focus 7
+# alt - 8 : yabai -m space --focus 8
+# alt - 9 : yabai -m space --focus 9
+# alt - c : yabai -m space --create
+# shift + alt - c : yabai -m space --destroy

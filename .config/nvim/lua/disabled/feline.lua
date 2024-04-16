@@ -14,12 +14,12 @@ return {
 		end
 		local c = {
 			pri = {
-				bg = "#3B4252",
-				fg = "#D8DEE9",
+				bg = get_color("StatusLineNC", "background"),
+				fg = get_color("StatusLineNC", "foreground"),
 			},
 			sec = {
-				bg = "#4C566A",
-				fg = "#D8DEE9",
+				bg = get_color("StatusLine", "background"),
+				fg = get_color("StatusLine", "foreground"),
 			},
 			diag = {
 				error = get_color("DiagnosticError", "foreground"),
