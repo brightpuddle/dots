@@ -33,10 +33,10 @@ yabai -m config mouse_follows_focus off
 yabai -m config focus_follows_mouse off
 
 # padding and gaps
-yabai -m config top_padding 16
-yabai -m config bottom_padding 16
-yabai -m config left_padding 16
-yabai -m config right_padding 16
+yabai -m config top_padding 0
+yabai -m config bottom_padding 0
+yabai -m config left_padding 0
+yabai -m config right_padding 0
 yabai -m config window_gap 16
 
 # app exclusions

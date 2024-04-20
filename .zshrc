@@ -1,6 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -8,81 +5,69 @@ fi
 ############################################################
 # Plugins
 ############################################################
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
-fi
-
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Prompt
-zinit ice lucid atload'source ~/.p10k.zsh; _p9k_precmd'
-zinit light romkatv/powerlevel10k
+zi ice lucid atload'source ~/.p10k.zsh; _p9k_precmd'
+zi light romkatv/powerlevel10k
 
-# Load a few important annexes, without Turbo
-zinit light-mode for \
+zi light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
 
-# Git prefixes
+zi light-mode lucid for \
+        wait='1' atload='_zsh_autosuggest_start' \
+    zsh-users/zsh-autosuggestions \
+        blockf \
+    zsh-users/zsh-completions
+
 zinit ice wait lucid
 zinit light wfxr/forgit
 
-# History
-zinit ice lucid wait'0'
+zinit ice wait lucid
 zinit light joshskidmore/zsh-fzf-history-search
 
-# Pyenv
 zinit ice wait"0" atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
   silent \
   atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
   as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
 zinit light pyenv/pyenv
 
-# cd
-zinit ice wait"2" as"command" from"gh-r" lucid \
+zinit ice wait"0" as"command" from"gh-r" lucid \
   mv"zoxide -> zoxide" \
   atclone"./zoxide init zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
-# eval "$(zoxide init zsh)"
+
+source $HOME/.config/nnn/config
+# eval $(opam env)
 ############################################################
 # Aliases
 ############################################################
-# Aliases
 alias ls="ls -G"
 alias ll="ls -al"
-alias t="task"
 alias tt="taskwarrior-tui"
-alias icat="kitty +kitten icat"
 alias lg='lazygit'
-alias ly='lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git'
-alias lg-yadm='lazygit -g $HOME/.local/share/yadm/repo.git'
 alias cat='bat -Pp'
+alias cd='z'
 
 ############################################################
 # Options
 ############################################################
-# History
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
+setopt hist_find_no_dups
+setopt hist_ignore_space
+setopt hist_ignore_dups
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_verify
 
-# History
-h() {
-  if [ -z "$*" ];
-  then history 1;
-  else history 1 | egrep "$@";
-  fi;
-}
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -97,9 +82,6 @@ fzf-open-file-or-dir() {
   fi
 }
 zle -N fzf-open-file-or-dir
-# Ctrl-P bindings
-bindkey '^P' fzf-open-file-or-dir
-bindkey -s '^W' '^D'
 
 # Titles
 function set-title-precmd() {
@@ -112,32 +94,15 @@ autoload -Uz add-zsh-hook
 add-zsh-hook precmd set-title-precmd
 add-zsh-hook preexec set-title-preexec
 
-source $HOME/.config/nnn/config
-eval $(opam env)
+############################################################
+# Keys
+############################################################
+bindkey '^P' fzf-open-file-or-dir
+bindkey -s '^W' '^D'
+bindkey -v
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
 
-# nnn cd on quit
-function n () {
-    [ "${NNNLVL:-0}" -eq 0 ] || {
-        echo "nnn is already running"
-        return
-    }
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    command nnn "$@"
-    [ ! -f "$NNN_TMPFILE" ] || {
-        . "$NNN_TMPFILE"
-        rm -f -- "$NNN_TMPFILE" > /dev/null
-    }
-}
-
-
  
-# VI keys for command line editing
-bindkey -v
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

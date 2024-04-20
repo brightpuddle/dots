@@ -23,7 +23,6 @@
 -- #EBCB8B
 -- #A3BE8C
 -- #B48EAD
-
 return {
 	"nordtheme/vim",
 	-- "shaunsingh/nord.nvim",

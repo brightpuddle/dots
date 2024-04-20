@@ -12,12 +12,12 @@ return {
 		},
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/nvim-cmp",
-
 		{
 			"jay-babu/mason-null-ls.nvim",
 			event = { "BufReadPre", "BufNewFile" },
 			dependencies = {
 				"williamboman/mason.nvim",
+				"lukas-reineke/lsp-format.nvim",
 				"nvimtools/none-ls.nvim",
 			},
 		},
@@ -31,9 +31,14 @@ return {
 	},
 	config = function()
 		local lsp_zero = require("lsp-zero")
+		local lsp_format = require("lsp-format")
 
-		lsp_zero.on_attach(function(_, bufnr)
+		lsp_format.setup()
+
+		lsp_zero.on_attach(function(client, bufnr)
 			lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
+			lsp_format.on_attach(client, bufnr)
+
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
 			vim.lsp.handlers["textDocument/publishDiagnostics"] =
 				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -96,7 +101,8 @@ return {
 		-- None-LS setup
 		local null_ls = require("null-ls")
 		require("mason-null-ls").setup({
-			automatic_installation = true,
+			automatic_installation = false,
+			handlers = {},
 		})
 		null_ls.setup({
 			root_dir = require("null-ls.utils").root_pattern(".null-ls-root", "go.mod", "Makefile", ".git"),

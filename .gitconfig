@@ -24,3 +24,8 @@
 	rebase = false
 [gitget]
   root = $HOME/src
+[maintenance]
+	repo = /Users/nathan/Repos/znap
+	repo = /Users/nathan/Repos/romkatv/powerlevel10k
+	repo = /Users/nathan/Repos/wfxr/forgit
+	repo = /Users/nathan/Repos/pyenv/pyenv
