@@ -4,7 +4,7 @@ local k = vim.keymap
 -- Move them into the whichkey configuration
 
 -- Search
-k.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
+k.set("n", "<C-p>", "<cmd>Telescope smart_open<cr>")
 k.set("n", "<C-o>fa", "<cmd>Telescope<cr>")
 k.set("n", "<C-o>fb", "<cmd>Telescope buffers<cr>")
 
@@ -29,6 +29,7 @@ k.set({ "n", "i" }, "<C-j>", "<cmd>NavigatorDown<cr>")
 k.set({ "n", "i" }, "<C-k>", "<cmd>NavigatorUp<cr>")
 k.set({ "n", "i" }, "<C-l>", "<cmd>NavigatorRight<cr>")
 k.set("n", "<leader>wo", "<cmd>only<cr>")
+
 -- Copilot
 k.set({ "n", "i" }, "<C-o>c", "<cmd>Copilot panel<cr>")
 
@@ -56,3 +57,7 @@ k.set({ "n", "i" }, "<C-o>k", "<cmd>SymbolsOutline<cr>", { silent = true })
 k.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
 k.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 k.set("n", "<leader>ca", vim.lsp.buf.code_action, { noremap = true, silent = true })
+
+-- Scrolling (remap of half page up/down)
+k.set({ "n", "i", "v" }, "<C-j>", "<S-Down><cr>", { silent = true })
+k.set({ "n", "i", "v" }, "<C-k>", "<S-Up><cr>", { silent = true })

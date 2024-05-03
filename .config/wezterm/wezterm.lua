@@ -34,7 +34,7 @@ return {
 	show_new_tab_button_in_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_max_width = 32,
-	default_prog = { "zsh", "-c", "tmux" },
+	-- default_prog = { "zsh", "-c", "tmux" },
 	window_padding = {
 		left = 8,
 		right = 8,

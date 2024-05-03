@@ -1,11 +1,15 @@
 return {
 	"freddiehaddad/feline.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"SmiteshP/nvim-navic",
+	},
 	event = "BufEnter",
 	config = function()
 		local vi_mode = require("feline.providers.vi_mode")
 		local lsp = require("feline.providers.lsp")
 		local git = require("feline.providers.git")
+		local navic = require("nvim-navic")
 		local function get_color(group, attr)
 			local hl = vim.api.nvim_get_hl_by_name(group, true)
 			if hl and hl[attr] then
@@ -231,6 +235,17 @@ return {
 			},
 		}
 
+		-- Code navigation
+		comps.navigation = {
+			provider = function()
+				return navic.get_location()
+			end,
+			enabled = function()
+				return navic.is_available()
+			end,
+			left_sep = { str = " / ", hl = { fg = get_color("Comment", "foreground") } },
+		}
+
 		require("feline").setup({
 			theme = {
 				bg = c.pri.bg,
@@ -251,6 +266,8 @@ return {
 						comps.git.add,
 						comps.git.remove,
 						comps.git.sep,
+						-- Navigation
+						comps.navigation,
 					},
 					{
 						-- Diag

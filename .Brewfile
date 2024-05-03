@@ -1,13 +1,13 @@
 tap "austinjones/taps"
+tap "candid82/brew"
 tap "felixkratz/formulae"
 tap "ggp1/tap"
 tap "goreleaser/tap"
+tap "grdl/tap"
 tap "helix-editor/helix"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "hors-org/hors"
 tap "jesseduffield/lazygit"
@@ -15,7 +15,9 @@ tap "keith/formulae"
 tap "koekeishiya/formulae"
 tap "louisbrunner/valgrind"
 tap "mongodb/brew"
+tap "mrkai77/cask"
 tap "ms-jpq/sad"
+tap "nikitabobko/tap"
 tap "oven-sh/bun"
 tap "pantsbuild/tap"
 tap "spicetify/tap"
@@ -38,30 +40,30 @@ brew "bat"
 brew "btop"
 # Core application library for C
 brew "glib"
+# Emacs dependency management
+brew "cask"
+# Implementation of the Chez Scheme language
+brew "chezscheme"
+# Compiler for the Scheme programming language
+brew "chicken"
 # Cross-platform make
 brew "cmake"
 # Console Matrix
 brew "cmatrix"
-# Configurable talking characters in ASCII art
-brew "cowsay"
-# Fast and statically typed, compiled language with Ruby-like syntax
-brew "crystal"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
-# .NET Core
-brew "dotnet", link: false
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
 # Run arbitrary commands when files change
 brew "entr"
-# Modern replacement for 'ls'
-brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Implementation of the Scheme Language
+brew "gambit-scheme"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # Nonsense activity generator
@@ -80,6 +82,8 @@ brew "git-flow"
 brew "git-lfs"
 # Git Submodule Alternative
 brew "git-subrepo"
+# Manage your git repositories in one place
+brew "gitbatch"
 # Update multiple git repositories at once
 brew "gitup"
 # Render markdown on the CLI
@@ -90,8 +94,6 @@ brew "gnu-sed"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Fast linters runner for Go
-brew "golangci-lint"
 # Image manipulation
 brew "netpbm"
 # OpenType text shaping engine
@@ -102,8 +104,6 @@ brew "graphviz"
 brew "hadolint"
 # Post-modern modal text editor
 brew "helix"
-# Command-line oriented TCP/IP packet assembler/analyzer
-brew "hping"
 # Command-line benchmarking tool
 brew "hyperfine"
 # International Ispell
@@ -112,12 +112,12 @@ brew "ispell"
 brew "jid"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Statically typed programming language for the JVM
-brew "kotlin"
 # Terminal file manager
 brew "lf"
 # Sophisticated file transfer program
 brew "lftp"
+# C library SSHv1/SSHv2 client and server protocols
+brew "libssh"
 # Language Server for the Lua language
 brew "lua-language-server"
 # Package manager for the Lua programming language
@@ -126,6 +126,8 @@ brew "luarocks"
 brew "mas"
 # Minimalist GNU for Windows and GCC cross-compilers
 brew "mingw-w64"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
 # Platform built on V8 to build network applications
 brew "node"
 # Text-based UI library
@@ -138,10 +140,10 @@ brew "neovim"
 brew "nmap"
 # Tiny, lightning fast, feature-packed file manager
 brew "nnn"
+# Libraries for security-enabled client and server applications
+brew "nss"
 # Modern shell for the GitHub era
 brew "nushell"
-# Programming language with focus on simplicity, performance and modern systems
-brew "odin"
 # OCaml package manager
 brew "opam"
 # Library for JPEG-2000 image manipulation
@@ -170,8 +172,6 @@ brew "shfmt"
 brew "showkey"
 # SOcket CAT: netcat on steroids
 brew "socat"
-# Terminal-based client for Spotify
-brew "spotify-tui"
 # State of the art linter for the Go programming language
 brew "staticcheck"
 # Opinionated Lua code formatter
@@ -182,12 +182,12 @@ brew "tasksh"
 brew "taskwarrior-tui"
 # User interface to the TELNET protocol
 brew "telnet"
-# Tool to build, change, and version infrastructure
-brew "terraform"
 # Terraform Language Server
 brew "terraform-ls"
 # Thin wrapper for Terraform e.g. for locking state
 brew "terragrunt"
+# Terraform version manager inspired by rbenv
+brew "tfenv"
 # Multi-platform code-search similar to ack and ag
 brew "the_platinum_searcher"
 # Command-line time tracking application
@@ -202,16 +202,32 @@ brew "vifm"
 brew "vlang"
 # Internet file retriever
 brew "wget"
+# Command-line XML and HTML beautifier and content extractor
+brew "xq"
 # Yet Another Dotfiles Manager
 brew "yadm"
+# Extensible command-line tool to format YAML files
+brew "yamlfmt"
 # JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # Programming language designed for robustness, optimality, and clarity
 brew "zig"
 # Language Server for Zig
 brew "zls"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Small Clojure interpreter and linter
+brew "candid82/brew/joker"
 # Deliver Go binaries as fast and easily as possible
 brew "goreleaser/tap/goreleaser"
+# Better way to clone, organize and manage multiple git repositories
+brew "grdl/tap/git-get"
 # instant coding answers via the command line (howdoi in rust)
 brew "hors-org/hors/hors"
 # A simple terminal UI for git commands, written in Go
@@ -221,25 +237,21 @@ brew "keith/formulae/reminders-cli"
 brew "koekeishiya/formulae/skhd"
 # A tiling window manager for macOS based on binary space partitioning.
 brew "koekeishiya/formulae/yabai"
+# High-performance, schema-free, document-oriented database
+brew "mongodb/brew/mongodb-community"
 # Search and replace | Space Age seD
 brew "ms-jpq/sad/sad"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
-# Command-line tool to customize Spotify client
-brew "spicetify/tap/spicetify-cli", link: false
-# Maintained ctags implementation
-brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 # Command-line interface for 1Password
 cask "1password-cli"
-# Prebuilt OpenJDK binaries
-cask "adoptopenjdk8"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Android SDK component
 cask "android-platform-tools"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-# Menu bar icon organizer
+# Menu bar icon organiser
 cask "bartender"
 cask "beardedspice"
 # Web browser focusing on privacy
@@ -252,7 +264,7 @@ cask "citrix-workspace"
 cask "codekit"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
+# App to build and share containerised applications and microservices
 cask "docker"
 # Developer platform
 cask "dotnet-sdk"
@@ -275,28 +287,24 @@ cask "font-roboto-mono"
 cask "font-roboto-mono-nerd-font"
 # Just as comfortable to read and work in print media
 cask "font-roboto-serif"
+# Free and open-source image editor
+cask "gimp"
 # Web browser
 cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
-# Desktop automation application
-cask "hammerspoon"
-# Open source code editor written in Rust
-cask "lapce"
+# End-to-end encryption software
+cask "keybase"
 # Productivity tool
 cask "launchbar"
 # Create, manage and debug system- and user services
 cask "launchcontrol"
 # Web browser
 cask "microsoft-edge"
-# Open source implementation of Microsoft's .NET Framework
-cask "mono-mdk-for-visual-studio"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Visual communication software
 cask "omnigraffle"
-# Verify system files structure, run miscellaneous maintenance and more
-cask "onyx"
 # Fast, scalable, user-friendly build system for codebases of all sizes
 cask "pants"
 # Collaboration platform for API development
@@ -325,25 +333,21 @@ cask "swiftdefaultappsprefpane"
 cask "todoist"
 # Configurable document editor that supports Markdown
 cask "typora"
-# Integrated development environment
-cask "visual-studio"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Torrent streaming application
+cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
-# Open-source markdown editor
-cask "zettlr"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
-mas "Balance", id: 1637311725
-mas "Bear", id: 1091189122
 mas "Developer", id: 640199958
 mas "Evernote", id: 406056744
-mas "Messenger", id: 1480068668
+mas "GoodTask", id: 1143437985
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft To Do", id: 1274495053
 mas "MindNode", id: 992076693
@@ -352,33 +356,36 @@ mas "The Unarchiver", id: 425424353
 mas "Tomato One", id: 907364780
 mas "Transmit", id: 403388562
 mas "Trello", id: 1278508951
-mas "Wipr", id: 1320666476
 vscode "4ops.terraform"
 vscode "alfredbirk.tailwind-documentation"
 vscode "arcticicestudio.nord-visual-studio-code"
 vscode "asvetliakov.vscode-neovim"
 vscode "bradlc.vscode-tailwindcss"
-vscode "DotJoshJohnson.xml"
+vscode "braver.vscode-solarized"
+vscode "charliermarsh.ruff"
+vscode "dotjoshjohnson.xml"
 vscode "formulahendry.auto-close-tag"
 vscode "formulahendry.auto-rename-tag"
 vscode "formulahendry.code-runner"
-vscode "GitHub.copilot"
-vscode "GitHub.copilot-chat"
-vscode "GitHub.copilot-labs"
+vscode "ginfuru.ginfuru-better-solarized-dark-theme"
+vscode "github.copilot"
+vscode "github.copilot-chat"
 vscode "golang.go"
+vscode "huytd.nord-light"
 vscode "jinliming2.vscode-go-template"
+vscode "keifererikson.nightfox"
 vscode "laike9m.cyberbrain"
-vscode "magicstack.MagicPython"
+vscode "magicstack.magicpython"
 vscode "ms-azuretools.vscode-docker"
-vscode "ms-python.black-formatter"
-vscode "ms-python.flake8"
+vscode "ms-python.debugpy"
 vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
 vscode "ms-vscode-remote.remote-containers"
 vscode "naumovs.color-highlight"
 vscode "nickdemayo.vscode-json-editor"
 vscode "redhat.vscode-yaml"
-vscode "rome.rome"
 vscode "rust-lang.rust-analyzer"
+vscode "ryanolsonx.solarized"
 vscode "samuelcolvin.jinjahtml"
 vscode "steoates.autoimport"
 vscode "stylelint.vscode-stylelint"

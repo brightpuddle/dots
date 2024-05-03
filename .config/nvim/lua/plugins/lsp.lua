@@ -28,16 +28,29 @@ return {
 				dependencies = "nvim-lua/plenary.nvim",
 			},
 		},
+		{
+			"SmiteshP/nvim-navbuddy",
+			dependencies = {
+				"SmiteshP/nvim-navic",
+				"MunifTanjim/nui.nvim",
+			},
+			opts = { lsp = { auto_attach = true } },
+		},
 	},
 	config = function()
 		local lsp_zero = require("lsp-zero")
 		local lsp_format = require("lsp-format")
+		local navic = require("nvim-navic")
+		require("nvim-navbuddy").setup()
 
 		lsp_format.setup()
 
 		lsp_zero.on_attach(function(client, bufnr)
 			lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 			lsp_format.on_attach(client, bufnr)
+			if client.server_capabilities.documentSymbolProvider then
+				navic.attach(client, bufnr)
+			end
 
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
 			vim.lsp.handlers["textDocument/publishDiagnostics"] =
