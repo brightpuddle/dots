@@ -38,13 +38,34 @@ zinit ice wait"0" atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh'
 zinit light pyenv/pyenv
 
 zinit ice wait"0" as"command" from"gh-r" lucid \
+  atload'unalias zi' \
   mv"zoxide -> zoxide" \
   atclone"./zoxide init zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
 
-source $HOME/.config/nnn/config
-# eval $(opam env)
+############################################################
+# Functions
+############################################################
+# Yazi
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+# Ctrl-P
+fzf-open-file-or-dir() {
+  local cmd="command rg . --files --color=never"
+  local out=$(eval $cmd | fzf --exit-0 --height 40%)
+
+  if [ -f "$out" ]; then
+    vi "$out"
+  fi
+}
+zle -N fzf-open-file-or-dir
 ############################################################
 # Aliases
 ############################################################
@@ -71,17 +92,6 @@ setopt hist_verify
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Ctrl-P
-fzf-open-file-or-dir() {
-  local cmd="command rg . --files --color=never"
-  local out=$(eval $cmd | fzf --exit-0 --height 40%)
-
-  if [ -f "$out" ]; then
-    vi "$out"
-  fi
-}
-zle -N fzf-open-file-or-dir
 
 # Titles
 function set-title-precmd() {
