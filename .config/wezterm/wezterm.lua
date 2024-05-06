@@ -1,8 +1,7 @@
 local w = require("wezterm")
-
 local c = require("colors")
 
--- require("tabs")
+local config = w.config_builder()
 
 -- function get_appearance()
 -- 	if w.gui then
@@ -19,47 +18,47 @@ local c = require("colors")
 -- 	end
 -- end
 
-return {
-	font = w.font("RobotoMono Nerd Font", { weight = "Medium" }),
-	font_size = 15.0,
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-	line_height = 0.90,
-	-- color_scheme = scheme_for_appearance(get_appearance()),
-	color_scheme = "nord",
-	check_for_updates = false,
-	window_decorations = "RESIZE",
-	native_macos_fullscreen_mode = true,
-	disable_default_key_bindings = true,
-	show_tabs_in_tab_bar = false,
-	show_new_tab_button_in_tab_bar = false,
-	hide_tab_bar_if_only_one_tab = true,
-	tab_max_width = 32,
-	-- default_prog = { "zsh", "-c", "tmux" },
-	window_padding = {
-		left = 8,
-		right = 8,
-		top = 8,
-		bottom = 8,
-	},
-	window_frame = {
-		active_titlebar_bg = c.bg,
-		inactive_titlebar_bg = c.bg,
-		font = w.font({ family = "Roboto Mono", weight = "Bold" }),
-		font_size = 14.0,
-	},
-	colors = {
-		tab_bar = {
-			background = c.bg,
-			active_tab = {
-				bg_color = c.active.bg,
-				fg_color = c.active.fg,
-			},
-			inactive_tab = {
-				bg_color = c.inactive.bg,
-				fg_color = c.inactive.fg,
-			},
+config.font = w.font("RobotoMono Nerd Font", { weight = "Medium" })
+config.font_size = 15.0
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+config.line_height = 0.90
+-- color_scheme = scheme_for_appearance(get_appearance())
+config.color_scheme = "nord"
+config.check_for_updates = false
+config.window_decorations = "RESIZE"
+config.native_macos_fullscreen_mode = true
+config.disable_default_key_bindings = true
+config.show_tabs_in_tab_bar = false
+config.show_new_tab_button_in_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
+config.tab_max_width = 32
+config.default_prog = { "zsh", "-c", "tmux" }
+config.window_padding = {
+	left = 8,
+	right = 8,
+	top = 8,
+	bottom = 8,
+}
+config.window_frame = {
+	active_titlebar_bg = c.bg,
+	inactive_titlebar_bg = c.bg,
+	font = w.font({ family = "Roboto Mono", weight = "Bold" }),
+	font_size = 14.0,
+}
+config.colors = {
+	tab_bar = {
+		background = c.bg,
+		active_tab = {
+			bg_color = c.active.bg,
+			fg_color = c.active.fg,
+		},
+		inactive_tab = {
+			bg_color = c.inactive.bg,
+			fg_color = c.inactive.fg,
 		},
 	},
-	scrollback_lines = 3500,
-	keys = require("keys"),
 }
+-- config.scrollback_lines = 3500
+config.keys = require("keys")
+
+return config
