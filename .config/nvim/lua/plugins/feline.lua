@@ -267,7 +267,7 @@ return {
 						comps.git.remove,
 						comps.git.sep,
 						-- Navigation
-						comps.navigation,
+						-- comps.navigation,
 					},
 					{
 						-- Diag
