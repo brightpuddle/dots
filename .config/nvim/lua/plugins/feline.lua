@@ -259,7 +259,7 @@ return {
 						-- comps.mode,
 						-- File info
 						comps.file.folder,
-						comps.file.filename,
+						-- comps.file.filename,
 						-- Git
 						comps.git.branch,
 						comps.git.change,
