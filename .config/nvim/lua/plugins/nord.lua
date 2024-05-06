@@ -58,5 +58,13 @@ return {
 
 		-- NvimNotify
 		hl(0, "NotifyBackground", { bg = "#434c5e" })
+
+		-- Markdown headlines
+		hl(0, "Headline1", { fg = "#88C0D0", bg = "#3d3c44", bold = true })
+		hl(0, "Headline2", { fg = "#81A1C1", bg = "#3f4247", bold = true })
+		hl(0, "Headline3", { fg = "#5E81AC", bg = "#394147", bold = true })
+		hl(0, "Headline4", { fg = "#81A1C1", bg = "#363e4c", bold = true })
+		hl(0, "Headline5", { fg = "#BF616A", bg = "#3a3c4a", bold = true })
+		hl(0, "Headline6", { fg = "#D8DEE9", bg = "#3d434f", bold = true })
 	end,
 }
