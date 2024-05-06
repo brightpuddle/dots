@@ -1,6 +1,10 @@
 local w = require("wezterm")
 local a = w.action
 
+-- nvim
+local ctrl_o = { key = "o", mods = "CTRL" }
+local ctrl_w = { key = "w", mods = "CTRL" }
+
 local function map(key, mods, action)
 	local res = { key = key }
 	if mods then
@@ -29,33 +33,43 @@ local function send(...)
 	end
 end
 
--- nvim
-local ctrl_o = { key = "o", mods = "CTRL" }
--- tmux/nvim window mgmt
-local ctrl_w = { key = "w", mods = "CTRL" }
--- tmux
-local ctrl_a = { key = "a", mods = "CTRL" }
+local function isViProcess(pane)
+	return pane:get_foreground_process_name():find("n?v?im") ~= nil
+end
+
+local function conditionalActivatePane(window, pane, pane_direction, vim_direction)
+	if isViProcess(pane) then
+		window:perform_action(
+			-- This should match the keybinds you set in Neovim.
+			send(ctrl_w, vim_direction),
+			pane
+		)
+	else
+		window:perform_action(a.ActivatePaneDirection(pane_direction), pane)
+	end
+end
+
+w.on("ActivatePaneDirection-right", function(window, pane)
+	conditionalActivatePane(window, pane, "Right", "l")
+end)
+w.on("ActivatePaneDirection-left", function(window, pane)
+	conditionalActivatePane(window, pane, "Left", "h")
+end)
+w.on("ActivatePaneDirection-up", function(window, pane)
+	conditionalActivatePane(window, pane, "Up", "k")
+end)
+w.on("ActivatePaneDirection-down", function(window, pane)
+	conditionalActivatePane(window, pane, "Down", "j")
+end)
 
 return {
 	-- Save
 	map("s", "CMD", send(ctrl_o, "w")),
+
 	-- Preferences
 	map(",", "CMD", a.SendString("vi ~/.config/wezterm/wezterm.lua\r")),
-	-- Window Mgmt
-	map("n", "CMD", a.SpawnWindow),
-	map("m", "CMD", a.Hide),
-	map("h", "CMD", a.HideApplication),
 	map("f", "CMD|SHIFT", a.ToggleFullScreen),
 	map("w", "CMD", send(map("d", "CTRL"))),
-
-	-- Font size
-	map("=", "CMD", a.IncreaseFontSize),
-	map("-", "CMD", a.DecreaseFontSize),
-	map("0", "CMD", a.ResetFontSize),
-
-	-- Clipboard
-	map("c", "CMD", a.CopyTo("Clipboard")),
-	map("v", "CMD", a.PasteFrom("Clipboard")),
 
 	-- Wezterm command palette
 	map("Space", "CTRL|SHIFT", a.ActivateCommandPalette),
@@ -64,42 +78,20 @@ return {
 	map("p", "CMD", send(map("p", "CTRL"))),
 	map("p", "CMD|SHIFT", send(ctrl_o, "f", "a")),
 
-	-- Window management
-	map("d", "CMD", send(ctrl_w, "s")),
-	map("d", "CMD|SHIFT", send(ctrl_w, "S")),
+	-- Pane management
+	map("d", "CMD", a.SplitVertical({ domain = "CurrentPaneDomain" })),
+	map("d", "CMD|SHIFT", a.SplitHorizontal({ domain = "CurrentPaneDomain" })),
+	map("r", "CMD", a.RotatePanes("Clockwise")),
+	map("Return", "CMD", a.TogglePaneZoomState),
 
-	-- Vim/tmux nav
-	map("h", "CMD|SHIFT", send(ctrl_w, "h")),
-	map("j", "CMD|SHIFT", send(ctrl_w, "j")),
-	map("k", "CMD|SHIFT", send(ctrl_w, "k")),
-	map("l", "CMD|SHIFT", send(ctrl_w, "l")),
-
-	-- Tmux pane management
-	map("r", "CMD", send(ctrl_a, "r")), -- Rotate
-	map("y", "CMD", send(ctrl_a, "y")), -- Mirror
-	map("t", "CMD", send(ctrl_a, "n")), -- Tab
-	map("Enter", "CMD", send(ctrl_a, "z")), -- Zoom
-
-	-- Tmux tab nav
-	map("}", "CMD|SHIFT", send(ctrl_a, "]")),
-	map("{", "CMD|SHIFT", send(ctrl_a, "[")),
-	map("0", "CMD", send(ctrl_a, "0")),
-	map("1", "CMD", send(ctrl_a, "1")),
-	map("2", "CMD", send(ctrl_a, "2")),
-	map("3", "CMD", send(ctrl_a, "3")),
-	map("4", "CMD", send(ctrl_a, "4")),
-	map("5", "CMD", send(ctrl_a, "5")),
-	map("6", "CMD", send(ctrl_a, "6")),
-	map("7", "CMD", send(ctrl_a, "7")),
-	map("8", "CMD", send(ctrl_a, "8")),
-	map("9", "CMD", send(ctrl_a, "9")),
-
-	-- "Ctrl-A" for tmux
-	map("a", "CMD", send(ctrl_a)),
-
-	-- Mirror VSCode panels
+	-- Mirror VSCode panels shortcuts
 	map("b", "CMD", send(ctrl_o, "b")),
 	map("e", "CMD|SHIFT", send(ctrl_o, "b")),
 	map("j", "CMD", send(ctrl_o, "j")),
 	map("k", "CMD", send(ctrl_o, "k")),
+
+	map("h", "CMD|SHIFT", a.EmitEvent("ActivatePaneDirection-left")),
+	map("j", "CMD|SHIFT", a.EmitEvent("ActivatePaneDirection-down")),
+	map("k", "CMD|SHIFT", a.EmitEvent("ActivatePaneDirection-up")),
+	map("l", "CMD|SHIFT", a.EmitEvent("ActivatePaneDirection-right")),
 }
