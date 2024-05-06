@@ -138,8 +138,6 @@ brew "neofetch"
 brew "neovim"
 # Port scanning utility for large networks
 brew "nmap"
-# Tiny, lightning fast, feature-packed file manager
-brew "nnn"
 # Libraries for security-enabled client and server applications
 brew "nss"
 # Modern shell for the GitHub era
@@ -196,8 +194,6 @@ brew "timewarrior"
 brew "tmux"
 # Digital clock in ncurses
 brew "tty-clock"
-# Ncurses-based file manager with vi-like keybindings
-brew "vifm"
 # V programming language
 brew "vlang"
 # Internet file retriever
