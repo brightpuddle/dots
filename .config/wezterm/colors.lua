@@ -1,7 +1,7 @@
 return {
 	active = {
 		fg = "#d8dee9",
-		bg = "#434c5e",
+		bg = "#3c4251",
 	},
 	inactive = {
 		fg = "#d8dee9",
