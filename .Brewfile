@@ -1,5 +1,7 @@
 tap "austinjones/taps"
 tap "candid82/brew"
+tap "cormacrelf/tap"
+tap "danielgtaylor/restish"
 tap "felixkratz/formulae"
 tap "ggp1/tap"
 tap "goreleaser/tap"
@@ -30,6 +32,8 @@ brew "libpng"
 brew "xz"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
+# Automatically exclude development dependencies from Time Machine backups
+brew "asimov"
 # Spell checker with better logic than ispell
 brew "aspell"
 # Microsoft Azure CLI 2.0
@@ -58,6 +62,8 @@ brew "deno"
 brew "duti"
 # Run arbitrary commands when files change
 brew "entr"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -140,8 +146,6 @@ brew "neovim"
 brew "nmap"
 # Libraries for security-enabled client and server applications
 brew "nss"
-# Modern shell for the GitHub era
-brew "nushell"
 # OCaml package manager
 brew "opam"
 # Library for JPEG-2000 image manipulation
@@ -174,6 +178,8 @@ brew "socat"
 brew "staticcheck"
 # Opinionated Lua code formatter
 brew "stylua"
+# Feature-rich console based todo list manager
+brew "task"
 # Shell wrapper for Taskwarrior commands
 brew "tasksh"
 # Terminal user interface for taskwarrior
@@ -220,6 +226,10 @@ brew "zls"
 brew "zoxide"
 # Small Clojure interpreter and linter
 brew "candid82/brew/joker"
+# Watcher for macOS 10.14+ light/dark mode changes
+brew "cormacrelf/tap/dark-notify"
+# Restish is a CLI for interacting with REST-ish HTTP APIs with some nice features built-in.
+brew "danielgtaylor/restish/restish"
 # Deliver Go binaries as fast and easily as possible
 brew "goreleaser/tap/goreleaser"
 # Better way to clone, organize and manage multiple git repositories
@@ -237,14 +247,14 @@ brew "koekeishiya/formulae/yabai"
 brew "mongodb/brew/mongodb-community"
 # Search and replace | Space Age seD
 brew "ms-jpq/sad/sad"
-# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "oven-sh/bun/bun"
 # Command-line interface for 1Password
 cask "1password-cli"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Android SDK component
 cask "android-platform-tools"
+# Chromium based browser
+cask "arc"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Menu bar icon organiser
@@ -309,6 +319,8 @@ cask "postman"
 cask "private-internet-access"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
+# All-in-one bookmark manager
+cask "raindropio"
 # Archive manager for data compression and backups
 cask "rar"
 # Control your tools with a few keystrokes

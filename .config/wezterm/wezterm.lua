@@ -3,27 +3,26 @@ local c = require("colors")
 
 local config = w.config_builder()
 
--- function get_appearance()
--- 	if w.gui then
--- 		return w.gui.get_appearance()
--- 	end
--- 	return "Dark"
--- end
---
--- function scheme_for_appearance(appearance)
--- 	if appearance:find("Dark") then
--- 		return "nord"
--- 	else
--- 		return "nord_light"
--- 	end
--- end
+local function get_appearance()
+	if w.gui then
+		return w.gui.get_appearance()
+	end
+	return "Dark"
+end
+
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "nord"
+	else
+		return "nord"
+	end
+end
 
 config.font = w.font("RobotoMono Nerd Font", { weight = "Medium" })
 config.font_size = 15.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.line_height = 0.90
--- color_scheme = scheme_for_appearance(get_appearance())
-config.color_scheme = "nord"
+config.color_scheme = scheme_for_appearance(get_appearance())
 config.check_for_updates = false
 config.window_decorations = "RESIZE"
 config.native_macos_fullscreen_mode = true
@@ -58,7 +57,7 @@ config.colors = {
 		},
 	},
 }
--- config.scrollback_lines = 3500
+config.scrollback_lines = 3500
 config.keys = require("keys")
 
 return config

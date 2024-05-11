@@ -24,6 +24,7 @@
 -- #A3BE8C
 -- #B48EAD
 return {
+	-- "casonadams/nord.vim",
 	"nordtheme/vim",
 	-- "shaunsingh/nord.nvim",
 	-- "gbprod/nord.nvim",

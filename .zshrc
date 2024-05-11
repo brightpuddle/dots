@@ -71,6 +71,8 @@ zle -N fzf-open-file-or-dir
 ############################################################
 alias ls="ls -G"
 alias ll="ls -al"
+alias l="eza"
+alias lt="eza -T"
 alias tt="taskwarrior-tui"
 alias lg='lazygit'
 alias cat='bat -Pp'
