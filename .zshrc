@@ -59,7 +59,7 @@ function yy() {
 # Ctrl-P
 fzf-open-file-or-dir() {
   local cmd="command rg . --files --color=never"
-  local out=$(eval $cmd | fzf --exit-0 --height 40%)
+  local out=$(eval $cmd | fzf --exit-0 --height 40% --color 16)
 
   if [ -f "$out" ]; then
     vi "$out"

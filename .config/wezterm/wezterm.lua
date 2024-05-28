@@ -3,6 +3,17 @@ local c = require("colors")
 
 local config = w.config_builder()
 
+local schemes = {
+	light = "zenwritten_light",
+	dark = "zenwritten_dark",
+}
+
+local light_scheme = w.get_builtin_color_schemes()[schemes.light]
+light_scheme.background = "#ffffff"
+light_scheme.ansi[1] = "#ffffff"
+
+local dark_scheme = w.get_builtin_color_schemes()[schemes.dark]
+
 local function get_appearance()
 	if w.gui then
 		return w.gui.get_appearance()
@@ -12,17 +23,21 @@ end
 
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return "nord"
+		return schemes.dark
 	else
-		return "nord"
+		return schemes.light
 	end
 end
 
-config.font = w.font("RobotoMono Nerd Font", { weight = "Medium" })
-config.font_size = 15.0
+config.font = w.font("Noto Sans Mono", { weight = "Medium" })
+config.font_size = 16.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.line_height = 0.90
 config.color_scheme = scheme_for_appearance(get_appearance())
+config.color_schemes = {
+	[schemes.light] = light_scheme,
+	[schemes.dark] = dark_scheme,
+}
 config.check_for_updates = false
 config.window_decorations = "RESIZE"
 config.native_macos_fullscreen_mode = true
@@ -42,7 +57,7 @@ config.window_frame = {
 	active_titlebar_bg = c.bg,
 	inactive_titlebar_bg = c.bg,
 	font = w.font({ family = "Roboto Mono", weight = "Bold" }),
-	font_size = 14.0,
+	font_size = 15.0,
 }
 config.colors = {
 	tab_bar = {

@@ -1,11 +1,15 @@
 return {
 	"freddiehaddad/feline.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"SmiteshP/nvim-navic",
+	},
 	event = "BufEnter",
 	config = function()
 		local vi_mode = require("feline.providers.vi_mode")
 		local lsp = require("feline.providers.lsp")
 		local git = require("feline.providers.git")
+		local navic = require("nvim-navic")
 		local function get_color(group, attr)
 			local hl = vim.api.nvim_get_hl_by_name(group, true)
 			if hl and hl[attr] then
@@ -14,12 +18,12 @@ return {
 		end
 		local c = {
 			pri = {
-				bg = get_color("StatusLineNC", "background"),
-				fg = get_color("StatusLineNC", "foreground"),
+				bg = "#3B4252",
+				fg = "#D8DEE9",
 			},
 			sec = {
-				bg = get_color("StatusLine", "background"),
-				fg = get_color("StatusLine", "foreground"),
+				bg = "#4C566A",
+				fg = "#D8DEE9",
 			},
 			diag = {
 				error = get_color("DiagnosticError", "foreground"),
@@ -231,6 +235,17 @@ return {
 			},
 		}
 
+		-- Code navigation
+		comps.navigation = {
+			provider = function()
+				return navic.get_location()
+			end,
+			enabled = function()
+				return navic.is_available()
+			end,
+			left_sep = { str = " / ", hl = { fg = get_color("Comment", "foreground") } },
+		}
+
 		require("feline").setup({
 			theme = {
 				bg = c.pri.bg,
@@ -244,13 +259,15 @@ return {
 						-- comps.mode,
 						-- File info
 						comps.file.folder,
-						comps.file.filename,
+						-- comps.file.filename,
 						-- Git
 						comps.git.branch,
 						comps.git.change,
 						comps.git.add,
 						comps.git.remove,
 						comps.git.sep,
+						-- Navigation
+						-- comps.navigation,
 					},
 					{
 						-- Diag
