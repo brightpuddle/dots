@@ -13,6 +13,8 @@ light_scheme.background = "#fdfdfd"
 light_scheme.ansi[1] = "#fdfdfd"
 
 local dark_scheme = w.get_builtin_color_schemes()[schemes.dark]
+-- dark_scheme.background = "#1d1d1d"
+-- dark_scheme.ansi[1] = "#1d1d1d"
 
 local function get_appearance()
 	if w.gui then
@@ -33,7 +35,7 @@ end
 -- config.font = w.font("Noto Sans Mono", { weight = "Medium" })
 -- config.font = w.font("JetBrains Mono", { weight = "Medium" })
 config.font = w.font("Roboto Mono", { weight = "Medium" })
-config.font_size = 16
+config.font_size = 15
 -- config.freetype_load_target = "Light"
 -- config.line_height = 0.90
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
