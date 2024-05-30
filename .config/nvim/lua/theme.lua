@@ -15,7 +15,7 @@ return function()
 		---@diagnostic disable: undefined-global
 		return {
 			Constant({ fg = p.wood }),
-			Identifier({ fg = p.rose }),
+			-- Identifier({ fg = p.rose }),
 		}
 	end)
 

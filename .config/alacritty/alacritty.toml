@@ -9,56 +9,29 @@ duration = 0
 draw_bold_text_with_bright_colors = false
 
 [colors.bright]
-black = "#4c566a"
-blue = "#81a1c1"
-cyan = "#8fbcbb"
-green = "#a3be8c"
-magenta = "#b48ead"
-red = "#bf616a"
-white = "#eceff4"
-yellow = "#ebcb8b"
-
+black = "#C6C3C3"
+red = "#94253E"
+green = "#3F5A22"
+yellow = "#803D1C"
+blue = "#1D5573"
+magenta = "#7B3B70"
+cyan = "#2B747C"
+white = "#5C5C5C"
 [colors.cursor]
-cursor = "#d8dee9"
-text = "#2e3440"
-
-[colors.dim]
-black = "#373e4d"
-blue = "#68809a"
-cyan = "#6d96a5"
-green = "#809575"
-magenta = "#8c738c"
-red = "#94545d"
-white = "#aeb3bb"
-yellow = "#b29e75"
-
+cursor = "#353535"
+text = "#EEEEEE"
 [colors.normal]
-black = "#3b4252"
-blue = "#81a1c1"
-cyan = "#88c0d0"
-green = "#a3be8c"
-magenta = "#b48ead"
-red = "#bf616a"
-white = "#e5e9f0"
-yellow = "#ebcb8b"
-
+black = "#EEEEEE"
+blue = "#286486"
+cyan = "#3B8992"
+green = "#4F6C31"
+magenta = "#88507D"
+red = "#A8334C"
+white = "#353535"
+yellow = "#944927"
 [colors.primary]
-background = "#2e3440"
-dim_foreground = "#a5abb6"
-foreground = "#d8dee9"
-
-[colors.search.matches]
-background = "#88c0d0"
-foreground = "CellBackground"
-
-[colors.selection]
-background = "#4c566a"
-text = "CellForeground"
-
-[colors.vi_mode_cursor]
-cursor = "#d8dee9"
-text = "#2e3440"
-
+background = "#EEEEEE"
+foreground = "#353535"
 [cursor]
 style = "Block"
 unfocused_hollow = true
@@ -85,11 +58,11 @@ style = "Medium Italic"
 style = "Italic"
 
 [font.normal]
-family = "RobotoMono Nerd Font"
+family = "Noto Sans Mono"
 style = "Regular"
 
 [font.offset]
-y = 2
+# y = 2
 
 [[keyboard.bindings]]
 action = "CreateNewWindow"

@@ -77,6 +77,7 @@ alias tt="taskwarrior-tui"
 alias lg='lazygit'
 alias cat='bat -Pp'
 alias cd='z'
+alias h='history 1 | rg'
 
 ############################################################
 # Options

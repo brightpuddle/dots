@@ -8,9 +8,9 @@ return {
 
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			autotag = {
-				enable = true,
-			},
+			-- autotag = {
+			-- 	enable = true,
+			-- },
 			matchup = {
 				enable = true,
 			},

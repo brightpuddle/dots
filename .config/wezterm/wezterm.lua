@@ -9,8 +9,8 @@ local schemes = {
 }
 
 local light_scheme = w.get_builtin_color_schemes()[schemes.light]
-light_scheme.background = "#ffffff"
-light_scheme.ansi[1] = "#ffffff"
+light_scheme.background = "#fdfdfd"
+light_scheme.ansi[1] = "#fdfdfd"
 
 local dark_scheme = w.get_builtin_color_schemes()[schemes.dark]
 
@@ -29,10 +29,14 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
-config.font = w.font("Noto Sans Mono", { weight = "Medium" })
-config.font_size = 16.0
+-- config.font = w.font("SF Mono", { weight = "DemiBold" })
+-- config.font = w.font("Noto Sans Mono", { weight = "Medium" })
+-- config.font = w.font("JetBrains Mono", { weight = "Medium" })
+config.font = w.font("Roboto Mono", { weight = "Medium" })
+config.font_size = 16
+-- config.freetype_load_target = "Light"
+-- config.line_height = 0.90
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
-config.line_height = 0.90
 config.color_scheme = scheme_for_appearance(get_appearance())
 config.color_schemes = {
 	[schemes.light] = light_scheme,
