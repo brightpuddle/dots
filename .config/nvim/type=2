@@ -1,0 +1,11 @@
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.21.6
+Date: Thu, 30 May 2024 15:05:54 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+Location: /api/get_ic_details/
+Vary: Origin
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+

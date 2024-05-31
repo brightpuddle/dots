@@ -108,6 +108,8 @@ brew "harfbuzz"
 brew "graphviz"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
+# Convert HCL2 to JSON
+brew "hcl2json"
 # Post-modern modal text editor
 brew "helix"
 # Command-line benchmarking tool
@@ -122,6 +124,8 @@ brew "jq"
 brew "lf"
 # Sophisticated file transfer program
 brew "lftp"
+# Implementation of the file(1) command
+brew "libmagic"
 # C library SSHv1/SSHv2 client and server protocols
 brew "libssh"
 # Language Server for the Lua language
@@ -130,8 +134,6 @@ brew "lua-language-server"
 brew "luarocks"
 # Mac App Store command-line interface
 brew "mas"
-# Minimalist GNU for Windows and GCC cross-compilers
-brew "mingw-w64"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Platform built on V8 to build network applications
@@ -178,6 +180,8 @@ brew "socat"
 brew "staticcheck"
 # Opinionated Lua code formatter
 brew "stylua"
+# TOML toolkit written in Rust
+brew "taplo"
 # Feature-rich console based todo list manager
 brew "task"
 # Shell wrapper for Taskwarrior commands
@@ -280,19 +284,21 @@ cask "dropbox"
 cask "etrecheckpro"
 # Web browser
 cask "firefox"
-# UI toolkit for building applications for mobile, web and desktop
-cask "flutter"
 # Icon set and toolkit
 cask "font-fontawesome"
+# Typeface made for developers
+cask "font-jetbrains-mono"
 # Icons based on core Material Design principles
 cask "font-material-icons"
+# Monospaced variable font
+cask "font-noto-sans-mono"
 # Font with a mechanical skeleton and the forms are largely geometric
 cask "font-roboto"
 cask "font-roboto-mono"
-# Developer targeted fonts with a high number of glyphs
-cask "font-roboto-mono-nerd-font"
 # Just as comfortable to read and work in print media
 cask "font-roboto-serif"
+# Monospaced variant of "San Francisco" by Apple
+cask "font-sf-mono"
 # Free and open-source image editor
 cask "gimp"
 # Web browser
@@ -301,6 +307,8 @@ cask "google-chrome"
 cask "google-drive"
 # End-to-end encryption software
 cask "keybase"
+# GPU-based terminal emulator
+cask "kitty"
 # Productivity tool
 cask "launchbar"
 # Create, manage and debug system- and user services
@@ -364,7 +372,9 @@ mas "The Unarchiver", id: 425424353
 mas "Tomato One", id: 907364780
 mas "Transmit", id: 403388562
 mas "Trello", id: 1278508951
+mas "UpNote", id: 1398373917
 vscode "4ops.terraform"
+vscode "a-h.templ"
 vscode "alfredbirk.tailwind-documentation"
 vscode "arcticicestudio.nord-visual-studio-code"
 vscode "asvetliakov.vscode-neovim"
@@ -392,6 +402,7 @@ vscode "ms-vscode-remote.remote-containers"
 vscode "naumovs.color-highlight"
 vscode "nickdemayo.vscode-json-editor"
 vscode "redhat.vscode-yaml"
+vscode "rpbritton.zenbones"
 vscode "rust-lang.rust-analyzer"
 vscode "ryanolsonx.solarized"
 vscode "samuelcolvin.jinjahtml"

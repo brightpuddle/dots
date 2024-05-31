@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("theme")()
+		require("theme")(vim.o.background)
 		vim.cmd.colorscheme("zenwritten")
 	end,
 }

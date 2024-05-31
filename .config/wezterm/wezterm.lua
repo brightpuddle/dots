@@ -4,8 +4,8 @@ local c = require("colors")
 local config = w.config_builder()
 
 local schemes = {
-	light = "zenwritten_light",
-	dark = "zenwritten_dark",
+	light = "zenbones_light",
+	dark = "zenbones_dark",
 }
 
 local light_scheme = w.get_builtin_color_schemes()[schemes.light]

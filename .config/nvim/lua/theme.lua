@@ -7,9 +7,9 @@ vim.g.zenwritten = {
 	lighten_noncurrent_window = true,
 	transparent_background = true,
 }
-return function()
+return function(dark)
 	-- local base = require("zenwritten")
-	local p = require("zenwritten.palette")[vim.o.background]
+	local p = require("zenwritten.palette")[dark]
 
 	local specs = lush.parse(function()
 		---@diagnostic disable: undefined-global
