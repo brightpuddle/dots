@@ -92,6 +92,9 @@ return {
 	map("7", "CMD", send(ctrl_a, "6")),
 	map("8", "CMD", send(ctrl_a, "7")),
 	map("9", "CMD", send(ctrl_a, "8")),
+	-- Vim tab nav
+	map("]", "CMD", send(ctrl_o, "]")),
+	map("[", "CMD", send(ctrl_o, "[")),
 
 	-- "Ctrl-A" for tmux
 	map("a", "CMD", send(ctrl_a)),

@@ -2,8 +2,15 @@ return {
 	"stevearc/conform.nvim",
 	config = function()
 		require("conform").setup({
+			formatters = {
+				vfmt = {
+					command = "v",
+					args = { "fmt" },
+				},
+			},
 			formatters_by_ft = {
 				go = { "gofumpt", "golines" },
+				gohtmltmpl = { "djlint", "rustywind" },
 				javascript = { "biome", "rustywind" },
 				javascriptreact = { "biome", "rustywind" },
 				json = { "fixjson" },
@@ -13,9 +20,9 @@ return {
 				templ = { "templ", "rustywind" },
 				terraform = { "terraform_fmt" },
 				toml = { "taplo" },
+				v = { "vfmt" },
 				xml = { "xmllint" },
 				yaml = { "yamlfmt" },
-				gohtmltmpl = { "djlint", "rustywind" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable

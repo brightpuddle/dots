@@ -34,12 +34,14 @@ k.set("n", "<leader>wo", "<cmd>only<cr>")
 k.set({ "n", "i" }, "<C-o>c", "<cmd>Copilot panel<cr>")
 
 -- Buffer navigation
-k.set("n", "<leader>]", "<cmd>bnext<cr>")
-k.set("n", "<leader>[", "<cmd>bprev<cr>")
-k.set("n", "L", "<cmd>bnext<cr>")
-k.set("n", "H", "<cmd>bprev<cr>")
-k.set({ "n", "i" }, "<C-o>n", "<cmd>bnext<cr>")
-k.set({ "n", "i" }, "<C-o>p", "<cmd>bprev<cr>")
+k.set("n", "<leader>]", "<cmd>BufferNext<cr>")
+k.set("n", "<leader>[", "<cmd>BufferPrevious<cr>")
+k.set({ "n", "i", "v" }, "<C-o>]", "<cmd>BufferNext<cr>")
+k.set({ "n", "i", "v" }, "<C-o>[", "<cmd>BufferPrevious<cr>")
+k.set("n", "L", "<cmd>BufferNext<cr>")
+k.set("n", "H", "<cmd>BufferPrevious<cr>")
+k.set({ "n", "i" }, "<C-o>n", "<cmd>BufferNext<cr>")
+k.set({ "n", "i" }, "<C-o>p", "<cmd>BufferPrevious<cr>")
 
 -- Incremental search5
 k.set("n", "<esc>", "<cmd>noh<cr>")
@@ -49,7 +51,7 @@ k.set({ "n", "i" }, "<C-o>b", "<cmd>Neotree toggle<cr>")
 k.set("n", "<leader>ob", "<cmd>Neotree toggle buffers<cr>")
 
 -- Diagnostics
-k.set({ "n", "i" }, "<C-o>j", "<cmd>TroubleToggle<cr>", { silent = true })
+k.set({ "n", "i" }, "<C-o>j", "<cmd>Trouble diagnostics toggle<cr>", { silent = true })
 k.set("n", "<leader>oj", "<cmd>TroubleToggle<cr>")
 k.set("n", "<leader>j", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 k.set("n", "<leader>k", "<cmd>lua vim.diagnostic.goto_prev()<cr>")

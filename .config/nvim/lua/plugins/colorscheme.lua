@@ -4,7 +4,9 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("theme")(vim.o.background)
-		vim.cmd.colorscheme("zenwritten")
+		vim.g.nord = {
+			transparent_background = true,
+		}
+		vim.cmd.colorscheme("nord")
 	end,
 }
