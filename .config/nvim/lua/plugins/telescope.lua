@@ -17,13 +17,13 @@ return {
 	cmd = { "Telescope" },
 	config = function()
 		require("telescope.actions")
-		local trouble = require("trouble.providers.telescope")
+		local trouble = require("trouble.sources.telescope")
 
 		require("telescope").setup({
 			defaults = {
 				mappings = {
-					i = { ["<C-o>j"] = trouble.open_with_trouble },
-					n = { ["<C-o>j"] = trouble.open_with_trouble },
+					i = { ["<C-o>j"] = trouble.open },
+					n = { ["<C-o>j"] = trouble.open },
 				},
 			},
 			pickers = {

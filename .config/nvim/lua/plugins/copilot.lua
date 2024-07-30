@@ -1,6 +1,11 @@
 return {
-	"zbirenbaum/copilot.lua",
-	cmd = "Copilot",
+	"CopilotC-Nvim/CopilotChat.nvim",
+	branch = "canary",
+	dependencies = {
+		{ "zbirenbaum/copilot.lua" },
+		{ "nvim-lua/plenary.nvim" },
+	},
+	cmd = { "Copilot", "CopilotChat" },
 	event = "InsertEnter",
 	config = function()
 		require("copilot").setup({
@@ -9,5 +14,14 @@ return {
 				auto_trigger = true,
 			},
 		})
+		require("CopilotChat").setup({
+			debug = true,
+		})
 	end,
 }
+
+-- return {
+-- 	"zbirenbaum/copilot.lua",
+-- 	cmd = "Copilot",
+-- 	event = "InsertEnter",
+-- }

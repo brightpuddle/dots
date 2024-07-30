@@ -117,5 +117,4 @@ bindkey -v
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
-
- 
+### End of Zinit's installer chunk

@@ -46,6 +46,7 @@ return {
 	map("m", "CMD", a.Hide),
 	map("h", "CMD", a.HideApplication),
 	map("f", "CMD|SHIFT", a.ToggleFullScreen),
+	map("f", "CMD", send(ctrl_o, "t")),
 	map("w", "CMD", send(map("d", "CTRL"))),
 
 	-- Font size

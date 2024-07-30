@@ -6,6 +6,7 @@ export GO111MODULE=auto
 export EDITOR=/usr/local/bin/vi
 
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.bin:$PATH
@@ -14,9 +15,6 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.ghcup/bin:$PATH
 export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
-export PATH=$PATH:$HOME/.spicetify
-export PATH=$PATH:$HOME/.dotnet/tools
-export PATH=$PATH:$HOME/.pub-cache/bin
 
 export GPG_TTY=$(tty)
 
