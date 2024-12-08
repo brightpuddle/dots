@@ -1,7 +1,7 @@
 # Paths
 export PYTHON3_HOST_PROG=/usr/local/bin/python3
 export PIPX_DEFAULT_PYTHON=$HOME/.local/share/zinit/plugins/pyenv---pyenv/versions/3.10.14/bin/python
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.go
 export GO111MODULE=auto
 export EDITOR=/usr/local/bin/vi
 

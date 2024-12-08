@@ -5,6 +5,7 @@ return {
 		{ "zbirenbaum/copilot.lua" },
 		{ "nvim-lua/plenary.nvim" },
 	},
+	build = "make tiktoken",
 	cmd = { "Copilot", "CopilotChat" },
 	event = "InsertEnter",
 	config = function()
@@ -13,9 +14,6 @@ return {
 			suggestion = {
 				auto_trigger = true,
 			},
-		})
-		require("CopilotChat").setup({
-			debug = true,
 		})
 	end,
 }

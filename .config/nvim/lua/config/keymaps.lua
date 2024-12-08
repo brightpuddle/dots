@@ -14,6 +14,7 @@ k.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" }
 k.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find in files" })
 k.set("n", "<leader>ft", "<cmd>Telescope tags<cr>", { desc = "Find tags" })
 k.set("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Find symbols" })
+k.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "Find diagnostics" })
 
 -- j/k for wrapped text
 k.set({ "n", "v" }, "j", "gj", { silent = true })

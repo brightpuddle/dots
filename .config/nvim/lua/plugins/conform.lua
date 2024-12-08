@@ -9,28 +9,32 @@ return {
 				},
 			},
 			formatters_by_ft = {
-				go = { "gofumpt" },
+				go = { "golines" },
 				gohtmltmpl = { "djlint", "rustywind" },
+				hcl = { "hcl" },
 				javascript = { "biome", "rustywind" },
+				typescript = { "biome", "rustywind" },
+				typescriptreact = { "biome", "rustywind" },
 				javascriptreact = { "biome", "rustywind" },
 				json = { "jq" },
 				lua = { "stylua" },
+				markdown = { "markdownfmt" },
 				python = { "isort", "ruff_fix", "ruff_format" },
 				sh = { "shfmt" },
+				swift = { "swiftlint" },
 				templ = { "templ", "rustywind" },
 				terraform = { "terraform_fmt" },
 				toml = { "taplo" },
-				v = { "vfmt" },
 				xml = { "xmllint" },
-				yaml = { "yq" },
+				yaml = { "yamlfmt" },
 			},
-			-- format_on_save = function(bufnr)
-			-- 	-- Disable with a global or buffer-local variable
-			-- 	if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-			-- 		return
-			-- 	end
-			-- 	return { timeout_ms = 500, lsp_fallback = true }
-			-- end,
+			format_on_save = function(bufnr)
+				-- Disable with a global or buffer-local variable
+				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+					return
+				end
+				return { timeout_ms = 500, lsp_fallback = true }
+			end,
 		})
 
 		vim.api.nvim_create_user_command("Format", function(args)

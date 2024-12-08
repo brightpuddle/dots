@@ -13,28 +13,8 @@ npm-check -yug
 
 # Python libs
 pipx upgrade-all
-pip list -o | cut -d ' ' -f 1 | xargs -I{} pip install -U {}
+pip-review -av
+# pip list -o | cut -d ' ' -f 1 | xargs -I{} pip install -U {}
 
 # Go dependencies
-goup
-
-# MacOS and app store
-softwareupdate -i --all --agree-to-license
-
-# V
-v up
-v update
-
-# Neovim
-# nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-# TS?
-
-# OCaml libs
-# opam update
-# opam upgrade -all -y --fixup
-
-# Ruby
-# gem update
-
-# PERL
-# cpan update???
+gup update
