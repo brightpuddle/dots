@@ -78,6 +78,7 @@ alias lg='lazygit'
 alias cat='bat -Pp'
 alias cd='z'
 alias h='history 1 | rg'
+alias ly='lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git'
 
 ############################################################
 # Options
@@ -110,7 +111,7 @@ add-zsh-hook preexec set-title-preexec
 ############################################################
 # Keys
 ############################################################
-bindkey '^P' fzf-open-file-or-dir
+bindkey '^F' fzf-open-file-or-dir
 bindkey -s '^W' '^D'
 bindkey -v
 

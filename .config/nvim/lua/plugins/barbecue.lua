@@ -1,3 +1,4 @@
+-- Breadcrumb navigation
 return {
 	"utilyre/barbecue.nvim",
 	name = "barbecue",

@@ -1,3 +1,4 @@
+-- Comment managment (gh)
 return {
 	"numToStr/Comment.nvim",
 	opts = {},

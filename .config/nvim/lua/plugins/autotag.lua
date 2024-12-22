@@ -1,3 +1,4 @@
+-- Autoomatic closing of tags
 return {
 	"windwp/nvim-ts-autotag",
 	config = function()

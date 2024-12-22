@@ -1,3 +1,4 @@
+-- Measure plugin load time
 return {
 	"dstein64/vim-startuptime",
 	cmd = "StartupTime",

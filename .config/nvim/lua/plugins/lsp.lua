@@ -1,3 +1,4 @@
+-- LSP configuration
 return {
 	"VonHeikemen/lsp-zero.nvim",
 	branch = "v3.x",
@@ -143,4 +144,10 @@ return {
 		local cmp = require("cmp")
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	end,
+	lazy = false,
+	keys = {
+		{ "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next diagnostic" },
+		{ "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev diagnostic" },
+		{ "<leader>da", vim.lsp.buf.code_action, noremap = true, silent = true, desc = "Code action" },
+	},
 }

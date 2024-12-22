@@ -1,3 +1,4 @@
+[general]
 live_config_reload = true
 
 [bell]
@@ -59,7 +60,7 @@ style = "Medium Italic"
 style = "Italic"
 
 [font.normal]
-family = "RobotoMono Nerd Font"
+family = "Roboto Mono"
 style = "Regular"
 
 [[keyboard.bindings]]

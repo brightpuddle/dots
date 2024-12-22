@@ -49,3 +49,24 @@ w.on("format-tab-title", function(tab, _, _, _, _, max_width)
 		}
 	end
 end)
+
+return {
+	tab_max_width = 32,
+	show_tabs_in_tab_bar = true,
+	show_new_tab_button_in_tab_bar = false,
+	show_close_tab_button_in_tabs = false,
+	hide_tab_bar_if_only_one_tab = false,
+	colors = {
+		tab_bar = {
+			background = c.bg,
+			active_tab = {
+				bg_color = c.active.bg,
+				fg_color = c.active.fg,
+			},
+			inactive_tab = {
+				bg_color = c.inactive.bg,
+				fg_color = c.inactive.fg,
+			},
+		},
+	},
+}

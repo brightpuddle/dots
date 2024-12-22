@@ -1,0 +1,27 @@
+{
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "ui_font_weight": 500,
+  "buffer_font_size": 15,
+  "buffer_font_family": "Roboto Mono",
+  "buffer_font_weight": 500,
+  "buffer_line_height": "standard",
+  "cursor_blink": false,
+  "current_line_highlight": "none",
+  "theme": {
+    "mode": "system",
+    "light": "Nord Light",
+    "dark": "Nord"
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "terminal": {
+    "font_size": 15,
+    "font_family": "Roboto Mono",
+    "font_weight": 500,
+    "line_height": "standard"
+  }
+}

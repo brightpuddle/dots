@@ -1,3 +1,8 @@
+-- Find files, buffers, tags, symbols, and more with the Telescope.nvim plugin.
+local find_all = function()
+	require("telescope").extensions.smart_open.smart_open({ cwd_only = true })
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
@@ -35,4 +40,14 @@ return {
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("smart_open")
 	end,
+	keys = {
+		{ "<C-f>", find_all, desc = "Find", mode = { "n", "i" } },
+		{ "<leader>fa", find_all, desc = "Find" },
+		{ "<leader>ff", "<cmd>Telescope<cr>", desc = "Find all files" },
+		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
+		{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find in files" },
+		{ "<leader>ft", "<cmd>Telescope tags<cr>", desc = "Find tags" },
+		{ "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find symbols" },
+		{ "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Find diagnostics" },
+	},
 }

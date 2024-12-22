@@ -28,6 +28,9 @@ return lush.extends({ base }).with(function()
 		-- Trouble
 		TroubleNormalNC({ bg = p.dark.bg.da(10) }),
 		TroubleNormal({ TroubleNormalNC }),
+
+		-- Notifications
+		NotifyBackground({ bg = p.dark.bg.da(10) }),
 	}
 	---@diagnostic enable: undefined-global
 end)

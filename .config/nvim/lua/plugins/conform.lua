@@ -1,3 +1,4 @@
+-- Formatting
 return {
 	"stevearc/conform.nvim",
 	config = function()
@@ -18,7 +19,7 @@ return {
 				javascriptreact = { "biome", "rustywind" },
 				json = { "jq" },
 				lua = { "stylua" },
-				markdown = { "markdownfmt" },
+				markdown = {},
 				python = { "isort", "ruff_fix", "ruff_format" },
 				sh = { "shfmt" },
 				swift = { "swiftlint" },
@@ -67,4 +68,8 @@ return {
 			desc = "Re-enable autoformat-on-save",
 		})
 	end,
+	lazy = false,
+	keys = {
+		{ "<leader>bf", "<cmd>Format<cr>",  desc = "Format"},
+	},
 }

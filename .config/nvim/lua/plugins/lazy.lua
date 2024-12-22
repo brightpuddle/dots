@@ -1,2 +1,2 @@
--- Enable LazyVim plugins
+-- Package manager
 return { "LazyVim/LazyVim" }

@@ -1,6 +1,7 @@
+-- File tree
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	branch = "v2.x",
+	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -19,4 +20,8 @@ return {
 			},
 		})
 	end,
+	keys = {
+		{ "<leader>st", "<cmd>Neotree toggle<cr>", desc = "Neotree" },
+		{ "<C-o>e", "<cmd>Neotree toggle<cr>", desc = "Neotree" },
+	},
 }

@@ -1,2 +1,5 @@
 -- Indent guides
-return { "lukas-reineke/indent-blankline.nvim", ft = { "python" } }
+return {
+  "lukas-reineke/indent-blankline.nvim",
+  ft = { "python" }
+}
