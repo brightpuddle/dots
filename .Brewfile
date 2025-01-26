@@ -1,4 +1,5 @@
 tap "austinjones/taps"
+tap "borkdude/brew"
 tap "browsh-org/browsh"
 tap "bufbuild/buf"
 tap "caarlos0/tap"
@@ -48,6 +49,12 @@ brew "asimov"
 brew "aspell"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
+# Platform built on V8 to build network applications
+brew "node"
+# Pyright fork with various improvements and built-in pylance features
+brew "basedpyright"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
@@ -66,14 +73,14 @@ brew "chezscheme"
 brew "chicken"
 # Cross-platform make
 brew "cmake"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Converts boring normal dates to fun Discordian Date
 brew "ddate"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
 # Run arbitrary commands when files change
@@ -84,8 +91,6 @@ brew "eza"
 brew "fd"
 # GNU multiple precision arithmetic library
 brew "gmp"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
 # OpenType text shaping engine
 brew "harfbuzz"
 # Play, record, convert, and stream audio and video
@@ -190,6 +195,8 @@ brew "lolcat"
 brew "lua-language-server"
 # Package manager for the Lua programming language
 brew "luarocks"
+# Friendly wrapper for launchctl
+brew "lunchy"
 # Text-based web browser
 brew "lynx"
 # Mac App Store command-line interface
@@ -200,8 +207,6 @@ brew "meson"
 brew "mingw-w64"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
-# Platform built on V8 to build network applications
-brew "node"
 # MongoDB Shell to connect, configure, query, and work with your MongoDB database
 brew "mongosh"
 # Atlas CLI enables you to manage your MongoDB Atlas
@@ -220,6 +225,8 @@ brew "neovim"
 brew "nmap"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
+# OCaml package manager
+brew "opam"
 # C library to read whole-slide images (a.k.a. virtual slides)
 brew "openslide"
 # Formatter for Haskell source code
@@ -264,6 +271,8 @@ brew "shfmt"
 brew "showkey"
 # SOcket CAT: netcat on steroids
 brew "socat"
+# Manage code quality
+brew "sonarqube"
 # State of the art linter for the Go programming language
 brew "staticcheck"
 # Opinionated Lua code formatter
@@ -334,14 +343,14 @@ brew "zlib"
 brew "zls"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Native, fast starting Clojure interpreter for scripting.
+brew "borkdude/brew/babashka"
 # The best way of working with Protocol Buffers.
 brew "bufbuild/buf/buf"
 # Timer is like sleep, but reports progress.
 brew "caarlos0/tap/timer"
 # Small Clojure interpreter and linter
 brew "candid82/brew/joker"
-# A minimal status bar for macOS.
-brew "cmacrae/formulae/spacebar"
 # Watcher for macOS 10.14+ light/dark mode changes
 brew "cormacrelf/tap/dark-notify"
 # Restish is a CLI for interacting with REST-ish HTTP APIs with some nice features built-in.
@@ -374,8 +383,12 @@ brew "xwmx/taps/nb"
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "aerospace"
 # GPU-accelerated terminal emulator
 cask "alacritty"
+# Application launcher and productivity software
+cask "alfred"
 # Android SDK component
 cask "android-platform-tools"
 # Menu bar icon organiser
@@ -391,6 +404,7 @@ cask "downie"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 cask "font-fontawesome"
+cask "font-hack-nerd-font"
 cask "font-material-icons"
 cask "font-roboto"
 cask "font-roboto-mono"
@@ -400,6 +414,8 @@ cask "font-sf-mono"
 cask "font-ubuntu"
 # Update maps and software, sync with Garmin Connect and register your device
 cask "garmin-express"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Web browser
 cask "google-chrome"
 # Client for the Google Drive storage service
@@ -442,6 +458,8 @@ cask "raindropio"
 cask "rar"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Redis server with additional database capabilities and the visualisation tool RedisInsight
 cask "redis-stack"
 # Graphical tool for visualizing data and managing Redis databases
@@ -472,7 +490,6 @@ mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
 mas "Free Ruler", id: 1483172210
 mas "Ghostery Privacy Ad Blocker", id: 6504861501
-mas "GoodTask", id: 1143437985
 mas "MindNode", id: 992076693
 mas "The Unarchiver", id: 425424353
 mas "Tomato One", id: 907364780
@@ -498,6 +515,7 @@ vscode "hashicorp.terraform"
 vscode "jinliming2.vscode-go-template"
 vscode "laike9m.cyberbrain"
 vscode "magicstack.magicpython"
+vscode "mattn.lisp"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.black-formatter"
 vscode "ms-python.debugpy"
@@ -505,6 +523,7 @@ vscode "ms-python.flake8"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode.cpptools"
 vscode "naumovs.color-highlight"
 vscode "nickdemayo.vscode-json-editor"
 vscode "redhat.vscode-yaml"
@@ -519,5 +538,6 @@ vscode "supperchong.pretty-json"
 vscode "tamasfe.even-better-toml"
 vscode "vadimcn.vscode-lldb"
 vscode "vincaslt.highlight-matching-tag"
+vscode "vosca.vscode-v-analyzer"
 vscode "webfreak.debug"
 vscode "zaaack.markdown-editor"
