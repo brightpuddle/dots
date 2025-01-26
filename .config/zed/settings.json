@@ -1,7 +1,7 @@
 {
   "vim_mode": true,
   "ui_font_size": 16,
-  "ui_font_weight": 500,
+  "ui_font_weight": 400,
   "buffer_font_size": 15,
   "buffer_font_family": "Roboto Mono",
   "buffer_font_weight": 500,
@@ -9,8 +9,8 @@
   "cursor_blink": false,
   "current_line_highlight": "none",
   "theme": {
-    "mode": "system",
-    "light": "Nord Light",
+    "mode": "dark",
+    "light": "Blanche light",
     "dark": "Nord"
   },
   "git": {
@@ -21,7 +21,7 @@
   "terminal": {
     "font_size": 15,
     "font_family": "Roboto Mono",
-    "font_weight": 500,
+    "font_weight": 400,
     "line_height": "standard"
   }
 }

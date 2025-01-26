@@ -2,7 +2,7 @@
 
 import subprocess
 
-editor = "com.apple.automator.NeoKitty"
+editor = "dev.zed.Zed"
 
 extensions = [
     ".asm",

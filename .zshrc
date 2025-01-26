@@ -9,17 +9,17 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zi ice lucid atload'source ~/.p10k.zsh; _p9k_precmd'
-zi light romkatv/powerlevel10k
+zinit ice lucid atload'source ~/.p10k.zsh; _p9k_precmd'
+zinit light romkatv/powerlevel10k
 
-zi light-mode for \
+zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
 
-zi light-mode lucid for \
+zinit light-mode lucid for \
         wait='1' atload='_zsh_autosuggest_start' \
     zsh-users/zsh-autosuggestions \
         blockf \
@@ -37,6 +37,9 @@ zinit ice wait"0" atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh'
   as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
 zinit light pyenv/pyenv
 
+# zinit ice wait"0" 
+# zinit light 
+
 zinit ice wait"0" as"command" from"gh-r" lucid \
   atload'unalias zi' \
   mv"zoxide -> zoxide" \
@@ -44,6 +47,7 @@ zinit ice wait"0" as"command" from"gh-r" lucid \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
 
+eval $(opam env)
 ############################################################
 # Functions
 ############################################################
@@ -56,6 +60,7 @@ function yy() {
 	fi
 	rm -f -- "$tmp"
 }
+zle -N yy
 # Ctrl-P
 fzf-open-file-or-dir() {
   local cmd="command rg . --files --color=never"
@@ -79,6 +84,8 @@ alias cat='bat -Pp'
 alias cd='z'
 alias h='history 1 | rg'
 alias ly='lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git'
+alias gt='go test ./...'
+alias gr='go run .'
 
 ############################################################
 # Options
@@ -111,7 +118,8 @@ add-zsh-hook preexec set-title-preexec
 ############################################################
 # Keys
 ############################################################
-bindkey '^F' fzf-open-file-or-dir
+bindkey '^Op' fzf-open-file-or-dir
+bindkey -s '^Oe' 'yazi^M'
 bindkey -s '^W' '^D'
 bindkey -v
 

@@ -1,4 +1,7 @@
 local w = require("wezterm")
+require("wezterm-session-manager/session-manager")
+require("zen")
+
 local config = w.config_builder()
 
 local function merge(subconfig)
@@ -9,6 +12,6 @@ end
 
 merge(require("settings"))
 merge(require("keys"))
-merge(require("status"))
+merge(require("tabs"))
 
 return config

@@ -1,11 +1,27 @@
 local w = require("wezterm")
 local c = require("colors")
+local util = require("util")
+
+local schemes = {
+	light = "zenbones_light",
+	dark = "nord",
+}
+
+local light_scheme = w.get_builtin_color_schemes()[schemes.light]
+light_scheme.background = "#fdfdfd"
+light_scheme.ansi[1] = "#fdfdfd"
+
+local dark_scheme = w.get_builtin_color_schemes()[schemes.dark]
 
 return {
-	font = w.font("Roboto Mono", { weight = "Medium" }),
+	font = w.font("RobotoMono Nerd Font", { weight = "DemiBold" }),
 	font_size = 15,
-	color_scheme = "nord",
-	command_palette_bg_color = c.nord1,
+	color_scheme = util.scheme_for_appearance(util.get_appearance(), schemes),
+	color_schemes = {
+		zenbones_light = light_scheme,
+		nord = dark_scheme,
+	},
+	command_palette_bg_color = c.surface1,
 	command_palette_fg_color = c.fg,
 	command_palette_rows = 10,
 	command_palette_font_size = 15,
@@ -18,9 +34,10 @@ return {
 		bottom = 8,
 	},
 	window_frame = {
-		active_titlebar_bg = c.bg,
-		active_titlebar_fg = c.darker_fg,
-		inactive_titlebar_bg = c.bg,
+		active_titlebar_bg = c.surface0,
+		active_titlebar_fg = c.text0,
+		inactive_titlebar_bg = c.surface0,
+		inactive_titlebar_fg = c.text0,
 		font = w.font("Roboto Mono", { weight = "Bold" }),
 		font_size = 15.0,
 	},

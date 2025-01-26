@@ -1,6 +1,0 @@
-#!/bin/bash
-
-original=$PWD
-cd $HOME/.config/nvim/
-vi init.lua
-cd $original

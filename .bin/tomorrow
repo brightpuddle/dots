@@ -1,1 +1,1 @@
-icalBuddy -n -f -eep notes,attendees,location eventsToday+1
+icalBuddy -n -f -sd -eep notes,attendees,location eventsToday+1

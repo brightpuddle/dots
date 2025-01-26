@@ -48,7 +48,8 @@ end
 
 -- Determine if we're in vi
 local function isViProcess(pane)
-	return pane:get_foreground_process_name():find("n?vim?") ~= nil or pane:get_title():find("n?vim?") ~= nil
+	return pane:get_foreground_process_name():find("n?vim?") ~= nil
+	--or pane:get_title():find("^n?vim?") ~= nil
 end
 
 -- Switch window for vi or wezterm
@@ -142,7 +143,7 @@ return {
 
 		-- Fuzzy Finder - pass ctrl-f through to zsh and nvim
 		-- Preserve actual ctrl-n / ctrl-p for next/previous in nvim
-		map("p", "CMD", send({ key = "f", mods = "CTRL" })),
+		map("p", "CMD", send(ctrl_o, "p")),
 
 		map("d", "CMD", a.SplitVertical({ domain = "CurrentPaneDomain" })),
 		map("d", "CMD|SHIFT", a.SplitHorizontal({ domain = "CurrentPaneDomain" })),

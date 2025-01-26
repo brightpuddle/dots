@@ -1,6 +1,0 @@
-#!/bin/bash
-
-original=$PWD
-cd $HOME/.config/helix/
-vi config.toml
-cd $original
