@@ -1,3 +1,8 @@
+vim.filetype.add({
+  extension = {
+    gotmpl = "gotmpl",
+  },
+})
 vim.g.lazyvim_picker = "fzf"
 vim.g.snacks_animate = false
 -- vim.g.lazyvim_python_lsp = "basedpyright"

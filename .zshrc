@@ -86,6 +86,7 @@ alias h='history 1 | rg'
 alias ly='lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git'
 alias gt='go test ./...'
 alias gr='go run .'
+alias docker='podman'
 
 ############################################################
 # Options

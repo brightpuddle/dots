@@ -8,8 +8,8 @@ local schemes = {
 }
 
 local light_scheme = w.get_builtin_color_schemes()[schemes.light]
-light_scheme.background = "#fdfdfd"
-light_scheme.ansi[1] = "#fdfdfd"
+-- light_scheme.background = "#fdfdfd"
+-- light_scheme.ansi[1] = "#fdfdfd"
 
 local dark_scheme = w.get_builtin_color_schemes()[schemes.dark]
 

@@ -10,7 +10,7 @@ return {
         colorscheme = "zenlocal",
       },
     },
-    "cormacrelf/dark-notify",
+    -- "cormacrelf/dark-notify",
   },
   config = function()
     vim.g.zenlocal_transparent_background = true
