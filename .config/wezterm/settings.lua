@@ -21,6 +21,8 @@ return {
 		zenbones_light = light_scheme,
 		nord = dark_scheme,
 	},
+	-- window_background_opacity = 0.85,
+	-- macos_window_background_blur = 10,
 	command_palette_bg_color = c.surface1,
 	command_palette_fg_color = c.fg,
 	command_palette_rows = 10,

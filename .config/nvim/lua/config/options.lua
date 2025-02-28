@@ -1,11 +1,12 @@
 vim.filetype.add({
   extension = {
     gotmpl = "gotmpl",
+    re = "reason",
   },
 })
 vim.g.lazyvim_picker = "fzf"
 vim.g.snacks_animate = false
--- vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_lsp = "basedpyright"
 
 vim.o.cursorline = false
 vim.o.relativenumber = false
