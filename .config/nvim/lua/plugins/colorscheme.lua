@@ -7,14 +7,17 @@ return {
     {
       "LazyVim/LazyVim",
       opts = {
-        colorscheme = "zenlocal",
+        colorscheme = "zenwritten",
       },
     },
-    -- "cormacrelf/dark-notify",
+    { "cormacrelf/dark-notify" },
   },
   config = function()
-    vim.g.zenlocal_transparent_background = true
-    vim.o.background = "dark"
-    -- require("dark_notify").run()
+    require("dark_notify").run({
+      schemes = {
+        dark = "zenlocal",
+        light = "zenwritten",
+      },
+    })
   end,
 }

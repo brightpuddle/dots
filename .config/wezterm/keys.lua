@@ -48,8 +48,7 @@ end
 
 -- Determine if we're in vi
 local function isViProcess(pane)
-	return pane:get_foreground_process_name():find("n?vim?") ~= nil
-	--or pane:get_title():find("^n?vim?") ~= nil
+	return pane:get_foreground_process_name():find("n?vim?") ~= nil or pane:get_title():find("n?vim?") ~= nil
 end
 
 -- Switch window for vi or wezterm
@@ -129,6 +128,20 @@ key_tables.search_mode = search_mode
 return {
 	leader = { key = "a", mods = "CMD", timeout_milliseconds = 1000 },
 	keys = {
+		-- Rename workspace
+		map(
+			"r",
+			"LEADER",
+			a.PromptInputLine({
+				description = "Workspace name: ",
+				initial_value = "",
+				action = w.action_callback(function(window, _, line)
+					if line then
+						w.mux.rename_workspace(w.mux.get_active_workspace(), line .. "  ")
+					end
+				end),
+			})
+		),
 		-- Save
 		map("s", "CMD", send(ctrl_o, "w")),
 		-- Preferences

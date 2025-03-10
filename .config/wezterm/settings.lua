@@ -8,18 +8,20 @@ local schemes = {
 }
 
 local light_scheme = w.get_builtin_color_schemes()[schemes.light]
--- light_scheme.background = "#fdfdfd"
--- light_scheme.ansi[1] = "#fdfdfd"
+light_scheme.background = c.bg
+light_scheme.ansi[1] = c.bg
 
 local dark_scheme = w.get_builtin_color_schemes()[schemes.dark]
 
 return {
-	font = w.font("RobotoMono Nerd Font", { weight = "DemiBold" }),
+	font = w.font("RobotoMono Nerd Font", { weight = "Medium" }),
 	font_size = 15,
+	freetype_load_target = "Normal",
+	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	color_scheme = util.scheme_for_appearance(util.get_appearance(), schemes),
 	color_schemes = {
-		zenbones_light = light_scheme,
-		nord = dark_scheme,
+		[schemes.light] = light_scheme,
+		[schemes.dark] = dark_scheme,
 	},
 	-- window_background_opacity = 0.85,
 	-- macos_window_background_blur = 10,
@@ -27,8 +29,7 @@ return {
 	command_palette_fg_color = c.fg,
 	command_palette_rows = 10,
 	command_palette_font_size = 15,
-	default_workspace = "scratch  ",
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+	default_workspace = "default  ",
 	window_padding = {
 		left = 8,
 		right = 8,

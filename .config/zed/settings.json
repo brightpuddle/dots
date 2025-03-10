@@ -1,17 +1,17 @@
 {
   "vim_mode": true,
   "ui_font_size": 16,
-  "ui_font_weight": 400,
+  "ui_font_weight": 300,
   "buffer_font_size": 15,
-  "buffer_font_family": "Roboto Mono",
-  "buffer_font_weight": 500,
+  "buffer_font_family": "RobotoMono Nerd Font",
+  "buffer_font_weight": 400,
   "buffer_line_height": "standard",
   "cursor_blink": false,
   "current_line_highlight": "none",
   "theme": {
     "mode": "dark",
     "light": "Blanche light",
-    "dark": "Nord"
+    "dark": "Brook Code Light"
   },
   "git": {
     "inline_blame": {
@@ -21,7 +21,7 @@
   "terminal": {
     "font_size": 15,
     "font_family": "Roboto Mono",
-    "font_weight": 400,
+    "font_weight": 300,
     "line_height": "standard"
   }
 }
