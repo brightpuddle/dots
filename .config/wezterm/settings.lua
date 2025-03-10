@@ -46,6 +46,13 @@ return {
 	},
 	window_decorations = "RESIZE",
 	native_macos_fullscreen_mode = true,
+	ssh_domains = {
+		{
+			name = "servery",
+			remote_address = "servery",
+			username = "nathan",
+		},
+	},
 	unix_domains = {
 		{ name = "unix" },
 	},
